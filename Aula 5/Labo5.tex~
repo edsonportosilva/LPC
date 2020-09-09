@@ -1,0 +1,216 @@
+\documentclass[12pt,addpoints]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
+
+\newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
+\newcommand{\periodo}{2018.1}
+\newcommand{\avaliacao}{Guia de Experimentos 5}
+\newcommand{\tema}{Introdução à Comunicação Digital.}
+\newcommand{\professor}{Bruno B. Albert e Edmar C.\ Gurjão}
+
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{Lab.\ Princ.\ Comunicações}{\avaliacao}{Página \thepage\ de \numpages}
+\runningheadrule
+\pointpoints{ponto}{pontos}
+\newtheorem{exemplo}{Exemplo}[section]
+
+\begin{document}
+    
+\noindent \includegraphics[height=2cm]{../Figuras/UFCGLogo.png} \hfill
+\begin{minipage}{.66\textwidth} \large \centering \vspace{-1.8cm}
+    Universidade Federal de Campina Grande -- UFCG \\
+    Unidade Acadêmica de Engenharia Elétrica -- UAEE \\
+    Curso de Graduação em Engenharia Elétrica
+\end{minipage}
+\hfill \includegraphics[height=2cm]{../Figuras/DEELogo.png} \\[12pt]
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+    \textbf{\disciplina} && \\
+    Período \periodo && \\
+    \textbf{\avaliacao} && \\
+    Tema(s): \tema && \\
+    Professor(es): \professor && \\
+\end{tabular*}
+\noindent\rule[2ex]{\textwidth}{2pt}
+    
+\section{Introdução}
+
+O presente guia descreve atividades experimentais a serem realizadas na disciplina Laboratório de Princípios de Comunicações do curso de graduação em Engenharia Elétrica da Universidade Federal de Campina Grande -- UFCG.
+
+Os experimentos propostos deverão ser realizados no Laboratório de Princípios de Comunicações -- LPC, localizado na Central de Laboratórios da Unidade Acadêmica de Engenharia Elétrica da UFCG, empregando:
+\begin{itemize}
+    \item Computador com software GNU Radio Companion -- GRC (\url{http://gnuradio.org/}) instalado;
+    \item Módulo USRP (do inglês \textit{Universal Software Radio Peripheral}) para transmissão e recepção de sinais numa abordagem conhecida como Rádio Definido por Software -- RDS.
+\end{itemize}
+
+Na parte inicial deste guia propõe-se um conjunto de atividades de preparação a serem desenvolvidas pelo aluno antes da aula em que serão realizadas as práticas experimentais. Sem a realização prévia destas atividades pelo aluno, as práticas experimentais propostas ficarão comprometidas, tanto no tempo necessário para sua realização quanto no aproveitamento pelo aluno. Por esta razão, o aluno só poderá realizar os experimentos em laboratório se apresentar ao professor no início da aula os resultados da preparação proposta. 
+
+A aula terá duração de duas horas e o aluno deverá entregar ao término da aula a Folha de Respostas (parte final do guia) às questões ali propostas referentes aos experimentos realizados.
+
+\section{Objetivos}
+
+As práticas experimentais aqui propostas têm por objetivos:
+\begin{itemize}
+    \item Simular e analisar a modulação em ângulo;
+    \item Simular e analisar o desmodulador FM;
+\end{itemize}
+
+\section{Preparação}
+
+\subsection{Estudo}
+
+Revise e pesquise sobre os conceitos:
+\begin{itemize}
+    \item Equivalência entre modulações PM e FM;
+    \item Regra de Carson para os casos faixa larga e faixa estreita;
+    \item Desmodulação FM usando a detecção por inclinação.
+\end{itemize}
+
+\subsection{Problemas}
+
+Os problemas propostos a seguir devem ser obrigatoriamente resolvidos e apresentados por escrito ao professor antes do início das práticas de laboratório. Os resultados destes problemas serão necessários para a realização dos experimentos propostos. 
+
+\begin{enumerate}
+    \item Considere uma onda senoidal com amplitude de $1$~Vpp e período de $0,1$~ms como sinal de entrada para moduladores FM e PM, com constantes $K_f = 10^5$~Hz/V e $K_{p} = 10$~rad/V, respectivamente. Considere uma portadora de $100$~MHz com amplitude de $2$~Vpp.
+    \begin{parts}
+        \part Calcule o desvio de frequência $\Delta f_{\text{PM}}$, a razão de desvio $\beta_{\text{PM}}$ (também chamada de índice de modulação) e a largura de faixa estimada $B_{\text{PM}}$ para o caso PM.
+        \part Calcule o desvio de frequência $\Delta f_{\text{FM}}$, a razão de desvio $\beta_{\text{FM}}$ (também chamada de índice de modulação) e a largura de faixa estimada $B_{\text{FM}}$ para o caso FM.
+    \end{parts}
+\end{enumerate}
+
+\section{Experimentos}
+
+A seguir são descritas práticas experimentais a serem realizadas pelo aluno em aula de laboratório. 
+
+\subsection{Experimento 1 -- Modulação PM de Faixa Estreita}
+
+O objetivo deste experimento é analisar a modulação PM em faixa estreita.
+
+\begin{enumerate}
+    \item Antes de iniciar as atividades com o GRC, crie uma pasta para guardar os arquivos de seus experimentos e copie nela os modelos de diagrama (arquivos .GRC) disponibilizados pelo professor para esta aula. \textbf{Não deixe de realizar isso, pois o computador deste laboratório não é para seu uso pessoal e os arquivos que você utilizará serão alterados por você durante o experimento};
+    \item Execute o software GRC e abra o arquivo \textbf{Labo4-1.grc}. A Figura \ref{fig:GRC_4-1} ilustra o diagrama deste experimento. Ele consiste na simulação da equação 
+\begin{equation}
+    \varPsi(t) \approx \cos\omega_ct - \Phi(t)\operatorname{sen}{\omega_{c}t}, \label{eq:pmnb}
+\end{equation}
+em que o $\Phi(t) = K_pm(t)$
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=.5]{Figuras/Labo4-1}
+        \caption{Diagrama de blocos para análise da modulação PM de faixa estreita.} 
+        \label{fig:GRC_4-1}
+    \end{figure}
+  \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\subsection{Experimento 2 -- Modulação FM de Faixa Larga}
+
+O objetivo deste experimento é analisar o modulador FM de faixa larga. 
+
+\begin{enumerate}
+    \item Abra o arquivo \textbf{Labo4-2.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_4-1b} ilustra o diagrama deste experimento. A modulação FM de faixa larga é obtida através de um VCO (Oscilador Controlado por Tensão, do inglês {\it Voltage Control Oscilator}).
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=.5]{Figuras/Labo4-2}
+        \caption{Diagrama de blocos de um modulador FM de faixa larga usando um VCO.}
+        \label{fig:GRC_4-1b}
+    \end{figure}
+  \item Execute o experimento e observe a diferença em relação ao experimento anterior.
+  \item Responda as questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\subsection{Experimento 3 -- Desmodulação com PLL}
+
+O objetivo deste experimento é observar desmodulação de sinais modulados em FM usando PLL ({\it Phase-Locked Loop})
+\begin{enumerate}
+    \item  Abra o arquivo \textbf{Labo4-3.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_4-1c} ilustra o diagrama deste experimento. Ele consiste de um sistema de transmissão FM e recepção empregando um PLL como desmodulador; 
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=.5]{Figuras/Labo4-3}
+        \caption{Diagrama de blocos de sistema de comunicação FM usando PLL na recepção.} 
+        \label{fig:GRC_4-1c}
+    \end{figure}
+  \item Execute o experimento e responda as questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\subsection{Experimento 4 -- Desmodulação com Detecção por Inclinação}
+
+O objetivo deste experimento é mostrar o conceito de um receptor FM usando deteção por inclinação.
+
+\begin{enumerate}
+    \item  Abra o arquivo \textbf{Labo4-4.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_4-1d} ilustra o diagrama deste experimento. Ele consiste de um sistema de transmissão FM e recepção empregando detecção por inclinação na desmodulação. Esse desmodulador consiste de um filtro passa-altas simulando a derivada do sinal modulado FM seguido por um detetor de envoltória.
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=.5]{Figuras/Labo4-4}
+        \caption{Diagrama de blocos de sistema de comunicação FM usando detecção por inclinação na recepção.} 
+        \label{fig:GRC_4-1d}
+    \end{figure}
+  \item É mostrado o efeito do detector por inclinação para um sinal modulante dente de serra;
+  \item Execute o experimento e responda as questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\newpage 
+
+\noindent \includegraphics[height=2cm]{../Figuras/UFCGLogo} \hfill
+\begin{minipage}{.66\textwidth} \large \centering \vspace{-1.8cm}
+    Universidade Federal de Campina Grande -- UFCG \\
+    Unidade Acadêmica de Engenharia Elétrica -- UAEE \\
+    Curso de Graduação em Engenharia Elétrica
+\end{minipage}
+\hfill \includegraphics[height=2cm]{../Figuras/DEELogo} \\[12pt]
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+    \textbf{\disciplina} && \\
+    Período \periodo && \\
+    \textbf{\avaliacao\ -- Folha de Respostas} && \\
+    Tema(s): \tema && \\
+    Professor(es): \professor && \\[12pt]
+    \textbf{Aluno:} \hrulefill & \textbf{Data:} \makebox[3cm]{\hrulefill} & \\
+\end{tabular*}
+\noindent\rule[2ex]{\textwidth}{2pt}
+
+\begin{questions}
+    \question \textbf{Exp.\ 1} $\Rightarrow$ Qual o desvio de frequência $\Delta f$ e a razão de desvio $\beta$ (não esqueça as unidades)?
+    \fillwithlines{0.25in}
+    
+    \question \textbf{Exp.\ 1} $\Rightarrow$ Observe que o sinal no tempo tem uma variação na amplitude e, portanto, não pode ser considerado uma modulação PM. Varie a constante do modulador PM, $K_{p}$, de modo que o sinal modulado possa ser considerado um PM faixa estreita. Qual esse valor? Qual a razão de desvio e a largura de faixa do sinal modulado nesse caso?
+    \fillwithlines{0.25in}
+    
+    \question \textbf{Exp.\ 1} $\Rightarrow$ Faça $K_{p} = 0.2$. Varie a frequência da fonte. Observe o gráfico na frequência e descreva o que ocorreu.
+    \fillwithlines{0.75in}
+    
+    \question \textbf{Exp.\ 1} $\Rightarrow$ Deixe a frequência da fonte em $500$~Hz. Varie agora a frequência da portadora. Observe o gráfico na frequência e descreva o que ocorreu.
+    \fillwithlines{0.75in}
+    
+    \question \textbf{Exp.\ 2} $\Rightarrow$ Faça uma estimativa do desvio de frequência observando o gráfico no tempo (maior e menor período). 
+    \fillwithlines{0.25in}
+    
+    \question \textbf{Exp.\ 2} $\Rightarrow$ Qual a constante do modulador FM $K_{f}$ e o índice de modulação $\beta$? Compare $K_{f}$ com o parâmetro {\it Sensitivity} do VCO.
+    \fillwithlines{0.5in}
+    
+    \question \textbf{Exp.\ 2} $\Rightarrow$ Qual a largura de faixa do modulador FM calculada pela regra de Carson e a largura de faixa observada no espectro de frequência (considere as componentes de frequência até redução de aproximadamente 10 dB sobre as de maior amplitude)?  
+    \fillwithlines{0.25in}
+    
+    \question \textbf{Exp.\ 2} $\Rightarrow$ Alterar a frequência da portadora altera a largura de faixa do modulador FM? E quanto à frequência do sinal modulante?
+    \fillwithlines{0.5in}
+    
+    \question \textbf{Exp.\ 2} $\Rightarrow$ Altere a amplitude do sinal modulante para $0,8$. Qual a nova largura de faixa do sinal modulado pela regra de Carson e observando-se o espectro de frequência, considerando $K_{f} = 10^{4}$~Hz/V?
+    \fillwithlines{0.25in}
+    
+    \question \textbf{Exp.\ 2} $\Rightarrow$ Coloque uma onda quadrada como sinal de entrada e execute o experimento. Observe que há apenas duas frequências no sinal modulado (no tempo). Qual seria, então, o desvio de frequência nesse caso, observando o gráfico no tempo e utilizando a teoria?
+    \fillwithlines{0.25in}
+    
+    \question \textbf{Exp.\ 3} $\Rightarrow$ Observe que o sinal desmodulado apresenta um nível DC e um ``ruído''. Como você melhoraria o sinal desmodulado? Faça isso e verifique o resultado.
+    \fillwithlines{1in}
+    
+    \question \textbf{Exp.\ 4} $\Rightarrow$ Observe que o sinal na saída está modulado em amplitude. Seria possível utilizar um desmodulador síncrono em vez de um detector de envoltória? Justifique.
+    \fillwithlines{1in}
+
+\end{questions}
+
+\end{document}

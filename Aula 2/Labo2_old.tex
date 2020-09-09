@@ -1,0 +1,307 @@
+\documentclass[12pt,addpoints]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
+
+\newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
+\newcommand{\periodo}{2019.1}
+\newcommand{\avaliacao}{Guia de Experimentos 2}
+\newcommand{\tema}{Filtragem de sinais. Relação sinal-ruído.}
+%\newcommand{\professor}{Leocarlos B.\ S.\ Lima e Edson P.\ da Silva}
+\newcommand{\professor}{Edson P.\ da Silva e Luciana Veloso}
+
+\pagestyle{head}
+\firstpageheader{}{}{}
+\runningheader{Lab.\ Princ.\ Comunicações}{\avaliacao}{Página \thepage}
+\runningheadrule
+\pointpoints{ponto}{pontos}
+\newcommand{\myscale}{0.4}
+\newtheorem{exemplo}{Exemplo}[section]
+
+\begin{document}
+
+\noindent \includegraphics[height=2cm]{../Figuras/UFCGLogo.png} \hfill
+\begin{minipage}{.66\textwidth} \large \centering \vspace{-1.8cm}
+    Universidade Federal de Campina Grande -- UFCG \\
+    Unidade Acadêmica de Engenharia Elétrica -- UAEE \\
+    Curso de Graduação em Engenharia Elétrica
+\end{minipage}
+\hfill \includegraphics[height=2cm]{../Figuras/DEELogo.png} \\[12pt]
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+    \textbf{\disciplina} && \\
+    Período \periodo && \\
+    \textbf{\avaliacao} && \\
+    Tema(s): \tema && \\
+    Professor(es): \professor && \\
+\end{tabular*}
+\noindent\rule[2ex]{\textwidth}{2pt}
+
+\section{Introdução}
+
+O presente guia descreve atividades experimentais a serem realizadas na disciplina Laboratório de Princípios de Comunicações do curso de graduação em Engenharia Elétrica da Universidade Federal de Campina Grande -- UFCG.
+
+Os experimentos propostos deverão ser realizados no Laboratório de Princípios de Comunicações -- LPC, localizado na Central de Laboratórios da Unidade Acadêmica de Engenharia Elétrica da UFCG, empregando:
+\begin{itemize}
+    \item Computador com software GNU Radio Companion -- GRC (\url{http://gnuradio.org/}) instalado;
+    \item Módulo USRP (do inglês \textit{Universal Software Radio Peripheral}) para transmissão e recepção de sinais numa abordagem conhecida como Rádio Definido por Software -- RDS.
+\end{itemize}
+
+Na seção \ref{sect:Preparacao} deste guia, propõe-se um conjunto de atividades de preparação a serem desenvolvidas pelo aluno antes da aula em que serão realizadas as práticas experimentais. Sem a realização prévia destas atividades pelo aluno, as práticas experimentais propostas ficarão comprometidas, tanto no tempo necessário para sua realização quanto no aproveitamento pelo aluno. Por essa razão, \textbf{o aluno só poderá realizar os experimentos em laboratório se apresentar ao professor no início da aula os resultados da preparação proposta}. 
+
+A aula terá duração de duas horas e o aluno deverá entregar ao seu término, por escrito, respostas às questões referentes aos experimentos realizados propostas na Folha de Respostas (parte final do guia).
+
+\section{Objetivos}
+
+As práticas experimentais aqui propostas têm por objetivos:
+\begin{itemize}
+    \item Simular e analisar a aplicação de filtros a sinais;
+    \item Investigar o conceito de relação sinal-ruído.
+\end{itemize}
+
+\section{Preparação} \label{sect:Preparacao}
+
+\subsection{Estudo}
+
+Revise e pesquise sobre os conceitos:
+\begin{itemize}
+    \item Filtros passa-baixas, passa-faixa e passa-altas;
+    \item Relação sinal-ruído;
+    \item Largura de faixa de sinais em banda básica e passa-faixa; 
+    \item Largura de faixa (banda passante) de sistemas, canais ou filtros.
+\end{itemize}
+
+\subsubsection{Filtros digitais}
+\label{sec:filtros}
+
+Um sinal discreto no tempo, como um sinal contínuo no tempo, pode ser representado univocamente por uma função da frequência chamada de \textit{espectro de frequências} do sinal.
+
+Filtragem é um processo pelo qual o espectro de frequências de um sinal pode ser modificado de acordo com alguma especificação desejada. A filtragem pode ser usada para atenuar um ruído que está contaminando um sinal em determinadas faixas de frequência, para reduzir distorções, separar dois ou mais sinais que estejam compartilhando um meio de comunicação, analisar as componentes de frequência de um sinal, desmodular sinais, recuperar um sinal contínuo a partir de sua versão amostrada no tempo e limitar em faixa de frequências os sinais.
+
+Um filtro digital é um sistema digital que pode ser usado para filtrar sinais discretos no tempo. Ele pode ser implementado por software, por hardware ou por uma combinação dos dois.
+
+\subsubsection{Projeto de Filtros Digitais FIR usando Séries de Fourier} \label{sec:fir}
+
+Um projeto de filtros digitais envolve três passos básicos:
+\begin{enumerate}
+    \item especificação das propriedades desejadas do sistema;
+    \item aproximação dessas especificações utilizando um sistema causal
+    discreto no tempo; e
+    \item realização do sistema utilizando aritmética de precisão finita.
+\end{enumerate}
+Nessa preparação trataremos dos filtros com resposta finita ao impulso (FIR, do inglês \textit{Finite Impulse Response}), ou seja, não recursivos, com foco no passo 2 acima. Supondo um filtro linear, invariante no tempo e causal, a resposta desses filtros em um instante de tempo $nT$, em que $T$ é o período de amostragem do sinal de entrada, produz uma saída, $y(nT)$, que é uma soma ponderada das entradas atual, $x(nT)$, e passadas, $x(nT - iT)$, para $i = 1, 2, \ldots$, ou seja:
+\begin{align} 
+    y(nT) =& b_{0}x(nT) + b_{1}x(nT - T) + b_{2}x(nT - 2T) + \cdots + b_{N}x(nT - (N-1)T) \nonumber \\
+    =& \sum_{i = 0}^{N-1} b_{i}x(nT - iT). \label{eq:sfiltro}
+\end{align}
+Observe que $b_{i} = 0$, para $i < 0$ ou $i \ge N$. Diz-se, então, que $N$ é a ordem do filtro. 
+
+Como a resposta em frequência, $H(\omega)$, de um filtro não-recursivo é uma função periódica em $\omega$ de período $\omega_s = 2\pi/T$~rad/s, ela pode ser expressa por uma série de Fourier dada por
+\begin{equation} \label{eq:serie}
+    H(\omega) = \sum_{n=-\infty}^{\infty} h(nT) e^{-j\omega nT},
+\end{equation}
+sendo 
+\begin{equation} \label{eq:hnt}
+    h(nT) = \frac{1}{\omega_s} \int_{-\omega_s/2}^{\omega_s/2} H(\omega) e^{j\omega nT} \, d\omega.
+\end{equation}
+Fazendo $e^{j\omega T} = z$ na Eq.~(\ref{eq:serie}), obtém-se
+\begin{equation} \label{eq:Hz}
+    H(z) = \sum_{n=-\infty}^{\infty} h(nT) z^{-n}.
+\end{equation}
+Um filtro com essa característica é não-causal e de ordem infinita. Para uma função de transferência de ordem finita, a série da Eq.~(\ref{eq:Hz}) deve ser truncada fazendo-se
+\begin{equation} \label{eq:hnt-finita}
+    h(nT) = 0 \quad \text{para } |n| > \frac{N-1}{2},
+\end{equation}
+ou seja,
+\begin{equation} \label{eq:Hz2}
+    H(z) = h(0) + \sum_{n=1}^{(N-1)/2} \left[ h(-nT)z^n + h(nT)z^{-n} \right].
+\end{equation}
+A casualidade pode ser conseguida multiplicando-se $H(z)$ por $z^{-(N-1)/2}$. Assim,
+\begin{gather} 
+    H'(z) = z^{-(N-1)/2}H(z), \label{eq:hzl} \\
+    h'(nT) = h'[(N-1-n)T] \quad \text{para } 0 \le n \le N-1 \text{ e} \label{eq:hnl} \\
+    h'(nT) = h[(n - (N-1)/2)T]. \label{eq:hnl1}
+\end{gather}
+Observe que a Eq.~(\ref{eq:hnl}) é válida se $H(\omega)$ na Eq~(\ref{eq:serie}) for uma função par de $\omega$.
+\begin{exemplo} \label{ex:1}
+    Como exemplo, considere o projeto de um filtro passa-baixas com resposta em frequência
+    \begin{equation} \label{eq:porta}
+        H(\omega) = \begin{cases}
+        	1 & \text{para } |\omega| \leq \omega_c              \\
+        	0 & \text{para } \omega_c < |\omega| \leq \omega_s/2,
+        \end{cases}
+    \end{equation}
+    em que $\omega_s$ é a frequência de amostragem. A partir da Eq.~(\ref{eq:hnt}), tem-se que
+    \begin{equation} \label{eq:hntfpb}
+        h(nT) = \frac{1}{\omega_s} \int_{-\omega_c}^{\omega_c} e^{j\omega nT} \, d\omega = \frac{1}{n\pi} \operatorname{sen}{\omega_cnT}.
+    \end{equation}
+    Os coeficientes $b_i$ da Eq.~(\ref{eq:sfiltro}) podem ser obtidos para um filtro causal por
+    \begin{equation} \label{eq:conv}
+        \begin{split}
+        	y(nT) & = h'(nT) * x(nT)                               \\
+        	      & = \sum_{k=0}^{N-1} h'(kT)x(nT - kT)            \\
+        	      & = \sum_{k=0}^{N-1} h[(k- (N-1)/2)T]x(nT - kT).
+        \end{split}
+    \end{equation}
+    Comparando as Eq.~(\ref{eq:sfiltro}) e Eq.~(\ref{eq:conv}), tem-se que
+    \begin{equation} \label{eq:bi}
+        b_i = \begin{cases}
+        	h[(i - (N-1)/2)T] & i = 0, 1, \ldots, N-1  \\
+        	0                 & \text{caso contrário}.
+        \end{cases}
+    \end{equation}
+    Observe que $b_0 = h[(-(N-1)/2)T]$, a função $h(\cdot)$ deslocada de $(N-1)T/2$ para direita.
+\end{exemplo}
+
+\subsection{Problemas}
+
+\begin{questions}
+
+\question Projete um filtro passa-baixas de ordem $N = 25$. Determine os coeficientes $b_i$, com a resposta em frequência dada pela Eq.~(\ref{eq:porta}), para $\omega_s = 2\pi 8000$~rad/s e $\omega_c = 2\pi 1000$~rad/s. Por fim, esboce um gráfico $b_n$ versus $n$ para os valores calculados. A curva deve ter forma de uma função $\operatorname{sinc}{(\cdot)}$ truncada e deslocada da origem.
+
+\question O que significa o ponto de 3 dB na resposta em frequência de um filtro passa-baixas?
+
+\end{questions}
+
+\section{Experimentos}
+
+A seguir são descritas práticas experimentais a serem realizadas pelo aluno em laboratório. 
+
+\subsection{Experimento 1 -- Filtragem de sinais}
+
+O objetivo deste experimento é analisar o efeito da aplicação de filtros passa-baixas, passa-altas e passa-faixa a um sinal ruidoso e a uma onda quadrada estudada no experimento anterior.
+
+\begin{enumerate}
+    \item Antes de iniciar as atividades com o GRC, crie uma pasta para guardar os arquivos de seus experimentos e copie nela os modelos de diagrama (arquivos .GRC) disponibilizados pelo professor para esta aula. \textbf{Não deixe de realizar isso, pois o computador deste laboratório não é para seu uso pessoal e os arquivos que você utilizará serão alterados por você durante o experimento};
+    \item Execute o software GRC e abra o arquivo \textbf{Labo2-1.grc}. A Figura \ref{fig:GRC_2-1} ilustra o diagrama deste experimento. Ele consiste numa fonte de ruído gaussiano e de um filtro FIR. Os sinais no tempo, bem como na frequência, são mostrados antes e depois da aplicação do filtro;
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=\myscale]{./Figuras/GRC_2-1}
+        \caption{Diagrama de blocos para análise de filtro passa-baixas projetado em preparação.} 
+        \label{fig:GRC_2-1}
+    \end{figure}
+    \item Ajuste os parâmetros do bloco \textbf{Noise Source} da seguinte forma:
+    \begin{itemize}
+        \item \textbf{Noise Type}: Gaussian;
+        \item \textbf{Amplitude}: 1;
+    \end{itemize}
+    \item Preencha o campo \textbf{Taps} do bloco \textbf{Decimating FIR Filter} (filtro FIR) com os pesos $b_i$ calculados na preparação (lista entre colchetes, com taps separados por vírgulas);
+    \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\subsection{Experimento 2 -- Relação sinal-ruído de sinal periódico}
+
+O objetivo deste experimento é observar o efeito da relação sinal-ruído sobre um sinal pela inspeção do mesmo nos domínios do tempo e da frequência.
+
+\begin{enumerate}
+    \item Abra o arquivo \textbf{Labo2-2.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_2-2a} ilustra o diagrama deste experimento. Ele consiste numa fonte senoidal adicionada a um ruído gaussiano e de um filtro passa-baixas. Os sinais no tempo, bem como na frequência, são mostrados antes e depois do filtro;
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=\myscale]{./Figuras/GRC_2-2}
+        \caption{Diagrama de blocos para análise da relação sinal-ruído.} 
+        \label{fig:GRC_2-2a}
+    \end{figure}
+    \item Ajuste os parâmetros do bloco \textbf{Noise Source} da seguinte forma:
+    \begin{itemize}
+        \item \textbf{Noise Type}: Gaussian;
+        \item \textbf{Amplitude}: 0.1;
+    \end{itemize}
+    \item Ajuste os parâmetros do bloco \textbf{Signal Source} da seguinte forma:
+    \begin{itemize}
+        \item \textbf{Frequency}: 125 Hz;
+        \item \textbf{Waveform}: Cosine;
+        \item \textbf{Amplitude}: 1;
+        \item \textbf{Offset}: 0;
+    \end{itemize}
+    \item Ajuste o parâmetro \textbf{Cutoff Freq} do bloco \textbf{Low Pass Filter} para 800 Hz;
+    \item A potência da senoide (\textbf{Signal Source}), entendida como se esta fosse aplicada a um resistor de $1~\Omega$, é dada por $A^2/2$~W e a potência média do ruído é dada por sua variância. Aqui, a potência média do ruído é dada por sua amplitude ao quadrado $A_N^2$~W;
+    \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\subsection{Experimento 3 -- Relação sinal-ruído e largura de faixa de sinal de áudio}
+
+O objetivo deste experimento é observar o efeito da relação sinal-ruído e da largura de faixa de um sinal de áudio subjetivamente, pela audição do áudio, e por inspeção do sinal no domínio da frequência.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=\myscale]{./Figuras/GRC_2-3.png}
+    \caption{Diagrama de blocos para análise da relação sinal-ruído.} 
+    \label{fig:GRC_2-2b}
+\end{figure}
+
+\begin{enumerate}
+    \item Abra o arquivo \textbf{Labo2-3.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_2-2b} ilustra o diagrama deste experimento. Ele consiste numa fonte de áudio gravado em arquivo em formato \textit{wave} disponibilizado pelo professor, de uma fonte de ruído, de amplitude ajustável por uma régua deslizante, e de um filtro passa-baixas com a frequência de corte ajustada por uma régua deslizante. Este áudio, após adição do ruído e filtragem por um filtro passa-baixas, é reproduzido nos alto-falantes do computador;
+    \item Verifique se o parâmetro \textbf{File} do bloco \textbf{Wave File Source} está com o caminho correto. Corrija se necessário;
+    \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
+\end{enumerate}
+
+\newpage \pagenumbering{arabic}
+
+\noindent \includegraphics[height=2cm]{../Figuras/UFCGLogo} \hfill
+\begin{minipage}{.66\textwidth} \large \centering \vspace{-1.8cm}
+    Universidade Federal de Campina Grande -- UFCG \\
+    Unidade Acadêmica de Engenharia Elétrica -- UAEE \\
+    Curso de Graduação em Engenharia Elétrica
+\end{minipage}
+\hfill \includegraphics[height=2cm]{../Figuras/DEELogo} \\[12pt]
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+    \textbf{\disciplina} && \\
+    Período \periodo && \\
+    \textbf{\avaliacao\ -- Folha de Respostas} && \\
+    Tema(s): \tema && \\
+    Professor(es): \professor && \\[12pt]
+    \textbf{Aluno:} \hrulefill & \textbf{Data:} \makebox[3cm]{\hrulefill} & \\
+\end{tabular*}
+\noindent\rule[2ex]{\textwidth}{2pt}
+
+\subsection*{Experimento 1 -- Filtragem de sinais}
+
+\begin{questions}
+    \question Observe os gráficos no domínio da frequência e estime a frequência de corte do filtro, que define sua largura de faixa de 3 dB, e estime em quanto o ruído é atenuado (em dB) na faixa de rejeição do filtro (por exemplo, na frequência de 2~kHz). Empregue a ferramenta ``zoom'' para facilitar a leitura o obtenção dos valores.
+    \fillwithlines{0.25in}
+    
+    \question Por que o sinal de ruído no tempo teve sua amplitude reduzida e ficou mais suave após aplicação do filtro, em comparação com o ruído antes do filtro?
+    \fillwithlines{0.5in}
+
+    \question Substitua a fonte de ruído, bloco \textbf{Noise Source}, por uma onda quadrada, bloco \textbf{Signal Source}. Ajuste os parâmetros \textbf{Output Type} para Float, \textbf{Waveform} para Square, \textbf{Frequency} para 125~Hz, \textbf{Amplitude} para 2~V e \textbf{Offset} para $-1$~V, o que deve gerar uma onda quadrada sem nível DC. Execute o diagrama e observe os gráficos tanto no tempo como na frequência. Quais componentes da série de Fourier estão presentes depois do filtro passa-baixas?
+    \fillwithlines{0.5in}
+    
+    \question Ajuste a frequência da onda quadrada para 500~Hz, execute o experimento e explique o que você observou, tanto no tempo como na frequência.
+    \fillwithlines{0.5in}
+    
+    \question Substitua o bloco \textbf{Decimating FIR Filter} pelo bloco \textbf{High Pass Filter}, ajuste o parâmetro \textbf{Cutoff Freq} para 400~Hz e altere o parâmetro \textbf{Offset} da onda quadrada para 0~V (zero Volt). Execute o experimento e explique o que você observou.
+    \fillwithlines{0.5in}
+    
+    \question Ajuste a frequência da onda quadrada para 125~Hz, execute o experimento e explique o que você observou.
+    \fillwithlines{0.5in}
+\end{questions}
+
+\subsection*{Experimento 2 -- Relação sinal-ruído de sinal periódico}
+
+\begin{questions}
+    \question Qual a relação sinal-ruído (SNR) do experimento antes do filtro? E depois do filtro?
+    \fillwithlines{0.25in}
+    
+    \question Altere a amplitude da senoide para 2, observe que o sinal melhorou.Qual a nova relação sinal-ruído (SNR) do experimento antes do filtro? E depois do filtro?
+    \fillwithlines{0.5in}
+    
+    \question Esse não é o modo mais adequado para se melhorar a relação sinal-ruído, pois aumentar a potência do sinal implica o uso de amplificadores mais caros. Existem maneiras de melhorar a relação sinal-ruído sem aumentar a amplitude do sinal. Sugira uma delas? Implemente a sua sugestão com a amplitude da senoide igual a 1 e execute o experimento para verificar o resultado.
+    \fillwithlines{0.5in}
+\end{questions}
+
+\subsection*{Experimento 3 -- Relação sinal-ruído e largura de faixa de sinal de áudio}
+
+\begin{questions}
+    \question Ajuste a amplitude do ruído, de modo a identificar, em sua opinião, uma degradação máxima aceitável do sinal pelo ruído. Qual a relação sinal-ruído correspondente? Justifique sua escolha.
+    \fillwithlines{0.75in}
+    
+    \question Retire o ruído (reduza amplitude a zero) e ajuste a frequência de corte do filtro passa-baixas de modo a identificar a frequência de corte a partir da qual perde-se a capacidade de identificar o locutor e a frequência de corte a partir da qual perde-se a inteligibilidade do que é dito no áudio. Quais são?
+    \fillwithlines{0.5in}
+\end{questions}
+
+\end{document}

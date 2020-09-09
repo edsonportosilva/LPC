@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, tikz, pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture} \footnotesize
+    \begin{scope}<+->
+        \draw[step = 2mm, gray, very thin] (0, 0) grid (20, 10);
+        \draw[black, very thick] (0, 0) rectangle (20, 10);
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

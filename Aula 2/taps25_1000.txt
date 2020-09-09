@@ -1,0 +1,9 @@
+Entre com a frequencia de amostragem em Hz
+8000
+Entre com a frequencia de corte em Hz
+1000
+Entre com a ordem do filtro, (impar)
+25
+Coeficientes do filtro
+b0 = 4.99614e-08 b1 = 0.0204618 b2 = 0.031831 b3 = 0.0250088 b4 = -4.99614e-08 b5 = -0.0321542 b6 = -0.0530517 b7 = -0.0450158 b8 = 4.99614e-08 b9 = 0.0750264 b10 = 0.159155 b11 = 0.225079 b12 = 0.25 b13 = 0.225079 b14 = 0.159155 b15 = 0.0750264 b16 = 4.99614e-08 b17 = -0.0450158 b18 = -0.0530517 b19 = -0.0321542 b20 = -4.99614e-08 b21 = 0.0250088 b22 = 0.031831 b23 = 0.0204618 b24 = 4.99614e-08 
+

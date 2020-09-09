@@ -1,0 +1,98 @@
+\documentclass{standalone}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, tikz, pgfplots}
+
+\begin{document}
+    
+\footnotesize
+
+\begin{tikzpicture}[node distance=4.6em, >=latex, auto]
+    % Desenha entrada do sistema
+    \node[draw=none, fill=none] (entrada) {$\cdots$};
+    %\node[draw=none, fill=none, left of=reg0] (entrada){$\cdots$}; 
+    \node[draw=none, fill=none, above of=entrada, xshift=-1em, yshift=-3em] (entre){Seq. de entrada};
+    
+    % Desenha os registradores (bits de estado)
+    \node[rectangle, draw, fill=red!20, minimum height=2em, minimum width=3em, right of=entrada] (reg0) {$x_{n}$};
+    \node[rectangle, draw, fill=red!20, minimum height=2em, minimum width=3em, right of=reg0] (reg1) {$x_{n-1}$};
+    \node[rectangle, draw, fill=blue!10, minimum height=2em, minimum width=3em, right of=reg1] (reg2) {$x_{n-2}$};
+    \node[rectangle, draw, fill=blue!10, minimum height=2em, minimum width=3em, right of=reg2] (reg3) {$x_{n-3}$};
+    \node[rectangle, draw, fill=blue!10, minimum height=2em, minimum width=3em, right of=reg3] (reg4) {$x_{n-4}$};
+    \node[rectangle, draw, fill=blue!10, minimum height=2em, minimum width=3em, right of=reg4] (reg5) {$x_{n-5}$};
+    \node[rectangle, draw, fill=blue!10, minimum height=2em, minimum width=3em, right of=reg5] (reg6) {$x_{n-6}$};
+    \node[rectangle, draw, fill=blue!10, minimum height=2em, minimum width=3em, right of=reg6] (reg7) {$x_{n-7}$};
+    
+    % Desenha os multiplicadores (coeficientes da matriz de codificação)
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, above of=reg0, yshift=-.8em](a11) {$a^{1}_{1}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a11] (a01) {$a^{0}_{1}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a01] (a13) {$a^{1}_{3}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a13] (a03) {$a^{0}_{3}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a03] (a15) {$a^{1}_{5}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a15] (a05) {$a^{0}_{5}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a05] (a17) {$a^{1}_{7}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a17] (a07) {$a^{0}_{7}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, below of=reg0, yshift=+.8em](a10) {$a^{1}_{0}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a10] (a00) {$a^{0}_{0}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a00] (a12) {$a^{1}_{2}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a12] (a02) {$a^{0}_{2}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a02] (a14) {$a^{1}_{4}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a14] (a04) {$a^{0}_{4}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a04] (a16) {$a^{1}_{6}$};
+    \node[circle, draw, fill=blue!10, minimum size=2.4em, right of=a16] (a06) {$a^{0}_{6}$};
+    
+    % Desenha os somadores
+    \node[circle, draw, fill=blue!10, minimum size=3em, above of=a15, xshift=-2.3em] (sum0) {$\sum$};
+    \node[circle, draw, fill=blue!10, minimum size=3em, below of=a14, xshift=-2.3em] (sum1) {$\sum$};
+    
+    % Desenha as saídas (símbolos wavelet)
+    \node[draw=none, fill=none, above of=a07] (saida0) {$y_{n}$};  
+    \node[draw=none, fill=none, below of=a06] (saida1) {$y_{n-1}$};  
+    
+    % Desenha as conexões
+    \draw[->] (entrada) -- (reg0);
+    \draw[->] (reg0) -- (reg1);
+    \draw[->] (reg1) -- (reg2);
+    \draw[->] (reg2) -- (reg3);
+    \draw[->] (reg3) -- (reg4);
+    \draw[->] (reg4) -- (reg5);
+    \draw[->] (reg5) -- (reg6);
+    \draw[->] (reg6) -- (reg7);
+    \draw[->] (reg0) -- (a11);
+    \draw[->] (reg1) -- (a01);
+    \draw[->] (reg2) -- (a13);
+    \draw[->] (reg3) -- (a03);
+    \draw[->] (reg4) -- (a15);
+    \draw[->] (reg5) -- (a05);
+    \draw[->] (reg6) -- (a17);
+    \draw[->] (reg7) -- (a07);
+    \draw[->] (reg0) -- (a10);
+    \draw[->] (reg1) -- (a00);
+    \draw[->] (reg2) -- (a12);
+    \draw[->] (reg3) -- (a02);
+    \draw[->] (reg4) -- (a14);
+    \draw[->] (reg5) -- (a04);
+    \draw[->] (reg6) -- (a16);
+    \draw[->] (reg7) -- (a06);
+    \draw[->] (a11.90) -- (sum0);
+    \draw[->] (a01.90) -- (sum0);
+    \draw[->] (a13.90) -- (sum0);
+    \draw[->] (a03.90) -- (sum0);
+    \draw[->] (a15.90) -- (sum0);
+    \draw[->] (a05.90) -- (sum0);
+    \draw[->] (a17.90) -- (sum0);
+    \draw[->] (a07.90) -- (sum0);
+    \draw[->] (a10.270) -- (sum1);
+    \draw[->] (a00.270) -- (sum1);
+    \draw[->] (a12.270) -- (sum1);
+    \draw[->] (a02.270) -- (sum1);
+    \draw[->] (a14.270) -- (sum1);
+    \draw[->] (a04.270) -- (sum1);
+    \draw[->] (a16.270) -- (sum1);
+    \draw[->] (a06.270) -- (sum1);
+    \draw[->] (sum0) -- (saida0);
+    \draw[->] (sum1) -- (saida1);
+\end{tikzpicture}
+
+\end{document}

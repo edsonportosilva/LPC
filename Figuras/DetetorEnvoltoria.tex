@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, tikz, pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture} \footnotesize
+    \begin{axis}[
+            width = 10cm, 
+            height = 4cm,
+            enlarge x limits = false,
+            xlabel = {$t$ (ms)},
+            ylabel = {$g(t)$},
+            axis x line = center,
+            axis y line = left,
+            xlabel style = {below right},
+            enlargelimits = upper,
+        ]
+        \addplot[
+            densely dashed,
+            blue,
+            domain = 0:1.5*360,
+            samples = 4*360,
+        ] 
+        {abs(sin(x))};
+        \addplot[
+            very thick,
+            blue,
+            domain = 0:1.5*360,
+            samples = 4*360,
+        ] 
+        {max(abs(sin(x)), exp(-(0.0015*mod(x+90,180)))};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

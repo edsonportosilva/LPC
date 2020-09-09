@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, tikz, pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture} \footnotesize
+    \begin{axis}[
+        width = 10cm,
+        height = 4cm,
+        xlabel = {$t$ (ms)},
+        ylabel = {$g_{t}(t)$},
+        axis x line = center,
+        axis y line = left,
+        xlabel style = {below right},
+        enlargelimits = upper,
+        ]
+        \addplot[
+            very thick,
+            blue,
+            domain = 0:40,
+            samples = 3*360,
+        ]
+        {(2*mod(x, 5)/5 - 1)*sign(sin(36*x))};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}
