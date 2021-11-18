@@ -16,7 +16,7 @@
 
 # ```
 #  Laboratório de Princípios de Comunicações (LPC) 
-#  Período 2020.1e 
+#  Período 2021.1e 
 #  Notebook de auxílio ao guia de Experimentos 1
 #  Tema(s): Introdução ao GNU Radio. Séries de Fourier. Distorção.
 #  Professor(es): Bruno B. Albert e Edson P. da Silva
@@ -179,30 +179,21 @@ def fourierCoeff(t,f,P,n):
 ncoeffs = 10  # número de componentes harmônicos (incluindo componente dc, n=0)
 
 # alocação de variáveis
-quad_an = np.zeros((ncoeffs, 1)); # coeficientes an
-quad_bn = np.zeros((ncoeffs, 1)); # coeficientes bn
-xf      = np.zeros((ncoeffs, 1)); # frequências associadas a an, bn [Hz]
+quad_an = np.zeros((ncoeffs, 1)) # coeficientes an
+quad_bn = np.zeros((ncoeffs, 1)) # coeficientes bn
+xf      = np.zeros((ncoeffs, 1)) # frequências associadas a an, bn [Hz]
 
 # calcula coeficientes de Fourier para n=0 até n=ncoeffs-1
 for n in range(0,ncoeffs): 
     quad_an[n], quad_bn[n] = fourierCoeff(t, quad , 1/f0, n)
     xf[n] = n*f0
 
-# Plota gráficos
+# plota gráfico
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, quad_an,'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $a_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
-
-(markers, stemlines, baseline) = plt.stem(xf, quad_bn,'r',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $b_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='x', markersize=5, markeredgecolor="r", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="r", linewidth=0.5 )
+plt.plot(xf, quad_an,'bo',label = 'coeficientes $a_{n}$')
+plt.vlines(xf, 0, quad_an,'b', alpha=0.5)
+plt.plot(xf, quad_bn,'rx',label = 'coeficientes $b_{n}$')
+plt.vlines(xf, 0, quad_bn,'r', alpha=0.5)
 
 plt.title('Onda quadrada')
 plt.legend()
@@ -246,34 +237,25 @@ plt.grid(color='k', linestyle='-', linewidth=0.5)
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
 
 # alocação de variáveis
-triang_an = np.zeros((ncoeffs, 1));
-triang_bn = np.zeros((ncoeffs, 1));
-xf        = np.zeros((ncoeffs, 1));
+triang_an = np.zeros((ncoeffs, 1))
+triang_bn = np.zeros((ncoeffs, 1))
+xf        = np.zeros((ncoeffs, 1))
 
 # calcula coeficientes de Fourier para n=0 até n=ncoeffs-1
 for n in range(0,ncoeffs): 
     triang_an[n], triang_bn[n] = fourierCoeff(t, triang , 1/f0, n)
     xf[n] = n*f0
-    
-plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, triang_an,'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $a_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
 
-(markers, stemlines, baseline) = plt.stem(xf, triang_bn,'r',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $b_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='x', markersize=5, markeredgecolor="r", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="r", linewidth=0.5 )
+# plota gráfico
+plt.figure()
+plt.plot(xf, triang_an,'bo',label = 'coeficientes $a_{n}$')
+plt.vlines(xf, 0, triang_an,'b', alpha=0.5)
+plt.plot(xf, triang_bn,'rx',label = 'coeficientes $b_{n}$')
+plt.vlines(xf, 0, triang_bn,'r', alpha=0.5)
 
 plt.title('Onda triangular')
 plt.legend()
 plt.xlim(0,xf.max(0))
-#plt.ylim(-2,2)
 plt.xlabel('freq (Hz)')
 plt.ylabel('amplitude')
 plt.grid(color='k', linestyle='-', linewidth=0.5)
@@ -312,30 +294,21 @@ plt.grid(color='k', linestyle='-', linewidth=0.5)
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
 
 # alocação de variáveis
-dente_an = np.zeros((ncoeffs, 1));
-dente_bn = np.zeros((ncoeffs, 1));
-xf       = np.zeros((ncoeffs, 1));
+dente_an = np.zeros((ncoeffs, 1))
+dente_bn = np.zeros((ncoeffs, 1))
+xf       = np.zeros((ncoeffs, 1))
 
 # calcula coeficientes de Fourier para n=0 até n=ncoeffs-1
 for n in range(0,ncoeffs): 
     dente_an[n], dente_bn[n] = fourierCoeff(t, dente, 1/f0, n)
     xf[n] = n*f0
 
-#plota gráficos
+# plota gráficos
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, dente_an,'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $a_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
-
-(markers, stemlines, baseline) = plt.stem(xf, dente_bn,'r',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $b_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='x', markersize=5, markeredgecolor="r", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="r", linewidth=0.5 )
+plt.plot(xf, dente_an,'bo',label = 'coeficientes $a_{n}$')
+plt.vlines(xf, 0, dente_an,'b', alpha=0.5)
+plt.plot(xf, dente_bn,'rx',label = 'coeficientes $b_{n}$')
+plt.vlines(xf, 0, dente_bn,'r', alpha=0.5)
 
 plt.title('Onda dente de serra')
 plt.legend()
@@ -409,28 +382,19 @@ for n in range(0,ncoeffs):
 
 # plota gráficos
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, An,'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes $A_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
+plt.plot(xf, An,'bo',label = 'coeficientes $A_{n}$')
+plt.vlines(xf, 0, An,'b', alpha=0.5)
 
 plt.title('Onda quadrada')
 plt.legend()
 plt.xlim(0,xf.max(0))
-#plt.ylim(An.min(0)-0.5,An.max(0)+0.5)
 plt.xlabel('freq (Hz)')
 plt.ylabel('amplitude')
 plt.grid(color='k', linestyle='-', linewidth=0.5)       
 
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, θn,'b',\
-                                          use_line_collection=True,\
-                                          label = 'fases $θ_{n}$')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
+plt.plot(xf, θn,'bo',label = 'coeficientes $θ_{n}$')
+plt.vlines(xf, 0, θn,'b', alpha=0.5)
 
 plt.title('Onda quadrada')
 plt.legend()
@@ -670,14 +634,10 @@ print('Soma das potências dos componentes harmônicos da série: %2.2f unidades
 # +
 # plota gráficos
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, (abs(An)**2)/2,'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes An')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
+plt.plot(xf, (abs(An)**2)/2,'bo',label = 'potência do n-ésimo harmônico')
+plt.vlines(xf, 0, (abs(An)**2)/2,'b', alpha=0.5)
 
-plt.title('Distribuição e potência da onda quadrada')
+plt.title('Potência por harmônico da onda quadrada')
 plt.legend()
 plt.xlim(0,xf.max(0))
 #plt.ylim(-0.1,1)
@@ -738,14 +698,13 @@ plt.grid(color='k', linestyle='-', linewidth=0.5)
 # Vamos plotar novamente a potência de cada componente harmônico da onda quadrada em função da frequência, mas agora utilizando a escala em dB.
 
 # +
+An[An<1e-3] = 0
+PdBu = 10*log10((abs(An)**2)/2)
+
 # plota gráficos
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, 10*log10((abs(An)**2)/2),'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes An')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
+plt.plot(xf, PdBu,'bo',label = 'potência do n-ésimo harmônico')
+plt.vlines(xf, 0, PdBu,'b', alpha=0.5)
 
 plt.title('Distribuição e potência da onda quadrada')
 plt.legend()
@@ -768,18 +727,13 @@ plt.grid(color='k', linestyle='-', linewidth=0.5)
 #
 
 # +
-# plota gráficos
-
 Ptot  = np.sum((abs(An)**2)/2) # potência total
 Pharm = (abs(An)**2)/2         # vetor com a potência individual por harmônico
 
+# plota gráficos
 plt.figure()
-(markers, stemlines, baseline) = plt.stem(xf, (Pharm/Ptot)*100,'b',\
-                                          use_line_collection=True,\
-                                          label = 'coeficientes An')
-plt.setp(baseline, visible=False)
-plt.setp(markers, marker='o', markersize=5, markeredgecolor="b", markeredgewidth=2)
-plt.setp(stemlines, linestyle="--", color="b", linewidth=0.5 )
+plt.plot(xf, (Pharm/Ptot)*100,'bo',label = '% de potência do n-ésimo harmônico')
+plt.vlines(xf, 0, (Pharm/Ptot)*100,'b', alpha=0.5)
 
 plt.title('Distribuição percentual potência da onda quadrada por componente harmônico')
 plt.legend()
