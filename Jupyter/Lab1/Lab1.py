@@ -69,7 +69,7 @@ plt.rcParams['axes.grid'] = True
 
 # ## Representação de funções periódicas via séries de Fourier
 #
-# Seja a função $f(t)$ periódica com período $P$, isto é $f(t)=f(t+nP)$ para $n=1,2,3,...$, e absolutamente integrável num intervalo de comprimento $P$. Considerando que a função $f(t)$ admite representação em termos de uma série trigonométrica de Fourier, $f(t)$ pode ser escrita como
+# Seja a função $f(t)$ periódica com período $P$, isto é $f(t)=f(t+nP)$ para $n=1,2,3,...$, e absolutamente integrável num intervalo de comprimento $P$. Considerando que $f(t)$ admite representação em termos de uma série trigonométrica de Fourier, temos que
 #
 # $$ 
 # \begin{equation}
