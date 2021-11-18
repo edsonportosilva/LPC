@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Desmodulação síncrona de AM-DSB-SC
-# GNU Radio version: 3.7.13.5
+# Generated: Wed May 12 17:38:27 2021
 ##################################################
 
 if __name__ == '__main__':
@@ -231,7 +231,7 @@ class Labo3_2(gr.top_block, Qt.QWidget):
         self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, 0)
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.Sinal_Modulante = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 200, 1, 0)
-        self.Portadora_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 5000, 1, 0)
+        self.Portadora_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 5001, 1, 0)
         self.Portadora = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 5000, 1, 0)
         self.Amplitude_Portadora = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, A)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.1)  9 SEP 2020 09:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.1)  3 MAR 2021 10:01
 entering extended mode
 **./Labo1.tex
 (Labo1.tex
@@ -902,64 +902,64 @@ UFCGLogo.png> <../Figuras/DEELogo.png>]
 <./Figuras/OndaQuadrada.pdf, id=20, 310.3033pt x 74.83759pt>
 File: ./Figuras/OndaQuadrada.pdf Graphic file (type pdf)
 <use ./Figuras/OndaQuadrada.pdf>
-Package pdftex.def Info: ./Figuras/OndaQuadrada.pdf  used on input line 90.
+Package pdftex.def Info: ./Figuras/OndaQuadrada.pdf  used on input line 93.
 (pdftex.def)             Requested size: 310.30254pt x 74.83739pt.
 <./Figuras/OndaTriangular.pdf, id=21, 310.20892pt x 74.84663pt>
 File: ./Figuras/OndaTriangular.pdf Graphic file (type pdf)
 <use ./Figuras/OndaTriangular.pdf>
-Package pdftex.def Info: ./Figuras/OndaTriangular.pdf  used on input line 92.
+Package pdftex.def Info: ./Figuras/OndaTriangular.pdf  used on input line 95.
 (pdftex.def)             Requested size: 310.20815pt x 74.84644pt.
 <./Figuras/OndaDenteSerra.pdf, id=22, 310.21999pt x 74.83759pt>
 File: ./Figuras/OndaDenteSerra.pdf Graphic file (type pdf)
 <use ./Figuras/OndaDenteSerra.pdf>
-Package pdftex.def Info: ./Figuras/OndaDenteSerra.pdf  used on input line 94.
+Package pdftex.def Info: ./Figuras/OndaDenteSerra.pdf  used on input line 97.
 (pdftex.def)             Requested size: 310.21922pt x 74.83739pt.
  [2 <./Figuras/OndaQuadrada.pdf> <./Figuras/OndaTriangular.pdf> <./Figuras/Onda
 DenteSerra.pdf>]
-<./Figuras/GRC_1-1a.png, id=96, 1540.75626pt x 879.285pt>
+<./Figuras/GRC_1-1a.png, id=98, 1540.75626pt x 879.285pt>
 File: ./Figuras/GRC_1-1a.png Graphic file (type png)
 <use ./Figuras/GRC_1-1a.png>
-Package pdftex.def Info: ./Figuras/GRC_1-1a.png  used on input line 119.
+Package pdftex.def Info: ./Figuras/GRC_1-1a.png  used on input line 125.
 (pdftex.def)             Requested size: 483.69687pt x 276.03706pt.
-<./Figuras/GRC_1-1b.png, id=97, 501.875pt x 529.98pt>
+ [3 <./Figuras/GRC_1-1a.png>]
+<./Figuras/GRC_1-1b.png, id=105, 501.875pt x 529.98pt>
 File: ./Figuras/GRC_1-1b.png Graphic file (type png)
 <use ./Figuras/GRC_1-1b.png>
-Package pdftex.def Info: ./Figuras/GRC_1-1b.png  used on input line 134.
+Package pdftex.def Info: ./Figuras/GRC_1-1b.png  used on input line 140.
 (pdftex.def)             Requested size: 200.74643pt x 211.98824pt.
- [3 <./Figuras/GRC_1-1a.png>]
-<./Figuras/GRC_1-1c.png, id=103, 332.24126pt x 165.61874pt>
+<./Figuras/GRC_1-1c.png, id=106, 332.24126pt x 165.61874pt>
 File: ./Figuras/GRC_1-1c.png Graphic file (type png)
 <use ./Figuras/GRC_1-1c.png>
-Package pdftex.def Info: ./Figuras/GRC_1-1c.png  used on input line 142.
+Package pdftex.def Info: ./Figuras/GRC_1-1c.png  used on input line 148.
 (pdftex.def)             Requested size: 132.89413pt x 66.2463pt.
  [4 <./Figuras/GRC_1-1b.png> <./Figuras/GRC_1-1c.png>]
-<./Figuras/GRC_1-1d.png, id=108, 681.54625pt x 165.61874pt>
+<./Figuras/GRC_1-1d.png, id=111, 681.54625pt x 165.61874pt>
 File: ./Figuras/GRC_1-1d.png Graphic file (type png)
 <use ./Figuras/GRC_1-1d.png>
-Package pdftex.def Info: ./Figuras/GRC_1-1d.png  used on input line 162.
+Package pdftex.def Info: ./Figuras/GRC_1-1d.png  used on input line 168.
 (pdftex.def)             Requested size: 272.61366pt x 66.2463pt.
-<./Figuras/GRC_1-2.png, id=109, 816.04875pt x 307.1475pt>
+<./Figuras/GRC_1-2.png, id=112, 816.04875pt x 307.1475pt>
 File: ./Figuras/GRC_1-2.png Graphic file (type png)
 <use ./Figuras/GRC_1-2.png>
-Package pdftex.def Info: ./Figuras/GRC_1-2.png  used on input line 178.
+Package pdftex.def Info: ./Figuras/GRC_1-2.png  used on input line 184.
 (pdftex.def)             Requested size: 326.41371pt x 122.85681pt.
- [5 <./Figuras/GRC_1-1d.png> <./Figuras/GRC_1-2.png>]
 <./Figuras/GRC_1-3.png, id=113, 923.45pt x 429.605pt>
 File: ./Figuras/GRC_1-3.png Graphic file (type png)
 <use ./Figuras/GRC_1-3.png>
-Package pdftex.def Info: ./Figuras/GRC_1-3.png  used on input line 194.
+Package pdftex.def Info: ./Figuras/GRC_1-3.png  used on input line 200.
 (pdftex.def)             Requested size: 369.37346pt x 171.83894pt.
- [6 <./Figuras/GRC_1-3.png>]
+ [5 <./Figuras/GRC_1-1d.png>] [6 <./Figuras/GRC_1-2.png> <./Figuras/GRC_1-3.png
+>]
 File: ../Figuras/UFCGLogo.png Graphic file (type png)
 <use ../Figuras/UFCGLogo.png>
-Package pdftex.def Info: ../Figuras/UFCGLogo.png  used on input line 205.
+Package pdftex.def Info: ../Figuras/UFCGLogo.png  used on input line 211.
 (pdftex.def)             Requested size: 52.85478pt x 56.9055pt.
 File: ../Figuras/DEELogo.png Graphic file (type png)
 <use ../Figuras/DEELogo.png>
-Package pdftex.def Info: ../Figuras/DEELogo.png  used on input line 211.
+Package pdftex.def Info: ../Figuras/DEELogo.png  used on input line 217.
 (pdftex.def)             Requested size: 78.41823pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--212
+Underfull \hbox (badness 10000) in paragraph at lines 211--218
 
  []
 
@@ -975,7 +975,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  25346 strings out of 481178
  629760 string characters out of 2902470
- 1029815 words of memory out of 3000000
+ 1031815 words of memory out of 3000000
  40524 multiletter control sequences out of 15000+200000
  550375 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1003,10 +1003,12 @@ lic/amsfonts/cm/cmmi8.pfb><C:/Users/edson/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/edson/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/edson/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/edson/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Labo1.pdf (8 pages, 752932 bytes).
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
+sers/edson/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
+y8.pfb>
+Output written on Labo1.pdf (8 pages, 765233 bytes).
 PDF statistics:
- 548 PDF objects out of 1000 (max. 8388607)
+ 558 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

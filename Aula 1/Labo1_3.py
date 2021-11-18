@@ -5,7 +5,7 @@
 # Title: Analise de distorcao de canal
 # Author: Leocarlos Bezerra da Silva Lima
 # Description: Experimento para Laboratório de Princípios de Comunicações. Departamento de Engenharia Elétrica - DEE da Universidade Federal de Campina Grande - UFCG.
-# GNU Radio version: 3.7.13.5
+# Generated: Fri Nov  6 14:38:52 2020
 ##################################################
 
 if __name__ == '__main__':
@@ -63,7 +63,7 @@ class Labo1_3(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 8000
-        self.atraso = atraso = 3
+        self.atraso = atraso = 0
         self.atenuacao = atenuacao = 1
 
         ##################################################
@@ -126,8 +126,8 @@ class Labo1_3(gr.top_block, Qt.QWidget):
         self.blocks_multiply_const_vxx_0_1 = blocks.multiply_const_vff((atenuacao, ))
         self.blocks_multiply_const_vxx_0_0 = blocks.multiply_const_vff((atenuacao, ))
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((atenuacao, ))
-        self.blocks_delay_0_1 = blocks.delay(gr.sizeof_float*1, atraso*5)
-        self.blocks_delay_0_0 = blocks.delay(gr.sizeof_float*1, atraso*3)
+        self.blocks_delay_0_1 = blocks.delay(gr.sizeof_float*1, atraso)
+        self.blocks_delay_0_0 = blocks.delay(gr.sizeof_float*1, atraso)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, atraso)
 
 
@@ -172,8 +172,8 @@ class Labo1_3(gr.top_block, Qt.QWidget):
 
     def set_atraso(self, atraso):
         self.atraso = atraso
-        self.blocks_delay_0_1.set_dly(self.atraso*5)
-        self.blocks_delay_0_0.set_dly(self.atraso*3)
+        self.blocks_delay_0_1.set_dly(self.atraso)
+        self.blocks_delay_0_0.set_dly(self.atraso)
         self.blocks_delay_0.set_dly(self.atraso)
 
     def get_atenuacao(self):

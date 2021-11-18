@@ -109,7 +109,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>3,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -160,7 +160,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -176,7 +176,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>32000</value>
+      <value>44100</value>
     </param>
   </block>
   <block>
@@ -226,7 +226,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>2,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -293,7 +293,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>4e5</value>
+      <value>400e3</value>
     </param>
   </block>
   <block>
@@ -316,7 +316,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>1,1,1,1</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -544,11 +544,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 484)</value>
+      <value>(816, 468)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -666,7 +666,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(896, 444)</value>
+      <value>(1048, 492)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -686,7 +686,7 @@
     </param>
     <param>
       <key>samp_rate</key>
-      <value>32000</value>
+      <value>44100</value>
     </param>
   </block>
   <block>
@@ -788,7 +788,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(448, 145)</value>
+      <value>(448, 168)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1039,7 +1039,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>/Users/ecg/Dropbox/Experimentos GRC/Aula 3/Labo3-4.wav</value>
+      <value>C:\Users\edson\Google Drive\Experimentos GRC\Aula 3\Labo3-4_fs44100.wav</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1157,7 +1157,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 10)</value>
+      <value>(416, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1165,7 +1165,7 @@
     </param>
     <param>
       <key>gain</key>
-      <value>1</value>
+      <value>10</value>
     </param>
     <param>
       <key>id</key>
@@ -1193,7 +1193,7 @@
     </param>
     <param>
       <key>win</key>
-      <value>firdes.WIN_HAMMING</value>
+      <value>firdes.WIN_RECTANGULAR</value>
     </param>
   </block>
   <block>
@@ -1897,7 +1897,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value></value>
+      <value>1,0,1,1</value>
     </param>
     <param>
       <key>_rotation</key>

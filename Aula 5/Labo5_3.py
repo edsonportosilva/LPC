@@ -3,9 +3,8 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Labo5 3
-# Generated: Mon Nov 25 14:07:54 2019
+# Generated: Mon May 10 15:30:02 2021
 ##################################################
-
 
 if __name__ == '__main__':
     import ctypes
@@ -39,7 +38,7 @@ class Labo5_3(grc_wxgui.top_block_gui):
 
     def __init__(self):
         grc_wxgui.top_block_gui.__init__(self, title="Labo5 3")
-        _icon_path = "/usr/share/icons/hicolor/32x32/apps/gnuradio-grc.png"
+        _icon_path = "C:\Program Files\GNURadio-3.7\share\icons\hicolor\scalable/apps\gnuradio-grc.png"
         self.SetIcon(wx.Icon(_icon_path, wx.BITMAP_TYPE_ANY))
 
         ##################################################
@@ -165,6 +164,8 @@ class Labo5_3(grc_wxgui.top_block_gui):
         self.blocks_add_const_vxx_0_0 = blocks.add_const_vff((-0.2, ))
         self.blocks_add_const_vxx_0 = blocks.add_const_vff((0.2, ))
         self.analog_random_source_x_1 = blocks.vector_source_b(map(int, numpy.random.randint(0, 255, 10000)), True)
+
+
 
         ##################################################
         # Connections

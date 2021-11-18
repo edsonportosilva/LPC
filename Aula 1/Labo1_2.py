@@ -5,7 +5,7 @@
 # Title: Geracao de sinal a partir de sua serie de Fourier
 # Author: Leocarlos Bezerra da Silva Lima
 # Description: Experimento para Laboratório de Princípios de Comunicações. Departamento de Engenharia Elétrica - DEE da Universidade Federal de Campina Grande - UFCG.
-# GNU Radio version: 3.7.13.5
+# Generated: Fri Sep 25 10:16:47 2020
 ##################################################
 
 if __name__ == '__main__':

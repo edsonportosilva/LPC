@@ -5,7 +5,7 @@
 # Title: Relacao sinal-ruido
 # Author: Leocarlos B S Lima/Edson P da Silva
 # Description: Experimento para Laboratório de Princípios de Comunicações. Departamento de Engenharia Elétrica - DEE da Universidade Federal de Campina Grande - UFCG.
-# Generated: Mon Apr 15 18:07:18 2019
+# Generated: Mon Oct  5 14:26:38 2020
 ##################################################
 
 if __name__ == '__main__':

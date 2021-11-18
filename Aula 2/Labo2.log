@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.1)  9 SEP 2020 09:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.1)  16 MAR 2021 16:42
 entering extended mode
 **./Labo2.tex
 (Labo2.tex
@@ -762,6 +762,9 @@ LaTeX Warning: Label `question@1' multiply defined.
 LaTeX Warning: Label `question@2' multiply defined.
 
 
+LaTeX Warning: Label `question@3' multiply defined.
+
+
 LaTeX Warning: Label `question@1' multiply defined.
 
 
@@ -908,48 +911,48 @@ Package pdftex.def Info: ./Figuras/sincDeslocada.jpg  used on input line 142.
 (pdftex.def)             Requested size: 483.69687pt x 167.45529pt.
  [3 <./Figuras/filtroPassaBaixaMultiplicacaoJanela.JPG> <./Figuras/sincDeslocad
 a.jpg>] [4]
-<./Figuras/FiltragemRuidoBranco.png, id=41, 602.9727pt x 321.3606pt>
+<./Figuras/FiltragemRuidoBranco.png, id=41, 575.9919pt x 290.5254pt>
 File: ./Figuras/FiltragemRuidoBranco.png Graphic file (type png)
 <use ./Figuras/FiltragemRuidoBranco.png>
 Package pdftex.def Info: ./Figuras/FiltragemRuidoBranco.png  used on input line
  226.
-(pdftex.def)             Requested size: 386.95897pt x 206.23398pt.
+(pdftex.def)             Requested size: 435.32422pt x 219.57806pt.
  [5 <./Figuras/FiltragemRuidoBranco.png>]
 <./Figuras/GRC_2-1.png, id=45, 709.65125pt x 260.975pt>
 File: ./Figuras/GRC_2-1.png Graphic file (type png)
 <use ./Figuras/GRC_2-1.png>
-Package pdftex.def Info: ./Figuras/GRC_2-1.png  used on input line 258.
+Package pdftex.def Info: ./Figuras/GRC_2-1.png  used on input line 260.
 (pdftex.def)             Requested size: 283.85547pt x 104.38815pt.
 <./Figuras/GRC_2-2.png, id=46, 732.5769pt x 350.0277pt>
 File: ./Figuras/GRC_2-2.png Graphic file (type png)
 <use ./Figuras/GRC_2-2.png>
-Package pdftex.def Info: ./Figuras/GRC_2-2.png  used on input line 279.
+Package pdftex.def Info: ./Figuras/GRC_2-2.png  used on input line 281.
 (pdftex.def)             Requested size: 483.69687pt x 231.11513pt.
  [6 <./Figuras/GRC_2-1.png>] [7 <./Figuras/GRC_2-2.png>]
 <./Figuras/GRC_2-3.png, id=54, 963.6pt x 408.0846pt>
 File: ./Figuras/GRC_2-3.png Graphic file (type png)
 <use ./Figuras/GRC_2-3.png>
-Package pdftex.def Info: ./Figuras/GRC_2-3.png  used on input line 312.
+Package pdftex.def Info: ./Figuras/GRC_2-3.png  used on input line 314.
 (pdftex.def)             Requested size: 483.69687pt x 204.84505pt.
 
 [8 <./Figuras/GRC_2-3.png>]
 File: ../Figuras/UFCGLogo.png Graphic file (type png)
 <use ../Figuras/UFCGLogo.png>
-Package pdftex.def Info: ../Figuras/UFCGLogo.png  used on input line 317.
+Package pdftex.def Info: ../Figuras/UFCGLogo.png  used on input line 319.
 (pdftex.def)             Requested size: 52.85478pt x 56.9055pt.
 File: ../Figuras/DEELogo.png Graphic file (type png)
 <use ../Figuras/DEELogo.png>
-Package pdftex.def Info: ../Figuras/DEELogo.png  used on input line 323.
+Package pdftex.def Info: ../Figuras/DEELogo.png  used on input line 325.
 (pdftex.def)             Requested size: 78.41823pt x 56.9055pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--324
+Underfull \hbox (badness 10000) in paragraph at lines 319--326
 
  []
 
 [1
 
 ] [2] [3]
-This exam contains 14 questions with 0 parts, 0 subparts, and 0 subsubparts.
+This exam contains 15 questions with 0 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 0 points.
 This exam has a total of 0 bonus points.
 (Labo2.aux)
@@ -958,13 +961,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 25318 strings out of 481178
- 629251 string characters out of 2902470
- 1032815 words of memory out of 3000000
- 40503 multiletter control sequences out of 15000+200000
- 545695 words of font info for 56 fonts, out of 3000000 for 9000
+ 25322 strings out of 481178
+ 629291 string characters out of 2902470
+ 1033815 words of memory out of 3000000
+ 40505 multiletter control sequences out of 15000+200000
+ 547225 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,18n,98p,894b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,18n,98p,897b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\edson\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbx1440.pk> <C:\Users\edson\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecti1200.pk> <C:\Users\edson\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
@@ -985,9 +988,9 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:
 mr8.pfb><C:/Users/edson/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb><C:/Users/edson/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Labo2.pdf (11 pages, 2787936 bytes).
+Output written on Labo2.pdf (11 pages, 3564424 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
+ 399 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

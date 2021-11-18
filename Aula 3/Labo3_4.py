@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Receptor AM super-heterodino
-# GNU Radio version: 3.7.13.5
+# Generated: Fri Oct 30 11:51:06 2020
 ##################################################
 
 if __name__ == '__main__':
@@ -64,10 +64,10 @@ class Labo3_4(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.sintonia = sintonia = 100e3
-        self.samp_rate = samp_rate = 4e5
+        self.samp_rate = samp_rate = 400e3
         self.portadora = portadora = 100e3
         self.fi = fi = 25e3
-        self.audio_rate = audio_rate = 32000
+        self.audio_rate = audio_rate = 44100
         self.amplitude = amplitude = 0.5
 
         ##################################################
@@ -75,13 +75,25 @@ class Labo3_4(gr.top_block, Qt.QWidget):
         ##################################################
         self._sintonia_range = Range(50e3, 150e3, 1000, 100e3, 200)
         self._sintonia_win = RangeWidget(self._sintonia_range, self.set_sintonia, 'Sintonia', "counter_slider", float)
-        self.top_grid_layout.addWidget(self._sintonia_win)
+        self.top_grid_layout.addWidget(self._sintonia_win, 1, 1, 1, 1)
+        for r in range(1, 2):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(1, 2):
+            self.top_grid_layout.setColumnStretch(c, 1)
         self._portadora_range = Range(75e3, 150e3, 25e3, 100e3, 200)
         self._portadora_win = RangeWidget(self._portadora_range, self.set_portadora, 'Freq. Portadora', "counter_slider", float)
-        self.top_grid_layout.addWidget(self._portadora_win)
+        self.top_grid_layout.addWidget(self._portadora_win, 2, 1, 1, 1)
+        for r in range(2, 3):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(1, 2):
+            self.top_grid_layout.setColumnStretch(c, 1)
         self._amplitude_range = Range(0, 1, 0.01, 0.5, 200)
         self._amplitude_win = RangeWidget(self._amplitude_range, self.set_amplitude, 'Amp.  Portadora', "counter_slider", float)
-        self.top_grid_layout.addWidget(self._amplitude_win)
+        self.top_grid_layout.addWidget(self._amplitude_win, 3, 1, 1, 1)
+        for r in range(3, 4):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(1, 2):
+            self.top_grid_layout.setColumnStretch(c, 1)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
         	1024*2, #size
         	samp_rate, #samp_rate
@@ -129,7 +141,11 @@ class Labo3_4(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0.set_line_alpha(i, alphas[i])
 
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_win, 1, 0, 1, 1)
+        for r in range(1, 2):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(0, 1):
+            self.top_grid_layout.setColumnStretch(c, 1)
         self.qtgui_freq_sink_x_5 = qtgui.freq_sink_f(
         	2**13, #size
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
@@ -226,9 +242,9 @@ class Labo3_4(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setColumnStretch(c, 1)
         self.oscilador_local = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, sintonia+fi, 1, 0)
         self.low_pass_filter_0 = filter.fir_filter_fff(1, firdes.low_pass(
-        	1, samp_rate, 5e3, 1e3, firdes.WIN_HAMMING, 6.76))
+        	10, samp_rate, 5e3, 1e3, firdes.WIN_RECTANGULAR, 6.76))
         self.dc_blocker_xx_0_0 = filter.dc_blocker_ff(600, True)
-        self.blocks_wavfile_source_0 = blocks.wavfile_source('/Users/ecg/Dropbox/Experimentos GRC/Aula 3/Labo3-4.wav', True)
+        self.blocks_wavfile_source_0 = blocks.wavfile_source('C:\\Users\\edson\\Google Drive\\Experimentos GRC\\Aula 3\\Labo3-4_fs44100.wav', True)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_multiply_xx_0_0 = blocks.multiply_vff(1)
         self.blocks_multiply_xx_0 = blocks.multiply_vff(1)
@@ -236,7 +252,7 @@ class Labo3_4(gr.top_block, Qt.QWidget):
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.band_pass_filter_0 = filter.fir_filter_fff(1, firdes.band_pass(
         	1, samp_rate, fi-10e3, fi+10e3, 1000, firdes.WIN_HAMMING, 6.76))
-        self.audio_sink_0 = audio.sink(32000, '', True)
+        self.audio_sink_0 = audio.sink(44100, '', True)
         self.analog_am_demod_cf_0 = analog.am_demod_cf(
         	channel_rate=samp_rate,
         	audio_decim=1,
@@ -298,7 +314,7 @@ class Labo3_4(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_5.set_frequency_range(0, self.samp_rate)
         self.qtgui_freq_sink_x_3.set_frequency_range(0, self.samp_rate)
         self.oscilador_local.set_sampling_freq(self.samp_rate)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 5e3, 1e3, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0.set_taps(firdes.low_pass(10, self.samp_rate, 5e3, 1e3, firdes.WIN_RECTANGULAR, 6.76))
         self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.band_pass_filter_0.set_taps(firdes.band_pass(1, self.samp_rate, self.fi-10e3, self.fi+10e3, 1000, firdes.WIN_HAMMING, 6.76))
         self.Portadora.set_sampling_freq(self.samp_rate)

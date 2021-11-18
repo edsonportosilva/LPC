@@ -5,7 +5,7 @@
 # Title: Relacao sinal-ruido de sinal de audio
 # Author: Leocarlos B S Lima/Edson P da Silva
 # Description: Experimento para Laboratório de Princípios de Comunicações. Departamento de Engenharia Elétrica - DEE da Universidade Federal de Campina Grande - UFCG.
-# Generated: Wed Jun 26 17:45:38 2019
+# Generated: Mon Oct  5 15:37:33 2020
 ##################################################
 
 if __name__ == '__main__':

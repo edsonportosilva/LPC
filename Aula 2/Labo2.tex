@@ -6,7 +6,7 @@
 \usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
 
 \newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
-\newcommand{\periodo}{2020.1}
+\newcommand{\periodo}{2020.1e}
 \newcommand{\avaliacao}{Guia de Experimentos 2}
 \newcommand{\tema}{Filtragem de sinais. Relação sinal-ruído.}
 %\newcommand{\professor}{Leocarlos B.\ S.\ Lima e Edson P.\ da Silva}
@@ -180,8 +180,8 @@ $h(n)=\begin{cases}
 Rejeita Faixa  
 & 
 $h(n)=\begin{cases}
-\frac{\Omega_{c_2}-\Omega_{c_1}}{\pi}, n=\alpha, \\
-\frac{sin(\Omega_{c_1} \left(n-\alpha\right))-sin(\Omega_{c_2} \left(n-\alpha\right))}{\pi \left(n-\alpha\right)} , n\neq \alpha
+1+\frac{ \Omega_{c_1}-\Omega_{c_2}}{\pi}, n=\alpha, \\
+\frac{sin(\Omega_{c_1} \left(n-\alpha\right))-sin(\Omega_{c_2} \left(n-\alpha\right)) + sin(\pi\left(n-\alpha\right))}{\pi \left(n-\alpha\right)} , n\neq \alpha
 \end{cases}$ \\
 
 \end{tabular}
@@ -223,22 +223,24 @@ Um dos modelos mais importantes para o ruído (talvez o modelo mais importante) 
 
 \begin{figure}[h!]
         \centering
-        \includegraphics[width=0.8\linewidth]{./Figuras/FiltragemRuidoBranco}
+        \includegraphics[width=0.9\linewidth]{./Figuras/FiltragemRuidoBranco}
         \caption{Potência do ruído branco gaussiano sujeito à filtragem.} 
         \label{fig:ruidoFiltrado}
 \end{figure}
 
-No sistema internacional de unidades (SI), $S_N(f)=N_0/2$ é dada em $W/Hz$, sendo $N_0$ uma constante representando a contribuição de cada componente de frequência para a potência média do ruído. Note que $S_N(f)$ é constante com amplitude $\sigma^2$ sobre todo o intervalo de frequências $[-\infty,\infty]$. Dessa forma, no caso ideal em que $t$ é uma variável contínua, a potência do ruído AWGN é infinita! Como nenhum sistema físico real possui banda infinita, um modelo mais adequado para análises práticas é o que considera a presença de um ruído gaussiano limitado a uma banda $B$ que,  por sua vez, pode ser obtido passando o ruído AWGN  por um filtro passa-baixas ideal de banda $B$, como indicado em Fig.\ref{fig:ruidoFiltrado}(b)-(c). Nesse caso, a potência média do ruído fica bem caracterizada como sendo $P_N = \sigma^2B$.
+No sistema internacional de unidades (SI), $S_N(f)=N_0/2$ é dada em $W/Hz$, sendo $N_0$ uma constante representando a contribuição de cada componente de frequência para a potência média do ruído. Note que $S_N(f)$ é constante com amplitude $N_0/2$ sobre todo o intervalo de frequências $[-\infty,\infty]$. Dessa forma, no caso ideal em que $t$ é uma variável contínua, a potência do ruído AWGN é infinita! Como nenhum sistema físico real possui banda infinita, um modelo mais adequado para análises práticas é o que considera a presença de um ruído gaussiano limitado a uma banda $B$ que,  por sua vez, pode ser obtido passando o ruído AWGN  por um filtro passa-baixas ideal de banda $B$, como indicado em Fig.\ref{fig:ruidoFiltrado}(b)-(c). Nesse caso, a potência média do ruído fica bem caracterizada como sendo $P_N = \sigma^2 = N_0B$.
 
-Perceba que uma simulação computacional, como a do Gnuradio, utiliza sinais discretos no tempo. Isto é, a variável temporal não é contínua e os sinais são representados à uma dada frequência de amostragem (sampling rate) $f_s$. Como consequência do teorema de Nyquist, a frequência de amostragem $f_s=\omega_s/2\pi$ impõe um intervalo limite $[-f_s/2,f_s/2]$ para a largura de banda máxima dos sinais discretos. Dessa forma, sinais e sistemas numa simulação computacional naturalmente são limitados em banda. Desse modo, ao gerar-se em simulação um processo aleatório AWGN de variância $\sigma^2$ à uma taxa de amostragem $f_s$, a potência total média do ruído simulado será de $P_N = \sigma^2f_s$ W.
+Perceba que uma simulação computacional, como a do GNU Radio, utiliza sinais discretos no tempo. Isto é, a variável temporal não é contínua e os sinais são representados à uma dada frequência de amostragem $f_s=\omega_s/2\pi$. Como consequência do teorema da amostragem de Nyquist–Shannon, a frequência de amostragem $f_s$ impõe um intervalo limite $[-f_s/2,f_s/2]$ para a largura de banda máxima dos sinais que podem discretizados sem perdas de informação causadas por\textit{aliasing}. Dessa forma, sinais e sistemas em uma simulação computacional naturalmente são limitados em banda. Desse modo, ao gerar-se em simulação um processo aleatório AWGN de variância $\sigma^2$ à uma taxa de amostragem $f_s$, a potência total média do ruído simulado será de $P_N = \sigma^2=N_0f_s/2$ W.
 
 \subsection{Problemas}
 
 \begin{questions}
 
-\question Projete um filtro passa-baixas de ordem $N = 25$. Determine os coeficientes $h(i)$, com a resposta em frequência dada na Tabela \ref{tab:filtrosReais}, para $\omega_s = 2\pi 8000$~rad/s e $\omega_c = 2\pi 1000$~rad/s. Por fim, esboce um gráfico $h(n)$ versus $n$ para os valores calculados. A curva deve ter forma de uma função $\operatorname{sinc}{(\cdot)}$ truncada e deslocada da origem.
+\question Com as funções implementadas no \textit{Jupyter notebook} Lab2, projete os filtros passa-baixas de ordens $N = 25,50,100\text{ e }200$, isto é, determine os coeficientes $h(n)$ para $\omega_s = 2\pi 8000$~rad/s (frequência de amostragem) e $\omega_c = 2\pi 1000$~rad/s (frequência de corte) e forneça os gráficos de $h(n)$ em função de $n$, com $n=0,...,N-1$. Por fim, gere os gráficos da resposta em frequência $H(f)$ em $dB$ para cada um dos filtros projetados. 
 
-\question O que significa o ponto de -3 dB na resposta em frequência de um filtro passa-baixas?
+\question Que comportamento observa-se na resposta em frequência dos filtros passa-baixas projetados quando o número de coeficientes $N$ aumenta?
+
+\question Assuma que o seu celular $4G$ recebe uma potência de sinal de $P_s=-80$~dBm e utiliza uma banda de B=$20$~MHz para comunicação. Assumindo que a agitação térmica dos elétrons nos circuitos do aparelho adicionam ruído (AWGN) ao sinal recebido, qual seria o valor de $N_0$ em mW/Hz para que a $SNR$ da sua conexão fosse $25$~dB (conexão muito boa)?
 
 \end{questions}
 

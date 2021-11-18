@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Detecção de envoltória de AM-DSB
-# GNU Radio version: 3.7.13.5
+# Generated: Fri Oct 30 11:38:44 2020
 ##################################################
 
 if __name__ == '__main__':
@@ -70,7 +70,11 @@ class Labo3_3(gr.top_block, Qt.QWidget):
         ##################################################
         self._A_range = Range(0, 3, 0.1, 0, 200)
         self._A_win = RangeWidget(self._A_range, self.set_A, 'Portadora', "counter_slider", float)
-        self.top_grid_layout.addWidget(self._A_win)
+        self.top_grid_layout.addWidget(self._A_win, 1, 1, 1, 1)
+        for r in range(1, 2):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(1, 2):
+            self.top_grid_layout.setColumnStretch(c, 1)
         self.qtgui_time_sink_x_0_0 = qtgui.time_sink_f(
         	1000, #size
         	samp_rate, #samp_rate
@@ -118,7 +122,11 @@ class Labo3_3(gr.top_block, Qt.QWidget):
             self.qtgui_time_sink_x_0_0.set_line_alpha(i, alphas[i])
 
         self._qtgui_time_sink_x_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win)
+        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_0_0_win, 1, 0, 1, 1)
+        for r in range(1, 2):
+            self.top_grid_layout.setRowStretch(r, 1)
+        for c in range(0, 1):
+            self.top_grid_layout.setColumnStretch(c, 1)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
         	500, #size
         	samp_rate, #samp_rate

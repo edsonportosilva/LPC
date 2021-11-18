@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: FM de Faixa Larga
-# GNU Radio version: 3.7.13.5
+# Generated: Wed May 19 10:14:50 2021
 ##################################################
 
 if __name__ == '__main__':
@@ -184,7 +184,7 @@ class Labo4_2(gr.top_block, Qt.QWidget):
         self.blocks_vco_f_0 = blocks.vco_f(samp_rate, 6.28*10**4, 1)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_add_const_vxx_0 = blocks.add_const_vff((Fp/10000.0, ))
-        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, F, A, 0)
+        self.analog_sig_source_x_0 = analog.sig_source_f(samp_rate, analog.GR_SQR_WAVE, F, A, 0)
 
 
 

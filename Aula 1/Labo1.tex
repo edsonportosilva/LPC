@@ -6,7 +6,7 @@
 \usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
 
 \newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
-\newcommand{\periodo}{2020.1}
+\newcommand{\periodo}{2020.1e}
 \newcommand{\avaliacao}{Guia de Experimentos 1}
 \newcommand{\tema}{Introdução ao GNU Radio. Séries de Fourier. Distorção.}
 %\newcommand{\professor}{Bruno\ B.\ Albert e Edmar C.\ Gurjão}
@@ -81,10 +81,13 @@ Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimo
     \item O que caracteriza uma distorção não linear?
 \end{itemize}
 
+
 \subsection{Problemas}
 
 \begin{questions}
-    \question Determine as séries de Fourier trigonométricas das formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais}.
+     \question Determine as expressões para os coeficientes ($a_n, b_n$) das séries trigonométricas de Fourier para as formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais} e compare os valores dos coeficientes com os valores calculados numericamente no \textit{Jupyter notebook}. Estão de acordo?
+     
+   % \question Determine as séries de Fourier trigonométricas das formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais}.
     \begin{figure}[htb]
         \centering
         \subfigure[fig:ondaquadrada][Onda quadrada $g_{q}(t)$ de frequência $f = 100$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaQuadrada}}\label{subfig:ondaquadrada}
@@ -96,12 +99,15 @@ Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimo
         \label{fig:sinaisusuais}
     \end{figure}
 
-    \question Exemplifique uma distorção em amplitude da onda quadrada da Figura \ref{subfig:ondaquadrada}.
+   % \question Exemplifique uma distorção em amplitude da onda quadrada da Figura \ref{subfig:ondaquadrada}.
     
-    \question Exemplifique uma distorção em fase da onda quadrada da Figura \ref{subfig:ondaquadrada}.
+   % \question Exemplifique uma distorção em fase da onda quadrada da Figura \ref{subfig:ondaquadrada}.
+    \question Mudar a frequência fundamental afetará a potência de um sinal periódico? Explique. E a sua ocupação de banda? Explique.
+    
+    \question A antena do seu aparelho celular capta uma potência de sinal geralmente em torno de $-60$~dBm (excelente conexão) e $-110$~dBm (conexão muito ruim). Quais são os valores de potência em mW correspondentes a estes limiares? E em dBW?
   \end{questions}
 
-\newpage
+%\newpage
 
 \section{Experimentos}
 

@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Labo5 1
-# GNU Radio version: 3.7.13.5
+# Generated: Mon May 10 14:51:59 2021
 ##################################################
 
 if __name__ == '__main__':
@@ -48,7 +48,7 @@ class Labo5_1(grc_wxgui.top_block_gui):
         self.samp_rate = samp_rate = 256000
         self.noisePower = noisePower = 0.0255
         self.RRCrolloff = RRCrolloff = 2
-        self.M = M = 2
+        self.M = M = 4
 
         ##################################################
         # Blocks
