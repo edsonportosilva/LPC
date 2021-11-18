@@ -47,7 +47,25 @@ HTML("""
 }
 </style>
 """)
+
+# +
+# Carrega pacotes
+import matplotlib.pyplot as plt
+import numpy as np
+from numpy import cos, sin, arctan2, sqrt, log10
+from scipy.signal import square, sawtooth
+import pandas as pd
+
+# configura notebook
+pd.set_option("display.precision", 2)
+pd.options.display.float_format = '{:,.2f}'.format
+figsize(10, 3)
+
+IPython_default = plt.rcParams.copy()
+plt.rc('grid', color='k', linestyle='-', linewidth=0.5)
+plt.rcParams['axes.grid'] = True
 # -
+
 
 # ## Representação de funções periódicas via séries de Fourier
 #
@@ -83,20 +101,6 @@ HTML("""
 # Para revisitar o emprego das séries de Fourier na análise de sinais e sistemas, começamos gerando alguns sinais periódicos para em seguida determinar a sua composição espectral via cálculo dos coeficientes de Fourier.
 
 # +
-# Carrega pacotes
-
-import matplotlib.pyplot as plt
-import numpy as np
-from numpy import cos, sin, arctan2, sqrt, log10
-from scipy.signal import square, sawtooth
-import pandas as pd
-
-pd.set_option("display.precision", 2)
-pd.options.display.float_format = '{:,.2f}'.format
-figsize(10, 3)
-
-
-# +
 # Geração de sinais periódicos
 
 f0 = 100     # Frequência fundamental
@@ -117,7 +121,6 @@ plt.ylim(quad.min(0)-0.1, quad.max(0)+0.1)
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
 
 plt.figure()
 plt.plot(t, triang,'b')
@@ -125,15 +128,13 @@ plt.ylim(triang.min(0)-0.1, triang.max(0)+0.1)
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
 
 plt.figure()
 plt.plot(t, dente,'b')
 plt.ylim(dente.min(0)-0.1, dente.max(0)+0.1)
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
-plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.ylabel('amplitude');
 
 
 # -
@@ -201,7 +202,6 @@ plt.xlim(0,xf.max(0))
 #plt.ylim(-2,2)
 plt.xlabel('freq (Hz)')
 plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
 
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((quad_an, quad_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
@@ -225,8 +225,7 @@ plt.plot(t,quad_aprox,'b',label = 'aprox')
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.legend();
 # -
 
 # ### Aproximação via série de Fourier para a onda triangular
@@ -258,7 +257,6 @@ plt.legend()
 plt.xlim(0,xf.max(0))
 plt.xlabel('freq (Hz)')
 plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
 
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((triang_an, triang_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
@@ -282,8 +280,7 @@ plt.plot(t,triang_aprox,'b',label = 'aprox')
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.legend();
 # -
 
 # ### Aproximação via série de Fourier para a onda dente de serra
@@ -315,7 +312,6 @@ plt.legend()
 plt.xlim(0,xf.max(0))
 plt.xlabel('freq (Hz)')
 plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
 
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((dente_an, dente_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
@@ -339,8 +335,7 @@ plt.plot(t, dente_aprox,'b',label = 'aprox')
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.legend();
 # -
 
 # ### Reescrevendo a série de Fourier na sua forma harmônica
@@ -389,8 +384,7 @@ plt.title('Onda quadrada')
 plt.legend()
 plt.xlim(0,xf.max(0))
 plt.xlabel('freq (Hz)')
-plt.ylabel('amplitude')
-plt.grid(color='k', linestyle='-', linewidth=0.5)       
+plt.ylabel('amplitude')      
 
 plt.figure()
 plt.plot(xf, θn,'bo',label = 'coeficientes $θ_{n}$')
@@ -401,8 +395,7 @@ plt.legend()
 plt.xlim(0,xf.max(0))
 plt.ylim(-2*π ,2*π)
 plt.xlabel('freq (Hz)')
-plt.ylabel('fase [rad]')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.ylabel('fase [rad]');
 # -
 
 # Agora vamos obter uma aproximação do sinal original com um somatório de harmônicos
@@ -424,7 +417,6 @@ plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
 
 # Gera tabela com os coeficientes an, bn, An e θn
 pd.DataFrame(np.hstack((quad_an, quad_bn, An, θn)), columns=["$a_{n}$", "$b_{n}$", "$A_{n}$", "$θ_{n}$ [rad]"]).T
@@ -453,8 +445,7 @@ plt.plot(t,x,'b',label = 'x(t)');
 plt.plot(t,y,'k--',label = 'y(t)');
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.legend();
 # -
 
 # **Exemplo 2:** $y(t) = x(t)+0.25x(t-25T_a)$, em que $T_a=\frac{1}{f_a}$ é o período de amostragem. A forma de onda de $y(t)$ é uma versão distorcida de $x(t)$.
@@ -471,8 +462,7 @@ plt.plot(t,x,'b',label = 'x(t)');
 plt.plot(t,y,'k--',label = 'y(t)');
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.legend();
 # -
 
 # **Exemplo 3:** $y(t) = [x(t)]^5$. A forma de onda de $y(t)$ é uma versão distorcida de $x(t)$.
@@ -489,8 +479,7 @@ plt.plot(t,x,'b',label = 'x(t)');
 plt.plot(t,y,'k--',label = 'y(t)');
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
-plt.legend()
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.legend();
 # -
 
 # ### Tipos de distorção
@@ -642,8 +631,7 @@ plt.legend()
 plt.xlim(0,xf.max(0))
 #plt.ylim(-0.1,1)
 plt.xlabel('freq (Hz)')
-plt.ylabel('potência')
-plt.grid(color='k', linestyle='-', linewidth=0.5)       
+plt.ylabel('potência');
 # -
 
 # ### Escala decibel
@@ -711,8 +699,7 @@ plt.legend()
 plt.xlim(0,xf.max(0))
 plt.ylim(-40,)
 plt.xlabel('freq (Hz)')
-plt.ylabel('potência (dB unidade de potência)')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.ylabel('potência (dB unidade de potência)');
 # -
 
 # Observando o gráfico acima, vemos que a potência do componente fundamental está próxima a 0 dB, ou seja, indicando que o seu valor de potência é próximo ao valor unitário na unidade de potência considerada (i.e. $10\log_{10}(1)=0~dB$). O quinto harmônico, por sua vez, possui potência -20 dB, indicando que seu valor de potência é um centésimo da unidade considerada (i.e. $10\log_{10}(1/100)=-20~dB$). Veja que esta informação sobre os níveis relativos de potência entre componentes de frequência não é clara quando observamos o gráfico na escala linear. 
@@ -740,5 +727,4 @@ plt.legend()
 plt.xlim(0,xf.max(0))
 plt.ylim(-5,100)
 plt.xlabel('freq (Hz)')
-plt.ylabel('% da potência total')
-plt.grid(color='k', linestyle='-', linewidth=0.5)
+plt.ylabel('% da potência total');
