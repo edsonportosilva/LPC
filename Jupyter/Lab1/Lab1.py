@@ -212,13 +212,12 @@ pd.DataFrame(np.hstack((quad_an, quad_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
 
 # calcula aproximação do sinal com um somatório finito de harmônicos
-quad_aprox = 0
+quad_aprox = np.zeros(len(t))
 for n in range(0,ncoeffs):
     if n != 0:
-        quad_aprox = quad_aprox + quad_an[n]*cos(2*π*n*f0*t)\
-                                + quad_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
+        quad_aprox += quad_an[n]*cos(2*π*n*f0*t) + quad_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
     else:
-        quad_aprox = quad_an[n]/2
+        quad_aprox += quad_an[n]/2
 
 plt.plot(t, quad,'k--',label = 'original')        
 plt.plot(t,quad_aprox,'b',label = 'aprox')
@@ -267,13 +266,12 @@ pd.DataFrame(np.hstack((triang_an, triang_bn)), columns=["$a_{n}$", "$b_{n}$"]).
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
 
 # calcula aproximação do sinal com um somatório finito de harmônicos
-triang_aprox = 0
+triang_aprox = np.zeros(len(t))
 for n in range(0,ncoeffs):
     if n != 0:
-        triang_aprox = triang_aprox + triang_an[n]*cos(2*π*n*f0*t)\
-                                    + triang_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
+        triang_aprox += triang_an[n]*cos(2*π*n*f0*t) + triang_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
     else:
-        triang_aprox = triang_an[n]/2
+        triang_aprox += triang_an[n]/2
 
 plt.plot(t, triang,'k--',label = 'original')        
 plt.plot(t,triang_aprox,'b',label = 'aprox')
@@ -322,13 +320,12 @@ pd.DataFrame(np.hstack((dente_an, dente_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
 
 # calcula aproximação do sinal com um somatório finito de harmônicos
-dente_aprox = 0
+dente_aprox = np.zeros(len(t))
 for n in range(0,ncoeffs):
     if n != 0:
-        dente_aprox = dente_aprox + dente_an[n]*cos(2*π*n*f0*t)\
-                                  + dente_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
+        dente_aprox += dente_an[n]*cos(2*π*n*f0*t) + dente_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
     else:
-        dente_aprox = dente_an[n]/2
+        dente_aprox += dente_an[n]/2
 
 plt.plot(t, dente,'k--',label = 'original')        
 plt.plot(t, dente_aprox,'b',label = 'aprox')
@@ -402,13 +399,13 @@ plt.ylabel('fase [rad]');
 
 # +
 # calcula aproximação do sinal com um somatório finito de harmônicos
-quad_aprox = 0
+quad_aprox = np.zeros(len(t))
 for n in range(0,ncoeffs):
     if n != 0:
-        quad_aprox = quad_aprox + An[n]*cos(2*π*n*f0*t - θn[n]) # soma n-ésimo componente harmônico
+        quad_aprox += An[n]*cos(2*π*n*f0*t - θn[n]) # soma n-ésimo componente harmônico
                                  
     else:
-        quad_aprox = An[n]        
+        quad_aprox += An[n]        
         
 plt.figure()
 plt.plot(t, quad,'k--',label = 'original')        
