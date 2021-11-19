@@ -32,7 +32,7 @@
 
 # + [markdown] toc=true
 # <h1>Sumário<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"><li><span><a href="#Representação-de-funções-periódicas-via-séries-de-Fourier" data-toc-modified-id="Representação-de-funções-periódicas-via-séries-de-Fourier-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Representação de funções periódicas via séries de Fourier</a></span><ul class="toc-item"><li><span><a href="#Cálculo-dos-coeficientes-de-Fourier-via-integração-numérica" data-toc-modified-id="Cálculo-dos-coeficientes-de-Fourier-via-integração-numérica-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Cálculo dos coeficientes de Fourier via integração numérica</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-quadrada" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-quadrada-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda quadrada</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-triangular" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-triangular-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda triangular</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda dente de serra</a></span></li><li><span><a href="#Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica" data-toc-modified-id="Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Reescrevendo a série de Fourier na sua forma harmônica</a></span></li></ul></li><li><span><a href="#Distorção-de-sinais" data-toc-modified-id="Distorção-de-sinais-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Distorção de sinais</a></span><ul class="toc-item"><li><span><a href="#Exemplos-de-distorção" data-toc-modified-id="Exemplos-de-distorção-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Exemplos de distorção</a></span></li><li><span><a href="#Tipos-de-distorção" data-toc-modified-id="Tipos-de-distorção-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Tipos de distorção</a></span></li><li><span><a href="#Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?" data-toc-modified-id="Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Quando um sistema linear e invariante no tempo (LIT) não causará distorção?</a></span></li></ul></li><li><span><a href="#Energia,-potência-e-largura-de-banda" data-toc-modified-id="Energia,-potência-e-largura-de-banda-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Energia, potência e largura de banda</a></span><ul class="toc-item"><li><span><a href="#Potência-e-energia" data-toc-modified-id="Potência-e-energia-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Potência e energia</a></span></li><li><span><a href="#Escala-decibel" data-toc-modified-id="Escala-decibel-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Escala decibel</a></span></li><li><span><a href="#Ocupação-de-banda" data-toc-modified-id="Ocupação-de-banda-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Ocupação de banda</a></span></li></ul></li></ul></div>
+# <div class="toc"><ul class="toc-item"><li><span><a href="#Representação-de-funções-periódicas-via-séries-de-Fourier" data-toc-modified-id="Representação-de-funções-periódicas-via-séries-de-Fourier-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Representação de funções periódicas via séries de Fourier</a></span><ul class="toc-item"><li><span><a href="#Cálculo-dos-coeficientes-de-Fourier-via-integração-numérica" data-toc-modified-id="Cálculo-dos-coeficientes-de-Fourier-via-integração-numérica-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Cálculo dos coeficientes de Fourier via integração numérica</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-quadrada" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-quadrada-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda quadrada</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-triangular" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-triangular-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda triangular</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda dente de serra</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-um-sinal-arbitrário" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-um-sinal-arbitrário-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Aproximação via série de Fourier para um sinal arbitrário</a></span></li><li><span><a href="#Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica" data-toc-modified-id="Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Reescrevendo a série de Fourier na sua forma harmônica</a></span></li></ul></li><li><span><a href="#Distorção-de-sinais" data-toc-modified-id="Distorção-de-sinais-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Distorção de sinais</a></span><ul class="toc-item"><li><span><a href="#Exemplos-de-distorção" data-toc-modified-id="Exemplos-de-distorção-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Exemplos de distorção</a></span></li><li><span><a href="#Tipos-de-distorção" data-toc-modified-id="Tipos-de-distorção-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Tipos de distorção</a></span></li><li><span><a href="#Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?" data-toc-modified-id="Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Quando um sistema linear e invariante no tempo (LIT) não causará distorção?</a></span></li></ul></li><li><span><a href="#Energia,-potência-e-largura-de-banda" data-toc-modified-id="Energia,-potência-e-largura-de-banda-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Energia, potência e largura de banda</a></span><ul class="toc-item"><li><span><a href="#Potência-e-energia" data-toc-modified-id="Potência-e-energia-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Potência e energia</a></span></li><li><span><a href="#Escala-decibel" data-toc-modified-id="Escala-decibel-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Escala decibel</a></span></li><li><span><a href="#Ocupação-de-banda" data-toc-modified-id="Ocupação-de-banda-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Ocupação de banda</a></span></li></ul></li></ul></div>
 
 # +
 from IPython.core.pylabtools import figsize
@@ -322,6 +322,60 @@ for n in range(0,ncoeffs):
 
 plt.plot(t, dente,'k--',label = 'original')        
 plt.plot(t, dente_aprox,'b',label = 'aprox')
+plt.xlim(0,t.max(0))
+plt.xlabel('tempo (s)')
+plt.ylabel('amplitude')
+plt.legend();
+# -
+
+# ### Aproximação via série de Fourier para um sinal arbitrário
+
+# +
+# Coeficientes de Fourier para um sinal arbitrário
+
+sig = 2*sin(2*π*f0*t + π/4)**5
+
+sig[sig > 0.25] = 0.1
+sig[sig < -0.25] = -0.1
+
+ncoeffs = 30 # número de componentes harmônicos (incluindo componente dc, n=0)
+
+xf = f0*np.arange(0, ncoeffs) # frequências de cada componente harmônico
+
+# calcula coeficientes de Fourier
+sig_an, sig_bn = fourierCoeff(t, sig , 1/f0, ncoeffs)
+
+# plota gráficos
+plt.figure()
+plt.plot(xf, sig_an,'bo',label = 'coeficientes $a_{n}$')
+plt.vlines(xf, 0, sig_an,'b', alpha=0.5)
+plt.plot(xf, sig_bn,'rx',label = 'coeficientes $b_{n}$')
+plt.vlines(xf, 0, sig_bn,'r', alpha=0.5)
+
+plt.title('sinal arbitrário')
+plt.legend()
+plt.xlim(0,xf.max(0))
+plt.xlabel('freq (Hz)')
+plt.ylabel('amplitude')
+
+# Gera tabela com os coeficientes an, bn
+pd.DataFrame(np.hstack((sig_an, sig_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
+
+# +
+# Aproximação de um sinal arbitrário via somatório de harmônicas da série de Fourier
+
+ncoeffs = 30 # número de componentes harmônicos (incluindo componente dc, n=0)
+
+# calcula aproximação do sinal com um somatório finito de harmônicos
+sig_aprox = np.zeros(len(t))
+for n in range(0,ncoeffs):
+    if n != 0:
+        sig_aprox += sig_an[n]*cos(2*π*n*f0*t) + sig_bn[n]*sin(2*π*n*f0*t) # soma n-ésimo componente harmônico
+    else:
+        sig_aprox += sig_an[n]/2
+
+plt.plot(t, sig,'k--',label = 'original')        
+plt.plot(t, sig_aprox,'b',label = 'aprox')
 plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
