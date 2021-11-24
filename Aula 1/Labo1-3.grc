@@ -986,7 +986,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>1</value>
+      <value>0.81</value>
     </param>
     <param>
       <key>alias</key>
@@ -1416,7 +1416,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>-0.333</value>
+      <value>0.09</value>
     </param>
     <param>
       <key>alias</key>
@@ -1479,7 +1479,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>0.2</value>
+      <value>0.03</value>
     </param>
     <param>
       <key>alias</key>

@@ -5,7 +5,7 @@
 # Title: Analise de distorcao de canal
 # Author: Leocarlos Bezerra da Silva Lima
 # Description: Experimento para Laboratório de Princípios de Comunicações. Departamento de Engenharia Elétrica - DEE da Universidade Federal de Campina Grande - UFCG.
-# Generated: Wed Nov 24 13:12:00 2021
+# Generated: Wed Nov 24 15:43:43 2021
 ##################################################
 
 if __name__ == '__main__':
@@ -194,8 +194,8 @@ class Labo1_3(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(2, 4):
             self.top_grid_layout.setColumnStretch(c, 1)
-        self.harmonica_2 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 500, 0.2, 0)
-        self.harmonica_1 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 300, -0.333, 0)
+        self.harmonica_2 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 500, 0.03, 0)
+        self.harmonica_1 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 300, 0.09, 0)
         self.graf_tempo = qtgui.time_sink_f(
         	512, #size
         	samp_rate, #samp_rate
@@ -248,7 +248,7 @@ class Labo1_3(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(0, 2):
             self.top_grid_layout.setColumnStretch(c, 1)
-        self.fundamental = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 100, 1, 0)
+        self.fundamental = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 100, 0.81, 0)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_multiply_const_vxx_0_1 = blocks.multiply_const_vff((a3, ))
         self.blocks_multiply_const_vxx_0_0 = blocks.multiply_const_vff((a2, ))
