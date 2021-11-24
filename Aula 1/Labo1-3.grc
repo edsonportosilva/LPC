@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(160, 124)</value>
+      <value>(176, 124)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -121,7 +121,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Amplitude da senoide de 100 Hz</value>
+      <value>Componente harmonico #1</value>
     </param>
     <param>
       <key>min_len</key>
@@ -168,7 +168,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(160, 252)</value>
+      <value>(176, 252)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -184,7 +184,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Amplitude da senoide de 300 Hz</value>
+      <value>Componente harmonico #3</value>
     </param>
     <param>
       <key>min_len</key>
@@ -231,7 +231,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(160, 380)</value>
+      <value>(176, 380)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -247,7 +247,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Amplitude da senoide de 500 Hz</value>
+      <value>Componente harmonico #5</value>
     </param>
     <param>
       <key>min_len</key>
@@ -276,6 +276,33 @@
     <param>
       <key>widget</key>
       <value>counter_slider</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(256, 12)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>f0</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>150</value>
     </param>
   </block>
   <block>
@@ -337,7 +364,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Fase da senoide de 100 Hz</value>
+      <value>Componente harmonico #1</value>
     </param>
     <param>
       <key>min_len</key>
@@ -400,7 +427,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Fase da senoide de 300 Hz</value>
+      <value>Componente harmonico #3</value>
     </param>
     <param>
       <key>min_len</key>
@@ -463,7 +490,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Fase da senoide de 500 Hz</value>
+      <value>Componente harmonico #5</value>
     </param>
     <param>
       <key>min_len</key>
@@ -561,7 +588,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(328, 428)</value>
+      <value>(344, 428)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -676,7 +703,7 @@
     </param>
     <param>
       <key>delay</key>
-      <value>int(theta1/(2*3.14*100))</value>
+      <value>int(theta1/(2*3.14*f0))</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -731,7 +758,7 @@
     </param>
     <param>
       <key>delay</key>
-      <value>int(theta2/(2*3.14*300))</value>
+      <value>int(theta2/(2*3.14*3*f0))</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -786,7 +813,7 @@
     </param>
     <param>
       <key>delay</key>
-      <value>int(theta3/(2*3.14*500))</value>
+      <value>int(theta3/(2*3.14*5*f0))</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1006,7 +1033,7 @@
     </param>
     <param>
       <key>freq</key>
-      <value>100</value>
+      <value>150</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1436,7 +1463,7 @@
     </param>
     <param>
       <key>freq</key>
-      <value>300</value>
+      <value>450</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1499,7 +1526,7 @@
     </param>
     <param>
       <key>freq</key>
-      <value>500</value>
+      <value>750</value>
     </param>
     <param>
       <key>_coordinate</key>
