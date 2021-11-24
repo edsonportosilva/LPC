@@ -4,7 +4,7 @@
 \usepackage[brazil]{babel}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
-
+\usepackage[colorlinks=True,urlcolor=blue]{hyperref}
 \newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
 \newcommand{\periodo}{2021.1e}
 \newcommand{\avaliacao}{Guia de Experimentos 1}
@@ -71,15 +71,15 @@ As práticas experimentais aqui propostas têm por objetivos:
 
 \subsection{Estudo}
 
-Leia o tutorial introdutório ao uso do GRC, disponível na página \url{http://wiki.gnuradio.org/index.php/Guided_Tutorial_GRC}, a partir da seção 2.2. 
-
-Se possível, instale o GRC em seu computador pessoal (veja instruções de instalação em \url{http://wiki.gnuradio.org/index.php/InstallingGR}) e experimente os exercícios sugeridos no tutorial.
+Leia o tutorial introdutório ao uso do GRC, disponível na página \href{http://wiki.gnuradio.org/index.php/Guided_Tutorial_GRC}{Guided Tutorial GRC}, a partir da seção 2.2. Se possível, instale o GRC em seu computador pessoal (veja instruções de instalação em \href{http://wiki.gnuradio.org/index.php/InstallingGR}{InstallingGR}) e experimente os exercícios sugeridos no tutorial.
 
 Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimos leitura da seção 3.6 da referência: \begin{quote} LATHI, B. P., DING, Z. \textit{Sistemas de comunicações analógicos e digitais modernos}. 4 ed. [S.l.]: LTC, 2009. \end{quote}}:
 \begin{itemize}
     \item O que caracteriza uma distorção linear? 
     \item O que caracteriza uma distorção não linear?
 \end{itemize}
+
+Para revisar o conteúdo teórico e responder os problemas da preparação, leia e execute o código do notebook \href{https://github.com/edsonportosilva/LPC/blob/master/Jupyter/Lab1/Lab1.ipynb}{Lab1.ipynb}
 
 \subsection{Problemas}
 
@@ -101,11 +101,10 @@ Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimo
     \question Exemplifique uma distorção em fase da onda quadrada da Figura \ref{subfig:ondaquadrada}.
   \end{questions}
 
-\newpage
 
 \section{Experimentos}
 
-A seguir são descritas práticas experimentais a serem realizadas pelo aluno. 
+A seguir são descritas práticas experimentais a serem realizadas pelo(a) aluno(a). 
 
 \subsection{Experimento 1 -- GNU Radio Companion}
 
@@ -253,13 +252,13 @@ O objetivo deste experimento é caracterizar uma distorção de amplitude e de f
 \begin{questions}
     \question Observe que os sinais de entrada e saída do canal são idênticos. Esse seria um canal ideal, em que o sinal na entrada é exatamente o mesmo na saída, ou seja o canal não atenua ou atrasa o sinal transmitido.
     \begin{parts}
-        \part Na aba {\bf Ganho/Atenuação}, altere os valores de todas as componentes de frequência de 1 para 0.5. Houve distorção? Realize o mesmo procedimento mudando os valores para 1.25. Houve distorção? Explique o que ocorre nestas configurações.
+        \part Na aba {\bf Ganho/Atenuação}, altere os valores de todas as componentes de frequência de 1 para 0.5. Houve distorção? Realize o mesmo procedimento mudando os valores para 1.25. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}
-        \part Novamente na aba {\bf Ganho/Atenuação}, retorne os valores da primeira e terceira componentes para 1 e altere o valor da segunda componente para 0.25. Houve distorção? Explique o que ocorre nesta configuração.
+        \part Novamente na aba {\bf Ganho/Atenuação}, retorne os valores da primeira e terceira componentes para 1 e altere o valor da segunda componente para 0.25. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}
-        \part Na aba {\bf Ganho/Atenuação}, retorne todos os valores para 1. Na aba {\bf Deslocamento de fase}, altere o valor do deslocamento de fase da primera componente para 6000. Houve distorção? Explique o que ocorre nesta configuração.
+        \part Na aba {\bf Ganho/Atenuação}, retorne todos os valores para 1. Na aba {\bf Deslocamento de fase}, altere o valor do deslocamento de fase da primera componente para 6000. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}
-        \part Novamente na aba {\bf Deslocamento de fase}, altere os valores do deslocamento de fase da primera, segunda e terceira componentes para 2000, 6000 e 10000, respectivamente. Houve distorção? Explique o que ocorre nesta configuração.
+        \part Novamente na aba {\bf Deslocamento de fase}, altere os valores do deslocamento de fase da primera, segunda e terceira componentes para 2000, 6000 e 10000, respectivamente. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}
         \part É possível identificar distorções de amplitude observando o espectro de potência do sinal? Explique. E distorções de fase?
         \fillwithlines{0.5in} 
