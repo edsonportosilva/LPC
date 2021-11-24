@@ -6,14 +6,14 @@
 \usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
 
 \newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
-\newcommand{\periodo}{2020.1e}
+\newcommand{\periodo}{2021.1e}
 \newcommand{\avaliacao}{Guia de Experimentos 1}
 \newcommand{\tema}{Introdução ao GNU Radio. Séries de Fourier. Distorção.}
 %\newcommand{\professor}{Bruno\ B.\ Albert e Edmar C.\ Gurjão}
 %\newcommand{\professor}{Leocarlos B.\ S.\ Lima e Edson P.\ da Silva}
-\newcommand{\professor}{Edson P.\ da Silva e Luciana Veloso}
+%\newcommand{\professor}{Edson P.\ da Silva e Luciana Veloso}
 %\newcommand{\professor}{Edmar C.\ Gurjão e Luciana Veloso}
-%\newcommand{\professor}{Bruno\ B.\ Albert e Edson P.\ da Silva}
+\newcommand{\professor}{Bruno\ B.\ Albert e Edson P.\ da Silva}
 
 \pagestyle{head}
 \firstpageheader{}{}{}
@@ -81,13 +81,10 @@ Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimo
     \item O que caracteriza uma distorção não linear?
 \end{itemize}
 
-
 \subsection{Problemas}
 
 \begin{questions}
-     \question Determine as expressões para os coeficientes ($a_n, b_n$) das séries trigonométricas de Fourier para as formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais} e compare os valores dos coeficientes com os valores calculados numericamente no \textit{Jupyter notebook}. Estão de acordo?
-     
-   % \question Determine as séries de Fourier trigonométricas das formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais}.
+    \question Determine as séries de Fourier trigonométricas das formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais}.
     \begin{figure}[htb]
         \centering
         \subfigure[fig:ondaquadrada][Onda quadrada $g_{q}(t)$ de frequência $f = 100$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaQuadrada}}\label{subfig:ondaquadrada}
@@ -99,15 +96,12 @@ Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimo
         \label{fig:sinaisusuais}
     \end{figure}
 
-   % \question Exemplifique uma distorção em amplitude da onda quadrada da Figura \ref{subfig:ondaquadrada}.
+    \question Exemplifique uma distorção em amplitude da onda quadrada da Figura \ref{subfig:ondaquadrada}.
     
-   % \question Exemplifique uma distorção em fase da onda quadrada da Figura \ref{subfig:ondaquadrada}.
-    \question Mudar a frequência fundamental afetará a potência de um sinal periódico? Explique. E a sua ocupação de banda? Explique.
-    
-    \question A antena do seu aparelho celular capta uma potência de sinal geralmente em torno de $-60$~dBm (excelente conexão) e $-110$~dBm (conexão muito ruim). Quais são os valores de potência em mW correspondentes a estes limiares? E em dBW?
+    \question Exemplifique uma distorção em fase da onda quadrada da Figura \ref{subfig:ondaquadrada}.
   \end{questions}
 
-%\newpage
+\newpage
 
 \section{Experimentos}
 
@@ -201,8 +195,7 @@ O objetivo deste experimento é caracterizar uma distorção de amplitude e de f
         \caption{Diagrama de blocos para análise do efeito de distorção de amplitude e fase em sinais.} 
         \label{fig:GRC_1-3}
     \end{figure}
-    \item Ajuste frequência, amplitude e fase (seno ou cosseno) das três senoides de entrada, de modo a gerar o sinal de onda triangular $g_{t}(t)$, cuja série trigonométrica de Fourier foi calculada na etapa de preparação;
-    \item Ajuste os valores dos parâmetros \textbf{atenuacao} e \textbf{atraso} nos blocos \textbf{Variable}, à esquerda do diagrama, com valores de atenuação e atraso (em número de amostras) de canal desejados, começando com os valores 1 e 0, respectivamente. 
+    \item Ajuste frequência, amplitude e fase (seno ou cosseno) das três senoides de entrada, de modo a gerar o sinal de onda triangular $g_{t}(t)$, cuja série trigonométrica de Fourier foi calculada na etapa de preparação;    
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
@@ -258,22 +251,20 @@ O objetivo deste experimento é caracterizar uma distorção de amplitude e de f
 \section*{Experimento 3 -- Distorção}
 
 \begin{questions}
-    \question Observe que os sinais de entrada e saída do canal são idênticos. Esse seria um canal ideal, que sequer atenua ou atrasa o sinal transmitido.
+    \question Observe que os sinais de entrada e saída do canal são idênticos. Esse seria um canal ideal, em que o sinal na entrada é exatamente o mesmo na saída, ou seja o canal não atenua ou atrasa o sinal transmitido.
     \begin{parts}
-        \part Ajuste a variável {\bf atenuacao} para 0.5 e execute o experimento. Houve distorção? Explique o que ocorreu.
+        \part Na aba {\bf Ganho/Atenuação}, altere os valores de todas as componentes de frequência de 1 para 0.5. Houve distorção? Realize o mesmo procedimento mudando os valores para 1.25. Houve distorção? Explique o que ocorre nestas configurações.
         \fillwithlines{0.5in}
-        \part Ajuste a variável {\bf atraso} para 4, que corresponde a 0,5~ms (por quê?), e execute o experimento. Houve distorção? Explique o que ocorreu.
+        \part Novamente na aba {\bf Ganho/Atenuação}, retorne os valores da primeira e terceira componentes para 1 e altere o valor da segunda componente para 0.25. Houve distorção? Explique o que ocorre nesta configuração.
         \fillwithlines{0.5in}
+        \part Na aba {\bf Ganho/Atenuação}, retorne todos os valores para 1. Na aba {\bf Deslocamento de fase}, altere o valor do deslocamento de fase da primera componente para 4000. Houve distorção? Explique o que ocorre nesta configuração.
+        \fillwithlines{0.5in}
+        \part Novamente na aba {\bf Deslocamento de fase}, altere os valores do deslocamento de fase da primera, segunda e terceira componentes para 2000, 4000 e 6000. Houve distorção? Explique o que ocorre nesta configuração.
+        \fillwithlines{0.5in}
+         \part As distorções que foram observadas neste experimento são distorções lineares ou não-lineares? Explique.
+        \fillwithlines{0.5in}      
     \end{parts}
 
-    \question Retorne os valores iniciais das variáveis \textbf{atenuacao} e \textbf{atraso} (1 e 0 respectivamente). Observe nos parâmetros dos blocos \textbf{Multiply Const} e \textbf{Delay} que seus valores são sempre iguais, definidos pelas variáveis \textbf{atenuacao} e \textbf{atraso}. Ajuste apenas o bloco {\bf Multiply Const} de uma das componentes do sinal para \textbf{atenuacao/2.0} e execute o experimento. Houve distorção? Explique o que ocorreu.
-    \fillwithlines{0.5in}
-    
-    \question Retorne os valores iniciais das variáveis \textbf{atenuacao} e \textbf{atraso} (1 e 0 respectivamente). Ajuste apenas o bloco \textbf{Delay} de uma das componentes do sinal para \textbf{atraso + 4} e execute o experimento. Houve distorção? Explique o que ocorreu.
-    \fillwithlines{0.5in}
-    
-    \question Retorne os valores iniciais das variáveis \textbf{atenuacao} e \textbf{atraso} (1 e 0 respectivamente). Troque em todos os blocos \textbf{Signal Source} o parâmetro \textbf{Waveform}: de Cosine para Sine e execute o experimento. Houve distorção? Explique o que ocorreu.
-    \fillwithlines{1.0in}
 \end{questions}
 
 \end{document}
