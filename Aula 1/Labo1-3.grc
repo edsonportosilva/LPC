@@ -109,7 +109,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>Tab@1: [0,0,1,2]</value>
+      <value>Tab@0: [0,0,1,2]</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -172,7 +172,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>Tab@1: [1,0,1,2]</value>
+      <value>Tab@0: [1,0,1,2]</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -235,7 +235,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>Tab@1: [2,0,1,2]</value>
+      <value>Tab@0: [2,0,1,2]</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -325,7 +325,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>Tab@0: [0,0,1,2]</value>
+      <value>Tab@1: [0,0,1,2]</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -388,7 +388,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>Tab@0: [2,0,1,2]</value>
+      <value>Tab@1: [2,0,1,2]</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -451,7 +451,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>Tab@0: [3,0,1,2]</value>
+      <value>Tab@1: [3,0,1,2]</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -565,7 +565,7 @@
     </param>
     <param>
       <key>gui_hint</key>
-      <value>4,0,2,4</value>
+      <value>4,0,2,2</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -577,11 +577,11 @@
     </param>
     <param>
       <key>label0</key>
-      <value>Deslocamento de fase </value>
+      <value>Ganho/Atenuacao </value>
     </param>
     <param>
       <key>label1</key>
-      <value>Ganho/Atenuacao </value>
+      <value>Deslocamento de fase</value>
     </param>
     <param>
       <key>label10</key>
@@ -986,7 +986,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>0.81</value>
+      <value>1.27</value>
     </param>
     <param>
       <key>alias</key>
@@ -1042,7 +1042,7 @@
     </param>
     <param>
       <key>waveform</key>
-      <value>analog.GR_COS_WAVE</value>
+      <value>analog.GR_SIN_WAVE</value>
     </param>
   </block>
   <block>
@@ -1377,7 +1377,7 @@
     </param>
     <param>
       <key>tr_mode</key>
-      <value>qtgui.TRIG_MODE_FREE</value>
+      <value>qtgui.TRIG_MODE_AUTO</value>
     </param>
     <param>
       <key>tr_slope</key>
@@ -1416,7 +1416,7 @@
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>0.09</value>
+      <value>0.42</value>
     </param>
     <param>
       <key>alias</key>
@@ -1472,14 +1472,14 @@
     </param>
     <param>
       <key>waveform</key>
-      <value>analog.GR_COS_WAVE</value>
+      <value>analog.GR_SIN_WAVE</value>
     </param>
   </block>
   <block>
     <key>analog_sig_source_x</key>
     <param>
       <key>amp</key>
-      <value>0.03</value>
+      <value>0.25</value>
     </param>
     <param>
       <key>alias</key>
@@ -1535,7 +1535,7 @@
     </param>
     <param>
       <key>waveform</key>
-      <value>analog.GR_COS_WAVE</value>
+      <value>analog.GR_SIN_WAVE</value>
     </param>
   </block>
   <block>
@@ -1546,7 +1546,7 @@
     </param>
     <param>
       <key>average</key>
-      <value>0.2</value>
+      <value>1.0</value>
     </param>
     <param>
       <key>axislabels</key>
@@ -1818,7 +1818,7 @@
     </param>
     <param>
       <key>wintype</key>
-      <value>firdes.WIN_RECTANGULAR</value>
+      <value>firdes.WIN_FLATTOP</value>
     </param>
     <param>
       <key>label</key>
