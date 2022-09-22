@@ -107,7 +107,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 400e3
+    value: '400000'
   states:
     bus_sink: false
     bus_source: false
@@ -223,8 +223,8 @@ blocks:
     affinity: ''
     alias: ''
     audio_decim: '1'
-    audio_pass: 10e3
-    audio_stop: '10500'
+    audio_pass: 1e3
+    audio_stop: 10e3
     chan_rate: samp_rate
     comment: ''
     maxoutbuf: '0'
@@ -373,7 +373,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    file: C:\Users\edson.DESKTOP-54IJM4F\Documents\GitHub\LPC\Aula 3\Labo3-4_fs44100.wav
+    file: C:\Users\edson.DESKTOP-54IJM4F\Documents\GitHub\LPC\Jupyter\Lab2\sinal.wav
     maxoutbuf: '0'
     minoutbuf: '0'
     nchan: '1'
