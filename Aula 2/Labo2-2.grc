@@ -44,7 +44,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [0, 272.0]
+    coordinate: [24, 272.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -56,7 +56,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 192.0]
+    coordinate: [24, 192.0]
     rotation: 0
     state: enabled
 - name: analog_noise_source_x_0
