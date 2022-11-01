@@ -161,18 +161,18 @@ def fourierCoeff(t, f, P, ncoeffs):
     """    
     dt = t[1]-t[0]          # período de amostragem [passo de integração]
     N  = int(np.ceil(P/dt)) # número de amostras correspondente a um período completo da onda   
-    
+
     an = np.zeros((ncoeffs, 1)) # coeficientes an
     bn = np.zeros((ncoeffs, 1)) # coeficientes bn
-    
-    # cálculo dos coeficientes an e bn utilizando o método trapezoidal de integração numérica     
-    for n in range(0, ncoeffs):# calcula coeficientes de Fourier para n=0 até n=ncoeffs-1
-        an[n] = np.trapz(f[0:N]*cos(2*np.pi*t[0:N]*n/P), dx=dt)
-        bn[n] = np.trapz(f[0:N]*sin(2*np.pi*t[0:N]*n/P), dx=dt)         
-    
+
+    # cálculo dos coeficientes an e bn utilizando o método trapezoidal de integração numérica
+    for n in range(ncoeffs):# calcula coeficientes de Fourier para n=0 até n=ncoeffs-1
+        an[n] = np.trapz(f[:N] * cos(2*np.pi * t[:N] * n / P), dx=dt)
+        bn[n] = np.trapz(f[:N] * sin(2*np.pi * t[:N] * n / P), dx=dt)         
+
     an = an*2/P
     bn = bn*2/P
-    
+
     return an, bn
 
 
