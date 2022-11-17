@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '1024'
+    value: '2048'
   states:
     bus_sink: false
     bus_source: false
@@ -167,7 +167,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [904, 344.0]
+    coordinate: [936, 344.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_imag_0
@@ -218,7 +218,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [792, 40.0]
+    coordinate: [760, 40.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -236,7 +236,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1032, 240.0]
+    coordinate: [1056, 232.0]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_0
@@ -254,7 +254,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [792, 200.0]
+    coordinate: [808, 200.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0
@@ -412,7 +412,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1024.0, 392]
+    coordinate: [1176.0, 336]
     rotation: 270
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -509,7 +509,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088.0, 24]
+    coordinate: [1176.0, 16]
     rotation: 90
     state: enabled
 
