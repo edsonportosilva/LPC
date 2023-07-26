@@ -15,7 +15,7 @@
 # ---
 
 # + [markdown] id="view-in-github" colab_type="text"
-# <a href="https://colab.research.google.com/github/edsonportosilva/LPC/blob/lpc-2022-1/Jupyter/Lab1/Lab1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/edsonportosilva/LPC/blob/master/Jupyter/Lab1/Lab1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # + [markdown] id="NBoYkafZaOHs"
 # ```
