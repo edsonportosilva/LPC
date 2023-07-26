@@ -6,11 +6,12 @@
 \usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
 \usepackage[colorlinks=True,urlcolor=blue]{hyperref}
 \newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
-\newcommand{\periodo}{2022.1e}
+\newcommand{\periodo}{2022.2}
 \newcommand{\avaliacao}{Guia de Experimentos 1}
 \newcommand{\tema}{Introdução ao GNU Radio. Séries de Fourier. Distorção.}
-%\newcommand{\professor}{Bruno\ B.\ Albert e Edmar C.\ Gurjão}
-\newcommand{\professor}{Edson P.\ da Silva e Leocarlos B.\ S.\ Lima}
+\newcommand{\professor}{Luciana Veloso e Bruno\ B.\ Albert}
+% \newcommand{\professor}{Bruno\ B.\ Albert e Edmar C.\ Gurjão}
+%\newcommand{\professor}{Leocarlos B.\ S.\ Lima e Edson P.\ da Silva}
 %\newcommand{\professor}{Edson P.\ da Silva e Luciana Veloso}
 %\newcommand{\professor}{Edmar C.\ Gurjão e Luciana Veloso}
 %\newcommand{\professor}{Bruno\ B.\ Albert e Edson P.\ da Silva}
@@ -60,7 +61,7 @@ A aula terá duração de duas horas e o aluno deverá entregar ao seu término,
 
 As práticas experimentais aqui propostas têm por objetivos:
 \begin{itemize}
-    \item Introduzir ao \textit{GNU Radio Companion} como ferramenta para realização de experimentos em comunicações;
+    \item Introduzir o aluno ao \textit{GNU Radio Companion} como ferramenta para realização de experimentos em comunicações;
     \item Simular e analisar séries de Fourier de sinais comuns;
     \item Caracterizar distorções de canal.
 \end{itemize}
@@ -75,6 +76,7 @@ Leia o tutorial introdutório ao uso do GRC, disponível na página \href{http:/
 
 Revise e pesquise sobre os seguintes questionamentos teóricos\footnote{Sugerimos leitura da seção 3.6 da referência: \begin{quote} LATHI, B. P., DING, Z. \textit{Sistemas de comunicações analógicos e digitais modernos}. 4 ed. [S.l.]: LTC, 2009. \end{quote}}:
 \begin{itemize}
+    \item O que é um canal de comunicações?
     \item O que caracteriza uma distorção linear? 
     \item O que caracteriza uma distorção não linear?
 \end{itemize}
@@ -83,22 +85,58 @@ Para revisar o conteúdo teórico e responder os problemas da preparação, leia
 
 \subsection{Problemas}
 
-\begin{questions}
-    \question Determine as séries de Fourier trigonométricas das formas de onda periódicas ilustradas na Figura \ref{fig:sinaisusuais}.
-    \begin{figure}[htb]
+\begin{figure}[t]
         \centering
-        \subfigure[fig:ondaquadrada][Onda quadrada $g_{q}(t)$ de frequência $f = 150$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaQuadrada}}\label{subfig:ondaquadrada}
-        \qquad
-        \subfigure[fig:ondatriangular][Onda triangular $g_{t}(t)$ de frequência $f = 150$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaTriangular}}
-        \qquad
-        \subfigure[fig:ondadenteserra][Onda dente de serra $g_{d}(t)$ de frequência $f = 150$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaDenteSerra}}
-        \caption{Formas de onda usuais.}
+        \includegraphics[width=0.75\linewidth]{./Figuras/Labo1Fig1.png}
+        \caption{Formas de onda usuais. (a) Onda quadrada; (b) Onda triangular; (c) Onda dente de serra. }
         \label{fig:sinaisusuais}
-    \end{figure}
+\end{figure}
 
-	\question Mudar a frequência fundamental afetará a potência de um sinal periódico? Explique. E a sua ocupação de banda? Explique.
+\begin{questions}
+    \question Para os sinais periódicos com período $T$ ilustrados na Figura \ref{fig:sinaisusuais}, mostre que os coeficientes das séries trigonométricas de Fourier escritas forma 
+    \begin{equation}
+    g(t)~=~\frac{a_0}{2}~+~\sum_{n=1}^{\infty}\left[a_n \cos \left(2 \pi t \frac{n}{T}\right)+b_n \sin \left(2 \pi t \frac{n}{T}\right)\right]
+    \end{equation}
     
-    \question A antena do seu aparelho celular capta uma potência de sinal geralmente em torno de $-60$~dBm (excelente conexão) e $-110$~dBm (conexão muito ruim). Quais são os valores de potência em mW correspondentes a estes limiares? E em dBW?
+\noindent são dados por:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Onda quadrada & Onda triangular &  Onda dente de serra \\
+\hline$
+\begin{aligned}
+& a_n=0 \\
+& b_n = \begin{cases}\frac{4}{\pi n}, & \text { para } n = 1,3,5,\dots \\
+0, & \text { caso contrário. }\end{cases}
+\end{aligned}$ & $\begin{aligned}
+& a_n= \begin{cases}-\frac{8}{\pi^2 n^2}, & \text { para } n = 1,3,5,\dots \\
+0, & \text { caso contrário. }\end{cases} \\
+& b_n=0
+\end{aligned}$ & $\begin{aligned}
+& a_n = 0 \\
+& b_n = \begin{cases}-\frac{2}{\pi n}, & \text { para } n \neq 0 \\
+0, & \text { para } n = 0 \end{cases}
+\end{aligned}$ \\
+\hline
+\end{tabular}
+\caption{Coeficientes de Fourier.}
+\label{tab:simple_table}
+\end{table}
+
+%    \begin{figure}[htb]
+%        \centering
+%        \subfigure[fig:ondaquadrada][Onda quadrada $g_{q}(t)$ de frequência $f = 50$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaQuadrada}}\label{subfig:ondaquadrada}
+%        \qquad
+%        \subfigure[fig:ondatriangular][Onda triangular $g_{t}(t)$ de frequência $f = 50$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaTriangular}}
+%        \qquad
+%        \subfigure[fig:ondadenteserra][Onda dente de serra $g_{d}(t)$ de frequência $f = 50$~Hz e amplitude $A = 1$.]{\includegraphics{./Figuras/OndaDenteSerra}}
+%        \caption{Formas de onda usuais.}
+%        \label{fig:sinaisusuais}
+%    \end{figure}
+   
+
+ \question A antena do seu aparelho celular capta uma potência de sinal geralmente em torno de $-60$~dBm (excelente conexão) e $-110$~dBm (conexão muito ruim). Quais são os valores de potência em mW correspondentes a estes limiares? E em dBW?
   \end{questions}
 
 
@@ -146,7 +184,7 @@ O objetivo deste experimento é familiarizar o aluno com o GRC e com seus recurs
     \begin{itemize}
         \item \textbf{Output Type}: Float;
         \item \textbf{Waveform}: Sine;
-        \item \textbf{Frequency}: 125;
+        \item \textbf{Frequency}: 440;
         \item \textbf{Amplitude}: 1.0;
     \end{itemize}
     \item De modo similar, introduza no diagrama mais dois blocos: \textbf{Throttle} e \textbf{QT GUI Time Sink}. O primeiro limita o processamento interno do sistema ao número de amostras por segundo definido pela taxa de amostragem, evitando sobrecarregar o processador. Este bloco deve, de modo geral, ser usado em todos os diagramas. O segundo apresenta o gráfico no tempo do sinal aplicado à sua entrada;
@@ -174,11 +212,14 @@ Os objetivos deste experimento é produzir uma versão aproximada de um sinal a 
     \item Execute o software GRC e abra o arquivo \textbf{Labo1-2.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_1-2} ilustra o diagrama deste experimento. Ele consiste na simples adição de três componentes de frequência (senoides) que, tendo suas amplitudes, fases e frequências corretamente ajustadas em conformidade com uma série de Fourier trigonométrica de um sinal, deve resultar numa aproximação deste sinal;
     \begin{figure}[htb]
         \centering
-        \includegraphics[scale=\myscale]{./Figuras/GRC_1-2} \\
+        \includegraphics[scale=\myscale]{./Figuras/GRC_1-2a} \\
         \caption{Diagrama de blocos para geração aproximada de sinais comuns a partir de suas séries trigonométrica de Fourier.} 
         \label{fig:GRC_1-2}
     \end{figure}
     % \item Ajuste frequência, amplitude e fase (seno ou cosseno) destas três senoides de modo a gerar os sinais de onda quadrada $g_{q}(t)$, onda triangular $g_{t}(t)$ e onda dente de serra $g_{d}(t)$, cujas séries de Fourier foram calculadas na etapa de preparação;
+    \item Inicialmente os blocos \textbf{Signal Source} implementam a forma de onda do seno, \textbf{Waveform:}Sine, que pode ser trocada por cosseno, \textbf{Waveform:}Cosine, caso seja necessário.
+    \item As amplitudes das senoides podem ser alteradas pelas réguas deslizantes.
+    \item As frequências são alteradas pela respectiva régua deslizante  representando a frequência fundamental, \textbf{f0}, que é a frequência do primeiro bloco \textbf{Signal Source}, sendo \textbf{3*f0} a do segundo bloco e \textbf{5*f0} do terceiro bloco. Esses múltiplos da frequência fundamental devem ser trocados conforme a forma de onda simulada.
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
@@ -194,7 +235,9 @@ O objetivo deste experimento é caracterizar uma distorção de amplitude e de f
         \caption{Diagrama de blocos para análise do efeito de distorção de amplitude e fase em sinais.} 
         \label{fig:GRC_1-3}
     \end{figure}
-    \item Ajuste frequência, amplitude e fase (seno ou cosseno) das três senoides de entrada, de modo a gerar o sinal de onda triangular $g_{t}(t)$, cuja série trigonométrica de Fourier foi calculada na etapa de preparação;    
+  \item O experimento gera uma onda quadrada com três componentes de frequência com os mesmos valores colocados do Experimento 2.
+  % \item Ajuste frequência, amplitude e fase (seno ou cosseno) das três senoides de entrada, de modo a gerar o sinal de onda triangular $g_{t}(t)$, cuja série trigonométrica de Fourier foi calculada na etapa de preparação; 
+    
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
@@ -232,17 +275,23 @@ O objetivo deste experimento é caracterizar uma distorção de amplitude e de f
 \section*{Experimento 2 -- Séries de Fourier}
 
 \begin{questions}
-    \question Ajuste frequência, amplitude e fase (seno ou cosseno) dessas três senoides conforme as séries de Fourier calculadas na etapa de preparação.
-    \begin{parts} 
-        \part Para a onda quadrada $g_{q}(t)$, identifique (e informe abaixo) por inspeção no gráfico de tempo a amplitude e o período da forma de onda. Identifique também (e informe abaixo) por inspeção no gráfico de frequências as componentes (frequências e amplitudes em dB) do sinal.
-        \fillwithlines{0.5in}
-        \part Faça o mesmo para a onda triangular $g_{t}(t)$.
-        \fillwithlines{0.5in}
-        \part Faça o mesmo para a onda dente de serra $g_{d}(t)$.
-        \fillwithlines{0.5in}
-    \end{parts}
+  \question Ajuste frequência, amplitude e fase (seno ou cosseno) dessas três senoides conforme as séries de Fourier calculadas na etapa de preparação. Observe cada sinal gerado, quadrada, triangular e dente de serra. Qual dos três sinais está mais próximo do sinal ideal? Explique a sua resposta. (Dica: observe as amplitudes das componentes de frequência.)
+  \fillwithlines{0.5in}
+
+    % \question Ajuste frequência, amplitude e fase (seno ou cosseno) dessas três senoides conforme as séries de Fourier calculadas na etapa de preparação.
+    % \begin{parts} 
+    %     \part Para a onda quadrada $g_{q}(t)$, identifique (e informe abaixo) por inspeção no gráfico de tempo a amplitude e o período da forma de onda. Identifique também (e informe abaixo) por inspeção no gráfico de frequências as componentes espectrais (frequências e amplitudes em dB) do sinal.
+    %     \fillwithlines{0.5in}
+    %     \part Faça o mesmo para a onda triangular $g_{t}(t)$.
+    %     \fillwithlines{0.5in}
+    %     \part Faça o mesmo para a onda dente de serra $g_{d}(t)$.
+    %     \fillwithlines{0.5in}
+    % \end{parts}
     
-    \question Por que a onda triangular gerada assemelha-se mais à forma de onda original do que às outras duas?
+%    \question Por que a onda triangular gerada assemelha-se mais à forma de onda original do que às outras duas?
+%    \fillwithlines{0.5in}
+
+    \question Mudar a frequência fundamental afetará a potência dos sinais acima? Explique. E as suas ocupações de banda? Explique. (Verifique as respostas na simulação)
     \fillwithlines{0.5in}
 
 \end{questions}
@@ -256,7 +305,7 @@ O objetivo deste experimento é caracterizar uma distorção de amplitude e de f
         \fillwithlines{0.5in}
         \part Novamente na aba {\bf Ganho/Atenuação}, retorne os valores da primeira e terceira componentes para 1 e altere o valor da segunda componente para 0.20. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}
-        \part Na aba {\bf Ganho/Atenuação}, retorne todos os valores para 1. Na aba {\bf Deslocamento de fase}, altere o valor do deslocamento de fase da primeira componente para 6000. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
+        \part Na aba {\bf Ganho/Atenuação}, retorne todos os valores para 1. Na aba {\bf Deslocamento de fase}, altere o valor do deslocamento de fase de todas as componente para 10000. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}
         \part Novamente na aba {\bf Deslocamento de fase}, altere os valores do deslocamento de fase da primeira, segunda e terceira componentes para 2000, 6000 e 10000, respectivamente. Houve distorção? Descreva o que ocorre com o sinal nestas configurações e dê uma explicação para o que foi observado.
         \fillwithlines{0.5in}

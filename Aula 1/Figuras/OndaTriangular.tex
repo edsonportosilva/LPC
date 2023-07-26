@@ -20,10 +20,10 @@
         \addplot[
             very thick,
             blue,
-            domain = 0:60,
+            domain = 0:40,
             samples = 3*360,
         ]
-        {(2*mod(x/2, 5)/5 - 1)*sign(sin(18*x))};
+        {(2*mod(x, 5)/5 - 1)*sign(sin(36*x))};
     \end{axis}
 \end{tikzpicture}
 

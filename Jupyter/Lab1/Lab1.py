@@ -7,19 +7,21 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.13.0
+#       jupytext_version: 1.13.8
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 # ---
 
+# + [markdown] id="view-in-github" colab_type="text"
+# <a href="https://colab.research.google.com/github/edsonportosilva/LPC/blob/lpc-2022-1/Jupyter/Lab1/Lab1.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+# + [markdown] id="NBoYkafZaOHs"
 # ```
 #  Laboratório de Princípios de Comunicações (LPC) 
-#  Período 2021.1e 
 #  Notebook de auxílio ao guia de Experimentos 1
 #  Tema(s): Introdução ao GNU Radio. Séries de Fourier. Distorção.
-#  Professor(es): Bruno B. Albert e Edson P. da Silva
 #  
 #  As práticas experimentais propostas no experimento 1 têm por objetivos:
 #  
@@ -28,13 +30,14 @@
 #  - Caracterizar distorções de canal. 
 #  ```
 
+# + [markdown] id="LsZq1ooUaOHt"
 # # Notebook de auxílio ao Guia de Experimentos 1
 
-# + [markdown] toc=true
+# + [markdown] toc=true id="VhA4-2uEaOHu"
 # <h1>Sumário<span class="tocSkip"></span></h1>
-# <div class="toc"><ul class="toc-item"><li><span><a href="#Representação-de-funções-periódicas-via-séries-de-Fourier" data-toc-modified-id="Representação-de-funções-periódicas-via-séries-de-Fourier-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Representação de funções periódicas via séries de Fourier</a></span><ul class="toc-item"><li><span><a href="#Cálculo-dos-coeficientes-de-Fourier-via-integração-numérica" data-toc-modified-id="Cálculo-dos-coeficientes-de-Fourier-via-integração-numérica-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Cálculo dos coeficientes de Fourier via integração numérica</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-quadrada" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-quadrada-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda quadrada</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-triangular" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-triangular-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda triangular</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda dente de serra</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-um-sinal-arbitrário" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-um-sinal-arbitrário-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Aproximação via série de Fourier para um sinal arbitrário</a></span></li><li><span><a href="#Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica" data-toc-modified-id="Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Reescrevendo a série de Fourier na sua forma harmônica</a></span></li></ul></li><li><span><a href="#Distorção-de-sinais" data-toc-modified-id="Distorção-de-sinais-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Distorção de sinais</a></span><ul class="toc-item"><li><span><a href="#Exemplos-de-distorção" data-toc-modified-id="Exemplos-de-distorção-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Exemplos de distorção</a></span></li><li><span><a href="#Tipos-de-distorção" data-toc-modified-id="Tipos-de-distorção-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Tipos de distorção</a></span></li><li><span><a href="#Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?" data-toc-modified-id="Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Quando um sistema linear e invariante no tempo (LIT) não causará distorção?</a></span></li></ul></li><li><span><a href="#Energia,-potência-e-largura-de-banda" data-toc-modified-id="Energia,-potência-e-largura-de-banda-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Energia, potência e largura de banda</a></span><ul class="toc-item"><li><span><a href="#Potência-e-energia" data-toc-modified-id="Potência-e-energia-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Potência e energia</a></span></li><li><span><a href="#Escala-decibel" data-toc-modified-id="Escala-decibel-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Escala decibel</a></span></li><li><span><a href="#Ocupação-de-banda" data-toc-modified-id="Ocupação-de-banda-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Ocupação de banda</a></span></li></ul></li></ul></div>
+# <div class="toc"><ul class="toc-item"><li><span><a href="#Representação-de-funções-periódicas-via-séries-de-Fourier" data-toc-modified-id="Representação-de-funções-periódicas-via-séries-de-Fourier-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Representação de funções periódicas via séries de Fourier</a></span><ul class="toc-item"><li><span><a href="#Calculando-os-coeficientes-de-Fourier-analiticamente" data-toc-modified-id="Calculando-os-coeficientes-de-Fourier-analiticamente-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Calculando os coeficientes de Fourier analiticamente</a></span></li><li><span><a href="#Calculando-os-coeficientes-de-Fourier-via-integração-numérica" data-toc-modified-id="Calculando-os-coeficientes-de-Fourier-via-integração-numérica-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Calculando os coeficientes de Fourier via integração numérica</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-quadrada" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-quadrada-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda quadrada</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-triangular" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-triangular-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda triangular</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-a-onda-dente-de-serra-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Aproximação via série de Fourier para a onda dente de serra</a></span></li><li><span><a href="#Aproximação-via-série-de-Fourier-para-um-sinal-arbitrário" data-toc-modified-id="Aproximação-via-série-de-Fourier-para-um-sinal-arbitrário-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Aproximação via série de Fourier para um sinal arbitrário</a></span></li><li><span><a href="#Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica" data-toc-modified-id="Reescrevendo-a-série-de-Fourier-na-sua-forma-harmônica-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Reescrevendo a série de Fourier na sua forma harmônica</a></span></li></ul></li><li><span><a href="#Distorção-de-sinais" data-toc-modified-id="Distorção-de-sinais-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Distorção de sinais</a></span><ul class="toc-item"><li><span><a href="#Exemplos-de-distorção" data-toc-modified-id="Exemplos-de-distorção-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Exemplos de distorção</a></span></li><li><span><a href="#Tipos-de-distorção" data-toc-modified-id="Tipos-de-distorção-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Tipos de distorção</a></span></li><li><span><a href="#Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?" data-toc-modified-id="Quando-um-sistema-linear-e-invariante-no-tempo-(LIT)-não-causará-distorção?-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Quando um sistema linear e invariante no tempo (LIT) não causará distorção?</a></span></li></ul></li><li><span><a href="#Energia,-potência-e-largura-de-banda" data-toc-modified-id="Energia,-potência-e-largura-de-banda-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Energia, potência e largura de banda</a></span><ul class="toc-item"><li><span><a href="#Potência-e-energia" data-toc-modified-id="Potência-e-energia-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Potência e energia</a></span></li><li><span><a href="#Escala-decibel" data-toc-modified-id="Escala-decibel-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Escala decibel</a></span></li><li><span><a href="#Ocupação-de-banda" data-toc-modified-id="Ocupação-de-banda-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Ocupação de banda</a></span></li></ul></li></ul></div>
 
-# +
+# + id="6e6qcob5aOHv" outputId="cceec91c-b045-479c-824c-d1ddb81585d5" colab={"base_uri": "https://localhost:8080/", "height": 17}
 from IPython.core.pylabtools import figsize
 
 from IPython.core.display import HTML
@@ -48,59 +51,162 @@ HTML("""
 </style>
 """)
 
-# +
+# + id="BOK7JxRFaOHv" hide_input=true
 # Carrega pacotes
 import matplotlib.pyplot as plt
+import sympy as sp
 import numpy as np
 from numpy import cos, sin, arctan2, sqrt, log10
 from scipy.signal import square, sawtooth
 import pandas as pd
 
+from IPython.display import Math, display
+from sympy import lambdify
+
 # configura notebook
 pd.set_option("display.precision", 2)
 pd.options.display.float_format = '{:,.2f}'.format
-figsize(10, 3)
 
 IPython_default = plt.rcParams.copy()
 plt.rc('grid', color='k', linestyle='-', linewidth=0.5)
 plt.rcParams['axes.grid'] = True
+
+def symdisp(expr, var, unit=" "):
+    """
+    Display sympy expressions in Latex style.
+
+    :param expr: expression in latex [string]
+    :param var: sympy variable, function, expression.
+    :param unit: string indicating unit of var [string]
+    """
+    display(Math(expr + sp.latex(var) + "\;" + "\mathrm{"+unit+"}"))
+    
+# Função para plot de funções do sympy
+def symplot(t, F, interval, funLabel, xlabel="tempo [s]", ylabel=""):
+    """
+    Create plots of sympy symbolic functions.
+
+    :param t: sympy variable
+    :param F: sympy function F(t)
+    :param interval: array of values of t where F should be evaluated [np.array]
+    :funLabel: curve label be displayed in the plot [string].
+    """
+    fig = plt.figure()
+    if type(F) == list:
+        for indLabel, f in enumerate(F):
+            plotFunc(t, f, interval, funLabel[indLabel], xlabel, ylabel)
+    else:
+        plotFunc(t, F, interval, funLabel, xlabel, ylabel)
+    plt.grid(True)
+    plt.close()
+    return fig
+
+def plotFunc(t, F, interval, funLabel, xlabel, ylabel):
+    func = lambdify(
+        t, F, modules=["numpy", {"Heaviside": lambda t: np.heaviside(t, 0)}]
+    )
+    f_num = func(interval)
+
+    plt.plot(interval, f_num, label=funLabel)
+    plt.legend(loc="upper right")
+    plt.xlim([min(interval), max(interval)])
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+
+
 # -
 
 
+figsize(10, 3)
+
+# + [markdown] id="mGq4kaV8aOHw"
 # ## Representação de funções periódicas via séries de Fourier
 #
-# Seja a função $f(t)$ periódica com período $P$, isto é $f(t)=f(t+nP)$ para $n=1,2,3,...$, e absolutamente integrável num intervalo de comprimento $P$. Considerando que $f(t)$ admite representação em termos de uma série trigonométrica de Fourier, temos que
+# Seja a função $f(t)$ periódica com período fundamental $T$, isto é $f(t)=f(t+nT)$ para $n=1,2,3,...$, e absolutamente integrável num intervalo de comprimento $T$. Considerando que $f(t)$ admite representação em termos de uma série trigonométrica de Fourier, temos que
 #
 # $$ 
 # \begin{equation}
-# f(t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left[a_{n} \cos \left(2\pi t\frac{n}{P}\right)+b_{n} \sin \left(2\pi t\frac{n}{P}\right)\right] 
+# f(t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left[a_{n} \cos \left(2\pi t\frac{n}{T}\right)+b_{n} \sin \left(2\pi t\frac{n}{T}\right)\right] 
 # \end{equation}
 # $$
 #
 # em que $a_n$ e $b_n$ são os coeficientes de Fourier da expansão de $f(t)$, calculados de acordo com as expressões
 #
 # $$
-# \begin{equation}
-# a_{n}=\frac{2}{P} \int_{P} f(t) \cos \left(2\pi t\frac{n}{P}\right) dt 
+# \begin{equation}\label{coeff_an}
+# a_{n}=\frac{2}{T} \int_{T} f(t) \cos \left(2\pi t\frac{n}{T}\right) dt 
 # \end{equation}
 # $$
 #
 # $$
-# \begin{equation}
-# b_{n}=\frac{2}{P} \int_{P} f(t) \sin \left(2\pi t\frac{n}{P}\right) dt.
+# \begin{equation}\label{coeff_bn}
+# b_{n}=\frac{2}{T} \int_{T} f(t) \sin \left(2\pi t\frac{n}{T}\right) dt.
 # \end{equation}
 # $$
 #
 # Em particular, para os coeficientes associados ao nível DC do sinal ($f=0$), temos que
 #
 # $$\begin{eqnarray}
-# a_{0}&=&\frac{2}{P} \int_{P} f(t) \cos(0) dt =\frac{2}{P} \int_{P} f(t) dt\nonumber\\
-# b_{0}&=&\frac{2}{P} \int_{P} f(t) \sin(0) dt = 0.\nonumber
+# a_{0}&=&\frac{2}{T} \int_{T} f(t) \cos(0) dt =\frac{2}{T} \int_{T} f(t) dt\nonumber\\
+# b_{0}&=&\frac{2}{T} \int_{T} f(t) \sin(0) dt = 0.\nonumber
 # \end{eqnarray}$$
 #
 # Para revisitar o emprego das séries de Fourier na análise de sinais e sistemas, começamos gerando alguns sinais periódicos para em seguida determinar a sua composição espectral via cálculo dos coeficientes de Fourier.
+# -
+
+# ### Calculando os coeficientes de Fourier analiticamente
+
+# Vamos utilizar algumas funções do `sympy` para calcular as expressões analíticas para os coeficientes da série de Fourier de cada sinal periódico $g(t)$. Primeiramente, vamos definir a função $g_T(t)$ que corresponde ao primeiro período da função $g(t)$, ou seja, $g_T(t) = g(t)$ definida no intervalo $[0,T]$, em que $T$ é o período fundamental da onda. 
+#
+# A seguir temos um trecho que código que define $g_T(t)$ para cada uma das ondas mencionadas anteriormente (quadrada, triangular e dente de serra).
 
 # +
+t, T = sp.symbols('t, T', real=True, positive=True)
+n = sp.symbols('n', integer=True, nonnegative=True)
+
+
+#gT = sp.Piecewise( (1, (t >= 0)&(t < T/2)), (-1, (t >= T/2)&(t <= T)) ) # primeiro período da onda quadrada
+#gT = sp.Piecewise( (-1 + 4*t/T, (t >= 0)&(t < T/2)), (3 - 4*t/T, (t >= T/2)&(t <= T)) ) # primeiro período da onda triangular
+gT = -1 + 2*t/T  # primeiro período da onda dente de serra
+
+symdisp('g_{T}(t) =', gT)
+
+intervalo = np.linspace(0,1,400)
+symplot(t, gT.subs({T:1}), intervalo, '$g_T(t)$', xlabel = 'Tempo [xT]')
+# -
+
+# Agora vamos calcular as expressões dos coefficientes de Fourier utilizando as integrais definidas nas equações $(\ref{coeff_an})$ e $(\ref{coeff_bn})$. Temos, então:
+
+# +
+an = (2/T) * sp.integrate( gT * sp.cos(2*sp.pi*n*t/T) , (t, 0, T) )
+bn = (2/T) * sp.integrate( gT * sp.sin(2*sp.pi*n*t/T) , (t, 0, T) )
+
+an = an.simplify()
+bn = bn.simplify()
+
+symdisp('a_n =', an)
+symdisp('b_n =', bn)
+
+# +
+ncoeffs = 10 
+an_vals = np.zeros((ncoeffs,1))
+bn_vals = np.zeros((ncoeffs,1))
+
+for c in range(10):
+    an_vals[c] = sp.N(an.subs({n:c}),3)
+    bn_vals[c] = sp.N(bn.subs({n:c}),3)
+    
+# Gera tabela com os coeficientes an, bn
+pd.DataFrame(np.hstack((an_vals, bn_vals)), columns=["$a_{n}$", "$b_{n}$"]).T
+
+# + [markdown] id="diqkHOXlaOHw"
+# ### Calculando os coeficientes de Fourier via integração numérica
+#
+# De maneira alternativa, vamos definir uma função simples para calcular numericamente os coeficientes $a_n$ e $b_n$ da série de Fourier para uma função periódica $f(t)$ qualquer (veja um resumo sobre o método de integração `numpy.trapz` em https://numpy.org/doc/stable/reference/generated/numpy.trapz.html).
+#
+# Inicialmente, vamos gerar versões discretas para as ondas quadrada, triangular e dente de serra.
+
+# + id="FtDAtshgaOHw" outputId="e8e2f908-64d9-4a24-b25e-9bac0aa217ac" colab={"base_uri": "https://localhost:8080/", "height": 689}
 # Geração de sinais periódicos
 
 f0 = 100     # Frequência fundamental
@@ -118,7 +224,7 @@ triang = A*sawtooth(2*π*f0*t + ϕ, width = 0.5) # onda triangular com frequênc
 dente  = A*sawtooth(2*π*f0*t + ϕ)              # onda dente de serra com frequência fundamental f0 e phase inicial ϕ
 
 plt.figure()
-plt.plot(t, quad,'b')
+plt.plot(t, quad)
 plt.ylim(quad.min(0)-0.1, quad.max(0)+0.1)
 plt.xlim(0,t.max(0))
 plt.title('Onda quadrada')
@@ -126,7 +232,7 @@ plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 
 plt.figure()
-plt.plot(t, triang,'b')
+plt.plot(t, triang)
 plt.ylim(triang.min(0)-0.1, triang.max(0)+0.1)
 plt.xlim(0,t.max(0))
 plt.title('Onda triangular')
@@ -134,7 +240,7 @@ plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 
 plt.figure()
-plt.plot(t, dente,'b')
+plt.plot(t, dente)
 plt.ylim(dente.min(0)-0.1, dente.max(0)+0.1)
 plt.xlim(0,t.max(0))
 plt.title('Onda dente de serra')
@@ -142,17 +248,12 @@ plt.xlabel('tempo (s)')
 plt.ylabel('amplitude');
 
 
-# -
-
-# ### Cálculo dos coeficientes de Fourier via integração numérica
-#
-# Primeiramente, vamos definir uma função simples para calcular numericamente os coeficientes $a_n$ e $b_n$ da série de Fourier para uma função periódica $f(t)$ qualquer (veja um resumo sobre o método de integração `numpy.trapz` em https://numpy.org/doc/stable/reference/generated/numpy.trapz.html).
-
-def fourierCoeff(t, f, P, ncoeffs):
+# + id="QMXu3yglaOHw"
+def fourierCoeff(t, f, T, ncoeffs):
     """
      t  : vetor de instantes de tempo contendo pelo menos um período completo da função [segundos]
      f  : vetor de valores de f(t) calculados para cada instante em t 
-     P  : período fundamental de f [segundos]
+     T  : período fundamental de f [segundos]
      ncoeffs: número de coeficiente de Fourier desejado [número inteiro maior que zero]
      
      an : coeficiente an
@@ -160,56 +261,64 @@ def fourierCoeff(t, f, P, ncoeffs):
      
     """    
     dt = t[1]-t[0]          # período de amostragem [passo de integração]
-    N  = int(np.ceil(P/dt)) # número de amostras correspondente a um período completo da onda   
+    N  = int(np.ceil(T/dt)) # número de amostras correspondente a um período completo da onda   
+    π  = np.pi
     
     an = np.zeros((ncoeffs, 1)) # coeficientes an
     bn = np.zeros((ncoeffs, 1)) # coeficientes bn
     
     # cálculo dos coeficientes an e bn utilizando o método trapezoidal de integração numérica     
     for n in range(0, ncoeffs):# calcula coeficientes de Fourier para n=0 até n=ncoeffs-1
-        an[n] = np.trapz(f[0:N]*cos(2*np.pi*t[0:N]*n/P), dx=dt)
-        bn[n] = np.trapz(f[0:N]*sin(2*np.pi*t[0:N]*n/P), dx=dt)         
+        an[n] = np.trapz(f[0:N]*cos(2*π*t[0:N]*n/T), dx=dt)
+        bn[n] = np.trapz(f[0:N]*sin(2*π*t[0:N]*n/T), dx=dt)         
     
-    an = an*2/P
-    bn = bn*2/P
+    an = an*2/T
+    bn = bn*2/T
     
     return an, bn
 
 
-# Agora que a função ``an, bn = fourierCoeff(t, f, P, ncoeffs)`` foi definida, podemos utilizá-la para calcular os coeficientes de Fourier de sinais periódicos quaisquer. 
+# + [markdown] id="UKhUVWT7aOHx"
+# Agora que a função ``an, bn = fourierCoeff(t, f, T, ncoeffs)`` foi definida, podemos utilizá-la para calcular os coeficientes de Fourier de sinais periódicos quaisquer. 
 #
-# No que segue, aplica-se ``fourierCoeff`` para calcular os coeficientes de fourier das formas de onda geradas anteriormente.
+# No que segue, utilizaremos ``fourierCoeff`` para calcular os coeficientes de fourier das formas de onda geradas anteriormente.
 
+# + [markdown] id="WKTTx_s_aOHx"
 # ### Aproximação via série de Fourier para a onda quadrada
+#
+# Primeiramente, vamos calcular os coeficientes da série de Fourier da onda quadrada:
 
-# +
+# + id="M8SxdDAxaOHx" outputId="16b3efe8-6a9f-43e6-cb00-f380ab8e7576" colab={"base_uri": "https://localhost:8080/", "height": 336}
 # Coeficientes de Fourier da onda quadrada
 
 ncoeffs = 10  # número de componentes harmônicos (incluindo componente dc, n=0)
-
-xf = f0*np.arange(0, ncoeffs) # frequências de cada componente harmônico
 
 # calcula coeficientes de Fourier
 quad_an, quad_bn = fourierCoeff(t, quad , 1/f0, ncoeffs)
 
 # plota gráfico
+xf = f0*np.arange(0, ncoeffs) # frequências de cada componente harmônico
+
 plt.figure()
 plt.plot(xf, quad_an,'bo',label = 'coeficientes $a_{n}$')
 plt.vlines(xf, 0, quad_an,'b', alpha=0.5)
 plt.plot(xf, quad_bn,'rx',label = 'coeficientes $b_{n}$')
 plt.vlines(xf, 0, quad_bn,'r', alpha=0.5)
 
-plt.title('Onda quadrada')
+plt.title('Coeficientes de Fourier para a onda quadrada')
 plt.legend()
 plt.xlim(0,xf.max(0))
 #plt.ylim(-2,2)
-plt.xlabel('freq (Hz)')
-plt.ylabel('amplitude')
+plt.xlabel('Frequência (Hz)')
+plt.ylabel('Amplitude')
 
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((quad_an, quad_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
+# -
 
-# +
+# Agora, vamos construir uma aproximação da onda quadrada somando um número finito de seus componentes harmônicos. Para diferentes valores de `ncoeffs`, execute a célula abaixo e observe o gráfico gerado.
+
+# + id="mhvOuOdpaOHx" outputId="6315ddc2-1c92-430d-aaf1-383cd606e727" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Aproximação da onda quadrada via somatório de harmônicas da série de Fourier
 
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -228,11 +337,11 @@ plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="ZDLJGSpRaOHy"
 # ### Aproximação via série de Fourier para a onda triangular
 
-# +
+# + id="fe5QqIhAaOHy" outputId="89efe952-78cc-49a7-c207-ad81bc510875" colab={"base_uri": "https://localhost:8080/", "height": 336}
 # Coeficientes de Fourier da onda triangular
 
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -258,7 +367,7 @@ plt.ylabel('amplitude')
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((triang_an, triang_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
 
-# +
+# + id="oQkb7nA6aOHy" outputId="47bffe22-b073-4e83-8a93-715c365749c2" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Aproximação da onda triangular via somatório de harmônicas da série de Fourier
 
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -277,11 +386,11 @@ plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="YByWSWIaaOHy"
 # ### Aproximação via série de Fourier para a onda dente de serra
 
-# +
+# + id="A3CpBZjtaOHz" outputId="b57afcf0-ff63-4d86-f975-12cd71cc0d7a" colab={"base_uri": "https://localhost:8080/", "height": 336}
 # Coeficientes de Fourier da onda dente de serra
 
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -307,7 +416,7 @@ plt.ylabel('amplitude')
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((dente_an, dente_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
 
-# +
+# + id="pbfia32UaOHz" outputId="71efe383-b234-4323-b796-8ff96353e0a6" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Aproximação da onda dente de serra via somatório de harmônicas da série de Fourier
 
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -326,17 +435,24 @@ plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="Hics_TqZaOHz"
 # ### Aproximação via série de Fourier para um sinal arbitrário
 
-# +
+# + id="TuPu6oZFaOHz" outputId="a7f0f66a-2246-46aa-f843-8ec05c4810f5" colab={"base_uri": "https://localhost:8080/", "height": 365}
 # Coeficientes de Fourier para um sinal arbitrário
 
 sig = 2*sin(2*π*f0*t + π/4)**5
 
 sig[sig > 0.25] = 0.1
 sig[sig < -0.25] = -0.1
+
+plt.figure()
+plt.plot(t, sig,'k--',label = 'original')
+plt.xlim(0,t.max(0))
+plt.xlabel('tempo (s)')
+plt.ylabel('amplitude')
+plt.legend();
 
 ncoeffs = 30 # número de componentes harmônicos (incluindo componente dc, n=0)
 
@@ -361,7 +477,7 @@ plt.ylabel('amplitude')
 # Gera tabela com os coeficientes an, bn
 pd.DataFrame(np.hstack((sig_an, sig_bn)), columns=["$a_{n}$", "$b_{n}$"]).T
 
-# +
+# + id="-3_ej_A7aOHz" outputId="84adf3cb-e4e9-430a-82d0-d20f596d64fc" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Aproximação de um sinal arbitrário via somatório de harmônicas da série de Fourier
 
 ncoeffs = 30 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -380,8 +496,8 @@ plt.xlim(0,t.max(0))
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="jME-PA1xaOH0"
 # ### Reescrevendo a série de Fourier na sua forma harmônica
 #
 # Podemos expressar a série de Fourier de maneira simplificada utilizando a sua forma harmônica, utilizando apenas a função cosseno para representar os componentes harmônicos da função.
@@ -394,7 +510,7 @@ plt.legend();
 #
 # Esta representação é útil porque nos permite determinar diretamente a energia associada a cada componente de frequência do sinal através dos coeficientes $A_{n}$, como veremos a seguir.
 
-# +
+# + id="ItYcIu48aOH0" outputId="c580cd52-fe24-4280-faa0-1e97cad1ebfe" colab={"base_uri": "https://localhost:8080/", "height": 465}
 # Aproximação da onda quadrada via somatório de harmônicas da série de Fourier
 
 ncoeffs = 10 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -436,11 +552,11 @@ plt.xlim(0,xf.max(0))
 plt.ylim(-2*π ,2*π)
 plt.xlabel('freq (Hz)')
 plt.ylabel('fase [rad]');
-# -
 
+# + [markdown] id="7hOqPLH7aOH0"
 # Agora vamos obter uma aproximação do sinal original com um somatório de harmônicos
 
-# +
+# + id="3HH_ReB5aOH0" outputId="0cf6f092-1974-428f-e33d-ca81adef66b7" colab={"base_uri": "https://localhost:8080/", "height": 383}
 # calcula aproximação do sinal com um somatório finito de harmônicos
 quad_aprox = np.zeros(len(t))
 for n in range(0,ncoeffs):
@@ -459,8 +575,8 @@ plt.legend()
 
 # Gera tabela com os coeficientes an, bn, An e θn
 pd.DataFrame(np.hstack((quad_an, quad_bn, An, θn)), columns=["$a_{n}$", "$b_{n}$", "$A_{n}$", "$θ_{n}$ [rad]"]).T
-# -
 
+# + [markdown] id="UPJqYVppaOH0"
 # ## Distorção de sinais
 #
 # O conceito de *distorção* é utilizado em diversas áreas da engenharia elétrica, particulamente nas áreas de processamento de sinais e comunicações. 
@@ -473,7 +589,7 @@ pd.DataFrame(np.hstack((quad_an, quad_bn, An, θn)), columns=["$a_{n}$", "$b_{n}
 #
 # **Exemplo 1:** $y(t) = 2x(t-25T_a)$, em que $T_a=\frac{1}{f_a}$ é o período de amostragem. A forma de onda de $x(t)$ não é distorcida.
 
-# +
+# + id="VaIMtq0GaOH1" outputId="49224219-14b3-473c-817e-20bff6c331c3" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Exemplo 1: y(t) não é uma versão distorcida de x(t)
 
 x = sin(2*π*f0*t)
@@ -485,11 +601,11 @@ plt.plot(t,y,'k--',label = 'y(t)');
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="FKRJpXEOaOH1"
 # **Exemplo 2:** $y(t) = x(t)+0.25x(t-25T_a)$, em que $T_a=\frac{1}{f_a}$ é o período de amostragem. A forma de onda de $y(t)$ é uma versão distorcida de $x(t)$.
 
-# +
+# + id="pD8TqXPWaOH1" outputId="af674043-7f24-490d-a509-a86fc595692d" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Exemplo 3:  y(t) é a saída de um sistema LIT com x(t) aplicado na entrada.
 #             y(t) é uma versão distorcida de x(t) (distorção linear)
 
@@ -502,11 +618,11 @@ plt.plot(t,y,'k--',label = 'y(t)');
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="AqwDPotUaOH1"
 # **Exemplo 3:** $y(t) = [x(t)]^5$. A forma de onda de $y(t)$ é uma versão distorcida de $x(t)$.
 
-# +
+# + id="3VA5JwWLaOH1" outputId="45664a62-f7de-4ccc-9b1f-df1e88f938c4" colab={"base_uri": "https://localhost:8080/", "height": 225}
 # Exemplo 3:  y(t) é uma função não-linear de x(t)
 #             y(t) é uma versão distorcida de x(t) (distorção não-linear)
 
@@ -519,8 +635,8 @@ plt.plot(t,y,'k--',label = 'y(t)');
 plt.xlabel('tempo (s)')
 plt.ylabel('amplitude')
 plt.legend();
-# -
 
+# + [markdown] id="QwM9GWcGaOH1"
 # ### Tipos de distorção
 #
 # Distorções podem ser classificadas em dois tipos básicos:
@@ -534,7 +650,7 @@ plt.legend();
 #
 # Veja no exempo a seguir que, observando os coeficientes da série de Fourier $(a_{n}^{(x)},b_{n}^{(x)})$ do sinal $x(t)=\mathrm{sen}(t)$ e os coeficientes $(a_{n}^{(y)},b_{n}^{(y)})$ obtidos para sinal distorcido $y(t) = x^5(t)$, nota-se que o terceiro e o quinto harmônicos, ausentes no espectro de frequências de $x(t)$, agora aparecem no espectro de $y(t)$.
 
-# +
+# + id="CeYgR5siaOH1" outputId="6e1ee523-b930-4083-b7db-7a3c16086451" colab={"base_uri": "https://localhost:8080/", "height": 175}
 # Aplicando uma função não-linear ao sinal e observando o que ocorre com os coeficientes dos harmônicos
 
 ncoeffs = 6 # número de componentes harmônicos (incluindo componente dc, n=0)
@@ -549,8 +665,8 @@ y_an, y_bn = fourierCoeff(t, y , 1/f0, ncoeffs)
 # Gera tabela com os coeficientes an, bn dos sinais x e y
 pd.DataFrame(np.hstack((x_an, x_bn, y_an, y_bn)), columns=["$a_{n}^{(x)}$", "$b_{n}^{(x)}$",\
                                                            "$a_{n}^{(y)}$","$b_{n}^{(y)}$"]).T
-# -
 
+# + [markdown] id="JzRfXiGPaOH1"
 # ### Quando um sistema linear e invariante no tempo (LIT) não causará distorção?
 #
 # As duas operações lineares que não distorcem um sinal estão resumidas em
@@ -594,11 +710,13 @@ pd.DataFrame(np.hstack((x_an, x_bn, y_an, y_bn)), columns=["$a_{n}^{(x)}$", "$b_
 #
 # Desse modo, ao compararmos amplitude e fase dos componentes harmônicos em $\eqref{eq3}$ e $\eqref{eq4}$, conclui-se que para que $y(t)=h(t)\ast x(t)$ não seja uma versão distorcida de $x(t)$, todos os componentes de frequência de $x(t)$ devem sofrer o mesmo ganho $G$ (ou atenuação, se $|G|<1$) e o desvio de fase $\Delta \theta$ gerado pelo atraso $\tau$ deve ser linear com relação à frequência $\Delta \theta = (-2\pi f_0 \tau)n$, ou seja, o desvio de fase do $n$-ésimo componente harmônico tem que ser $n$ vezes o desvio de fase do componente fundamental, o que está de acordo com $\eqref{eq2}$ 
 
+# + [markdown] id="rq-vZZ4HaOH2"
 # ## Energia, potência e largura de banda
 #
 #
 # Três grandezas importantes para a caracterizarização de sinais são: energia, potência e largura de banda. Para que possamos entender a relação entre essas grandezas e como podemos determiná-las para um dado sinal, vamos revisitar suas definições formais e aplicar esses conceitos aos sinais que estamos analisando.
 
+# + [markdown] id="iMxoKxn1aOH2"
 # ### Potência e energia
 #
 # Na tabela a seguir tem-se um resumo das expressões matemáticas definindo energia e potência para sinais definidos no tempo contínuo e no tempo discreto:
@@ -615,7 +733,7 @@ pd.DataFrame(np.hstack((x_an, x_bn, y_an, y_bn)), columns=["$a_{n}^{(x)}$", "$b_
 #
 # Os sinais que geramos numa simulação numérica são sempre discretos e de duração finita e, portanto, para esses sinais os somatórios que definem energia e potência são sempre finitos. Vamos calcular a potência e a energia da onda quadrada de acordo com as expressões utilizadas para sinais no tempo discreto:
 
-# +
+# + id="BakgB_cRaOH2" outputId="22551ae6-f861-42c7-dd57-5cdb08c9f31e" colab={"base_uri": "https://localhost:8080/"}
 # Cálculo da energia
 E_quad = np.sum(abs(quad)**2)
 
@@ -625,11 +743,11 @@ P_quad = np.sum(abs(quad)**2)/N
 
 print('Energia  = %3.2f unidades de energia' %(E_quad))
 print('Potência = %3.2f unidades de potência' %(P_quad))
-# -
 
+# + [markdown] id="ncwm7Xx5aOH2"
 # Agora vamos calcular a potência da aproximação da onda quadrada obtida via série de Fourier:
 
-# +
+# + id="j8axFZjdaOH2" outputId="d986db3d-bd72-4de8-f4cd-8fe7c9ad1a8c" colab={"base_uri": "https://localhost:8080/"}
 # Cálculo da energia
 E_quad_aprox = np.sum(abs(quad_aprox)**2)
 
@@ -643,13 +761,13 @@ P_harm = np.sum(abs(An)**2)/2
 print('Energia  = %3.2f unidades de energia' %(E_quad_aprox))
 print('Potência = %3.2f unidades de potência' %(P_quad_aprox))
 print('Soma das potências dos componentes harmônicos da série: %2.2f unidades de potência' %(P_harm))
-# -
 
+# + [markdown] id="oXuy9f_-aOH2"
 # Perceba que os valores tanto de energia quanto de potência do sinal original e do sinal aproximado pela série de Fourier estão muito próximos, como esperado.
 #
 # Podemos visualizar como a potência do sinal se distribui no domínio da frequência plotando o gráfico da potência de cada componente harmônico em função da frequência.
 
-# +
+# + id="3H7N5iQfaOH3" outputId="8578f7cd-f74b-40b2-9abd-d0a117520243" colab={"base_uri": "https://localhost:8080/", "height": 241}
 # plota gráficos
 plt.figure()
 plt.plot(xf, (abs(An)**2)/2,'bo',label = 'potência do n-ésimo harmônico')
@@ -661,8 +779,8 @@ plt.xlim(0,xf.max(0))
 #plt.ylim(-0.1,1)
 plt.xlabel('freq (Hz)')
 plt.ylabel('potência');
-# -
 
+# + [markdown] id="d9DS9em8aOH3"
 # ### Escala decibel
 #
 # Uma forma convencional de apresentar gráficos de potência consiste em utilizar a escala de decibel (dB) no eixo y. Uma medida em dB é sempre um valor comparativo entre uma grandeza qualquer e uma grandeza de referência. Tal comparação é dada pela expressão a seguir:
@@ -714,7 +832,7 @@ plt.ylabel('potência');
 #
 # Vamos plotar novamente a potência de cada componente harmônico da onda quadrada em função da frequência, mas agora utilizando a escala em dB.
 
-# +
+# + id="VBPD1uRWaOH3" outputId="dfb2008a-7c27-4e9d-f111-33ead7345782" colab={"base_uri": "https://localhost:8080/", "height": 276}
 An[An<1e-2] = 0
 PdBu = 10*log10((abs(An)**2)/2)
 
@@ -729,10 +847,11 @@ plt.xlim(0,xf.max(0))
 plt.ylim(-40,)
 plt.xlabel('freq (Hz)')
 plt.ylabel('potência (dB unidade de potência)');
-# -
 
+# + [markdown] id="ZdpgMxLzaOH3"
 # Observando o gráfico acima, vemos que a potência do componente fundamental está próxima a 0 dB, ou seja, indicando que o seu valor de potência é próximo ao valor unitário na unidade de potência considerada (i.e. $10\log_{10}(1)=0~dB$). O quinto harmônico, por sua vez, possui potência -20 dB, indicando que seu valor de potência é um centésimo da unidade considerada (i.e. $10\log_{10}(1/100)=-20~dB$). Veja que esta informação sobre os níveis relativos de potência entre componentes de frequência não é clara quando observamos o gráfico na escala linear. 
 
+# + [markdown] id="DNgzwK7maOH3"
 # ### Ocupação de banda
 #
 # O intervalo de frequências que um dado sinal ocupa é um parâmetro de muita importância em engenharia de comunicações, uma vez que a grande maioria dos sistemas de comunicações dispõe de um espectro de frequências limitado para transmissão e recepção de informação. Nesse contexto, é necessário definir métricas para quantificar a largura de banda (ou ocupação de banda) de sinais. 
@@ -742,7 +861,7 @@ plt.ylabel('potência (dB unidade de potência)');
 # Uma forma mais geral de definir o conceito de banda é determinar o intervalo de frequências em que a maior parte da potência do sinal (> 90%) está contida. No gráfico abaixo, a composição percentual da potência de cada componente harmônico da série de Fourier da onda quadrada está ilustrada. Veja que mais de 90% da potência está contida nos dois primeiros harmônicos. Desse modo, podemos afirmar que a banda contendo $\approx$ 90% da energia desse sinal é 300 Hz.
 #
 
-# +
+# + id="U10D5X9eaOH3" outputId="f777c933-9c22-415d-c3ed-71b0c5ddf775" colab={"base_uri": "https://localhost:8080/", "height": 241}
 Ptot  = np.sum((abs(An)**2)/2) # potência total
 Pharm = (abs(An)**2)/2         # vetor com a potência individual por harmônico
 
