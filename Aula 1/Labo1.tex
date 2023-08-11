@@ -85,7 +85,7 @@ Para revisar o conteúdo teórico e responder os problemas da preparação, leia
 
 \subsection{Problemas}
 
-\begin{figure}[t]
+\begin{figure}[h]
         \centering
         \includegraphics[width=0.75\linewidth]{./Figuras/Labo1Fig1.png}
         \caption{Formas de onda usuais. (a) Onda quadrada; (b) Onda triangular; (c) Onda dente de serra. }
@@ -167,7 +167,7 @@ O objetivo deste experimento é familiarizar o aluno com o GRC e com seus recurs
     \item Execute o software GRC (no Ubuntu, tecle \textbf{Meta $+$ A}, em seguida digite \textbf{grc} e tecle \textbf{Enter}). A janela do GRC deverá aparecer, conforme ilustrado na Figura \ref{fig:GRC_1-1a}.
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\textwidth]{./Figuras/GRC_1-1a} \\
+        \includegraphics[width=0.85\textwidth]{./Figuras/GRC_1-1a} \\
         \caption{Janela do GNU Radio Companion após aberto.} 
         \label{fig:GRC_1-1a}
     \end{figure}
@@ -237,27 +237,35 @@ Os objetivos deste experimento é produzir uma versão aproximada de um sinal a 
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
+\newpage
+
 \subsection{Experimento 3 -- Distorção}
 
+
+    
 O objetivo deste experimento é caracterizar uma distorção de amplitude e de fase sofrida por um sinal.
 
 \begin{enumerate}
     \item Execute o software GRC e abra o arquivo \textbf{Labo1-3.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_1-3} ilustra o diagrama deste experimento. Ele consiste numa simulação de um canal distorcivo discreto, composto por blocos \textbf{Multiply Const} e \textbf{Delay}, que atenuam e atrasam três componentes individuais de um sinal, permitindo comparar os gráficos temporais dos sinais na entrada e na saída do canal distorcivo;
-    \begin{figure}[htb]
+    
+\begin{figure}[h]
         \centering
         \includegraphics[scale=\myscale]{./Figuras/GRC_1-3} \\
         \caption{Diagrama de blocos para análise do efeito de distorção de amplitude e fase em sinais.} 
-        \label{fig:GRC_1-3}
-    \end{figure}
+        \label{fig:GRC_1-3}       
+\end{figure}
+
   \item O experimento gera uma onda quadrada com três componentes de frequência com os mesmos valores colocados do Experimento 2.
   % \item Ajuste frequência, amplitude e fase (seno ou cosseno) das três senoides de entrada, de modo a gerar o sinal de onda triangular $g_{t}(t)$, cuja série trigonométrica de Fourier foi calculada na etapa de preparação; 
     
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
-\newpage \pagenumbering{arabic}
 
-\noindent \includegraphics[height=2cm]{../Figuras/UFCGLogo} \hfill
+\pagenumbering{arabic}
+
+\clearpage
+\includegraphics[height=2cm]{../Figuras/UFCGLogo} \hfill
 \begin{minipage}{.66\textwidth} \large \centering \vspace{-1.8cm}
     Universidade Federal de Campina Grande -- UFCG \\
     Unidade Acadêmica de Engenharia Elétrica -- UAEE \\
