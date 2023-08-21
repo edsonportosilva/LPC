@@ -25,7 +25,6 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: Filtragem de sinais
-    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -53,7 +52,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 196.0]
+    coordinate: [16, 272.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -65,7 +64,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 117]
+    coordinate: [24, 172.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -87,7 +86,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [200, 4.0]
+    coordinate: [304, 32.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -106,7 +105,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 44.0]
+    coordinate: [640, 84.0]
     rotation: 0
     state: enabled
 - name: fir_filter_xxx_0
@@ -128,7 +127,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [576, 36.0]
+    coordinate: [936, 76.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0_0
@@ -209,7 +208,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [312, 224.0]
+    coordinate: [752, 284.0]
     rotation: 180
     state: enabled
 - name: qtgui_time_sink_x_0_0
@@ -306,7 +305,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [312, 132.0]
+    coordinate: [304, 216.0]
     rotation: 180
     state: enabled
 
@@ -320,4 +319,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.5.1

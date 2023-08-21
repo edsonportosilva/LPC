@@ -25,7 +25,6 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: Filtragem de sinais
-    window_size: ''
   states:
     bus_sink: false
     bus_source: false
@@ -35,6 +34,27 @@ options:
     state: enabled
 
 blocks:
+- name: f
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: freq
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '1000'
+    value: '50'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 272.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -44,28 +64,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 144.0]
+    coordinate: [24, 172.0]
     rotation: 0
     state: enabled
-- name: analog_noise_source_x_0
-  id: analog_noise_source_x
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
   parameters:
     affinity: ''
     alias: ''
     amp: '1'
     comment: ''
+    freq: f
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_type: analog.GR_GAUSSIAN
-    seed: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
     type: float
+    waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 24.0]
+    coordinate: [304, 32.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: blocks_throttle_0
   id: blocks_throttle
   parameters:
@@ -82,7 +105,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [416, 40.0]
+    coordinate: [640, 84.0]
     rotation: 0
     state: enabled
 - name: fir_filter_xxx_0
@@ -95,13 +118,16 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     samp_delay: '0'
-    taps: '[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]'
+    taps: "[ 0.0252 ,\t0.0170 ,\t-0.0000, \t-0.0208, \t-0.0378, \t-0.0432 ,\t-0.0312\
+      \ ,\t0.0000 ,\t0.0468 ,\t0.1009, \t0.1514 ,\t0.1871, \t0.2000 ,\t0.1871 ,\t\
+      0.1514 ,\t0.1009 ,\t0.0468, \t0.0000 ,\t-0.0312, \t-0.0432 ,\t-0.0378 ,\t-0.0208,\
+      \ \t-0.0000 ,\t0.0170 ,\t0.0252]"
     type: fff
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 32.0]
+    coordinate: [936, 76.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0_0
@@ -182,7 +208,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [232, 208.0]
+    coordinate: [752, 284.0]
     rotation: 180
     state: enabled
 - name: qtgui_time_sink_x_0_0
@@ -279,12 +305,12 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [888, 264.0]
-    rotation: 0
+    coordinate: [304, 216.0]
+    rotation: 180
     state: enabled
 
 connections:
-- [analog_noise_source_x_0, '0', blocks_throttle_0, '0']
+- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
 - [blocks_throttle_0, '0', fir_filter_xxx_0, '0']
 - [blocks_throttle_0, '0', qtgui_freq_sink_x_0_0, '0']
 - [blocks_throttle_0, '0', qtgui_time_sink_x_0_0, '0']
@@ -293,4 +319,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0

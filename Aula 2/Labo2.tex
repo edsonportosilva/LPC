@@ -216,7 +216,7 @@ y(t) = s(t) + n(t)
 A SNR é definida como sendo a razão entre a potência de sinal ($P_s$) e a potência do ruído ($P_N$) observadas num dado sistema:
 
 \begin{equation}\label{eq:SNR}
- SNR = \frac{P_s}{P_N}.
+ \mathrm{SNR} = \frac{P_s}{P_N}.
 \end{equation}
 
 \noindent em que $P_s = E[|s(t)|^2]$ e $P_N=E[|n(t)|^2]$, com $E[.]$ denotando o operador esperança ou valor esperado.
@@ -224,7 +224,7 @@ A SNR é definida como sendo a razão entre a potência de sinal ($P_s$) e a pot
 Quando expressa em decibéis (dB) a Eq.~(\ref{eq:SNR}) é dada por
 
 \begin{equation}\label{eq:SNRdB}
- SNR_{dB} = 10\log_{10}P_s-10\log_{10}P_N.
+ \mathrm{SNR}_{dB} = 10\log_{10}P_s-10\log_{10}P_N.
 \end{equation}
 
 Quanto maior a SNR maior a diferença entre a potência do sinal de interesse e a potência do ruído adicionado á mesma. Dessa forma, quanto maior a SNR melhor a qualidade do sinal.
@@ -256,7 +256,7 @@ Perceba que uma simulação computacional, como a do GNU Radio, utiliza sinais d
 
 \section{Experimentos}
 
-A seguir são descritas práticas experimentais a serem realizadas pelo aluno em laboratório. 
+A seguir são descritas práticas experimentais a serem realizadas em laboratório. 
 
 \subsection{Experimento 1 -- Filtragem de sinais}
 
@@ -354,8 +354,8 @@ O objetivo deste experimento é observar o efeito da relação sinal-ruído e da
     \question Na frequência os sinais são absolutamente iguais, por que?
     \fillwithlines{0.5in}
 
-    \question A frequência de corte do filtro é o ponto onde a potência do sinal de saída do filtro é metade da potência do sinal de entrada, chamado de ponto de 3 dB. A potência do sinal de entrada é $(A^2/2) = 1/2$ W, então a amplitude para qual a potência de saída seja 1/4 W é $A = 1/\sqrt{2} \approx 0,7071$ V. Aumente a frequência da senóide de  modo que a senóide de saída tenha essa amplitude. Qual a frequência em que isso ocorre? Verifique se a diferença é realmete 3 dB no gráfico da frequência. Observe que no projeto estabelecemos uma freuência de corte de 800 Hz.
-    \fillwithlines{0.5in}
+    \question A frequência de corte de 3~dB de um filtro é o ponto onde a potência do sinal de saída do filtro é metade da potência do sinal de entrada. A potência do sinal de entrada é $(A^2/2) = 1/2$ W, então a amplitude para qual a potência de saída seja 1/4 W é $A = 1/\sqrt{2} \approx 0,7071$ V. Aumente a frequência da senóide de  modo que a senóide de saída tenha essa amplitude. Qual a frequência em que isso ocorre? Verifique se a diferença é realmete 3 dB no gráfico da frequência. Observe que no projeto estabelecemos uma freuência de corte de 800 Hz.
+    \fillwithlines{1.0in}
     
     \question Coloque a frequência da senóide em 1 kHz. O sinal de saída praticamente desapareceu. De quanto, em dB, o sinal de entrada foi atenuado?
     \fillwithlines{0.5in}
@@ -367,7 +367,7 @@ O objetivo deste experimento é observar o efeito da relação sinal-ruído e da
     % \fillwithlines{0.5in}
     
     \question Se quiséssemos gerar uma senoide e tivermos na bancada um gerador de onda quadrada e um filtro passabaixas com características semelhantes a desse experimento, como você faria? Qual seria a frequência mínima da senoide, teórica e na prática?
-    \fillwithlines{0.5in}
+    \fillwithlines{1.0in}
 
     \question Substitua o bloco \textbf{Decimating FIR Filter} pelo bloco \textbf{High Pass Filter}, ajuste o parâmetro \textbf{Cutoff Freq} para 400 Hz e o parâmetro \textbf{Transition Width} para 50. Execute o experimento e explique o que você observou.
     \fillwithlines{0.5in}
