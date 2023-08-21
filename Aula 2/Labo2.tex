@@ -263,8 +263,8 @@ A seguir são descritas práticas experimentais a serem realizadas em laboratór
 O objetivo deste experimento é analisar o efeito da aplicação de filtros passa-baixas, passa-altas e passa-faixa a uma senóide e a uma onda quadrada estudada no experimento anterior.
 
   \begin{enumerate}
-    \item Antes de iniciar as atividades com o GRC, crie uma pasta para guardar os arquivos de seus experimentos e copie nela os modelos de diagrama (arquivos .GRC) disponibilizados pelo professor para esta aula. \textbf{Não deixe de realizar isso, pois o computador deste laboratório não é para seu uso pessoal e os arquivos que você utilizará serão alterados por você durante o experimento};
-    \item Execute o software GRC e abra o arquivo \textbf{Labo2-1.grc}. A Figura \ref{fig:GRC_2-1} ilustra o diagrama deste experimento. Ele consiste uma fonte de sinais, inicilamente uma senóide, e de um filtro FIR. A frequência da fonte de sinais é alterada por meio de uma régua deslizante. Os sinais no tempo, bem como na frequência, são mostrados antes e depois da aplicação do filtro;
+    \item Antes de iniciar as atividades com o GRC, crie uma pasta para guardar os arquivos de seus experimentos e copie nela os modelos de diagrama (arquivos .GRC) disponibilizados pelo professor para esta aula. \textbf{Não deixe de realizar isso, pois o computador deste laboratório não é para seu uso pessoal e os arquivos que você utilizará serão alterados por você durante o experimento}.
+    \item Execute o software GRC e abra o arquivo \textbf{Labo2-1.grc}. A Figura \ref{fig:GRC_2-1} ilustra o diagrama deste experimento. Ele consiste uma fonte de sinais, inicilamente uma senóide, e de um filtro FIR. A frequência da fonte de sinais é alterada por meio de uma régua deslizante. Os sinais no tempo, bem como na frequência, são mostrados antes e depois da aplicação do filtro.
     \begin{figure}[htb]
         \centering
         \includegraphics[scale=\myscale]{./Figuras/GRC_2-1a}
@@ -276,7 +276,7 @@ O objetivo deste experimento é analisar o efeito da aplicação de filtros pass
     %     \item \textbf{Noise Type}: Gaussian;
     %     \item \textbf{Amplitude}: 1;
     % \end{itemize}
-    \item Preencha o campo \textbf{Taps} do bloco \textbf{Decimating FIR Filter} (filtro FIR) com os pesos $b_i$ calculados na preparação (lista entre colchetes, com taps separados por vírgulas), use $N=25$ pesos;
+    \item Preencha o campo \textbf{Taps} do bloco \textbf{Decimating FIR Filter} (filtro FIR) com os pesos $b_i$ calculados na preparação (lista entre colchetes, com taps separados por vírgulas), use $N=25$ pesos.
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
@@ -285,7 +285,7 @@ O objetivo deste experimento é analisar o efeito da aplicação de filtros pass
 O objetivo deste experimento é observar o efeito da relação sinal-ruído sobre um sinal pela inspeção do mesmo nos domínios do tempo e da frequência.
 
 \begin{enumerate}
-    \item Abra o arquivo \textbf{Labo2-2.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_2-2a} ilustra o diagrama deste experimento. Ele consiste numa fonte senoidal adicionada a um ruído gaussiano e de um filtro passa-baixas. Os sinais no tempo, bem como na frequência, são mostrados antes e depois do filtro;
+    \item Abra o arquivo \textbf{Labo2-2.grc} disponibilizado. A Figura \ref{fig:GRC_2-2a} ilustra o diagrama deste experimento. Ele consiste numa fonte senoidal adicionada a um ruído gaussiano e de um filtro passa-baixas. Os sinais no tempo, bem como na frequência, são mostrados antes e depois do filtro.
     \begin{figure}[htb]
         \centering
         \includegraphics[width=1.0\linewidth]{./Figuras/GRC_2-2}
@@ -294,18 +294,18 @@ O objetivo deste experimento é observar o efeito da relação sinal-ruído sobr
     \end{figure}
     \item Ajuste os parâmetros do bloco \textbf{Noise Source} da seguinte forma:
     \begin{itemize}
-        \item \textbf{Noise Type}: Gaussian;
-        \item \textbf{Amplitude($\sigma$)}: 0.1;
+        \item \textbf{Noise Type}: Gaussian.
+        \item \textbf{Amplitude($\sigma$)}: 0.1.
     \end{itemize}
     \item Ajuste os parâmetros do bloco \textbf{Signal Source} da seguinte forma:
     \begin{itemize}
-        \item \textbf{Frequency}: 125 Hz;
-        \item \textbf{Waveform}: Cosine;
-        \item \textbf{Amplitude}: 1;
-        \item \textbf{Offset}: 0;
+        \item \textbf{Frequency}: 125 Hz.
+        \item \textbf{Waveform}: Cosine.
+        \item \textbf{Amplitude}: 1.
+        \item \textbf{Offset}: 0.
     \end{itemize}
-    \item Defina a banda de passagem do bloco \textbf{Low Pass Filter} ajustando a variável \textbf{freqDeCorte} para 2000 Hz;
-    \item A potência da senoide (\textbf{Signal Source}), entendida como se esta fosse aplicada a um resistor de $1~\Omega$, é dada por $A^2/2$~W e a potência média do ruído é dada de acordo com o exposto na seção \ref{sec:theorySNR}. Aqui, a variância do ruído é dada por sua amplitude (desvio padrão) ao quadrado $\sigma^2$;
+    \item Defina a banda de passagem do bloco \textbf{Low Pass Filter} ajustando o slider \textbf{Frequencia de corte} para 2000 Hz.
+    \item A potência da senoide (\textbf{Signal Source}), entendida como se esta fosse aplicada a um resistor de $1~\Omega$, é dada por $A^2/2$~W e a potência média do ruído é dada de acordo com o exposto na seção \ref{sec:theorySNR}. Aqui, a variância do ruído é dada por sua amplitude (desvio padrão) ao quadrado $\sigma^2$.
     \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 \end{enumerate}
 
