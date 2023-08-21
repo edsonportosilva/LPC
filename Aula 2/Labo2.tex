@@ -117,7 +117,7 @@ Passa Baixa &  $|H_d(\Omega)|= \begin{cases}
 & 
 $h_d(n)=\begin{cases}
 \frac{\Omega_c}{\pi}, n=0 \\
-\frac{sin\left(\Omega_c n\right)}{\pi n} , n\neq0 
+\frac{\mathrm{sen}\left(\Omega_c n\right)}{\pi n} , n\neq0 
 \end{cases}$ \\
 & & \\
 \end{tabular}
@@ -167,7 +167,7 @@ Passa Baixa
 & 
 $h(n)=\begin{cases}
 \frac{\Omega_c}{\pi}, n=\alpha \\
-\frac{sin\left[\Omega_c \left(n-\alpha\right)\right]}{\pi \left(n-\alpha\right)} , n\neq \alpha 
+\frac{\mathrm{sen}\left[\Omega_c \left(n-\alpha\right)\right]}{\pi \left(n-\alpha\right)} , n\neq \alpha 
 \end{cases}$ \\
 %& & 
 \\
@@ -175,7 +175,7 @@ Passa Alta
 & 
 $h(n)=\begin{cases}
 1-\frac{\Omega_c}{\pi}, n=\alpha, \\
-\frac{sin\left[\pi \left(n-\alpha\right)\right]}{\pi \left(n-\alpha\right)} - \frac{sin\left[\Omega_c \left(n-\alpha\right)\right]}{\pi \left(n-\alpha\right)} , n\neq \alpha 
+\frac{\mathrm{sen}\left[\pi \left(n-\alpha\right)\right]}{\pi \left(n-\alpha\right)} - \frac{\mathrm{sen}\left[\Omega_c \left(n-\alpha\right)\right]}{\pi \left(n-\alpha\right)} , n\neq \alpha 
 \end{cases}$ \\
 %& & 
 \\
@@ -183,7 +183,7 @@ Passa Faixa
 & 
 $h(n)=\begin{cases}
 \frac{\Omega_{c_2}-\Omega_{c_1}}{\pi}, n=\alpha, \\
-\frac{sin(\Omega_{c_2} \left(n-\alpha\right))-sin(\Omega_{c_1} \left(n-\alpha\right))}{\pi n} , n\neq \alpha 
+\frac{\mathrm{sen}(\Omega_{c_2} \left(n-\alpha\right))-\mathrm{sen}(\Omega_{c_1} \left(n-\alpha\right))}{\pi n} , n\neq \alpha 
 \end{cases}$ \\
 %& & 
 \\
@@ -191,7 +191,7 @@ Rejeita Faixa
 & 
 $h(n)=\begin{cases}
 1+\frac{ \Omega_{c_1}-\Omega_{c_2}}{\pi}, n=\alpha, \\
-\frac{sin(\Omega_{c_1} \left(n-\alpha\right))-sin(\Omega_{c_2} \left(n-\alpha\right)) + sin(\pi\left(n-\alpha\right))}{\pi \left(n-\alpha\right)} , n\neq \alpha
+\frac{\mathrm{sen}(\Omega_{c_1} \left(n-\alpha\right))-\mathrm{sen}(\Omega_{c_2} \left(n-\alpha\right)) + \mathrm{sen}(\pi\left(n-\alpha\right))}{\pi \left(n-\alpha\right)} , n\neq \alpha
 \end{cases}$ \\
 
 \end{tabular}
@@ -250,7 +250,7 @@ Perceba que uma simulação computacional, como a do GNU Radio, utiliza sinais d
 
 \question Que comportamento observa-se na resposta em frequência dos filtros passa-baixas projetados quando o número de coeficientes $N$ aumenta?
 
-\question Assuma que o seu celular $4G$ recebe uma potência de sinal de $P_s=-80$~dBm e utiliza uma banda de B=$20$~MHz para comunicação. Assumindo que a agitação térmica dos elétrons nos circuitos do aparelho adicionam ruído (AWGN) ao sinal recebido, qual seria o valor de $N_0$ em mW/Hz para que a $SNR$ da sua conexão fosse $25$~dB (conexão muito boa)?
+\question Assuma que o seu celular $4G$ recebe uma potência de sinal de $P_s=-80$~dBm e utiliza uma banda de B=$20$~MHz para comunicação. Assumindo que a agitação térmica dos elétrons nos circuitos do aparelho adicionam ruído (AWGN) ao sinal recebido, qual seria o valor de $N_0$ em mW/Hz para que a $\mathrm{SNR}$ da sua conexão fosse $25$~dB (conexão muito boa)?
 
 \end{questions}
 
