@@ -18,3 +18,4 @@ Repositório com material da disciplina de Laboratório de Princípios de Comuni
 * [Arquivo Labo2-1.grc](https://drive.google.com/file/d/1NbYnvTeRr4CI6QcyTB8h1eTM7goRUhdd/view?usp=sharing)
 * [Arquivo Labo2-2.grc](https://drive.google.com/file/d/1NR1AOOMTTOwY6LHg46iMd8IMz7PyzLs9/view?usp=sharing)
 * [Arquivo Labo2-3.grc](https://drive.google.com/file/d/1NHmle8_NR5-qWNqCWwOXJRsDQLt9-zjq/view?usp=sharing)
+* [Arquivo de áudio Labo2-3.wav](https://drive.google.com/file/d/1NAbWAc4XzlnJwToj-0A6VzH2h3RvGRob/view?usp=sharing)
