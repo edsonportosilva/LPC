@@ -41,9 +41,7 @@ blocks:
     label: Amp. Portadora
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: float
-    showports: 'False'
     start: '0'
     step: '0.1'
     stop: '3'
@@ -64,9 +62,7 @@ blocks:
     label: Freq Portadora
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: float
-    showports: 'False'
     start: '2000'
     step: '200'
     stop: '8000'
@@ -121,6 +117,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -143,6 +140,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_SIN_WAVE
   states:
@@ -188,13 +186,15 @@ blocks:
     coordinate: [600, 176.0]
     rotation: 0
     state: enabled
-- name: blocks_throttle_0
-  id: blocks_throttle
+- name: blocks_throttle2_0
+  id: blocks_throttle2
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     ignoretag: 'True'
+    limit: auto
+    maximum: '0.1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
@@ -204,9 +204,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 256.0]
+    coordinate: [400, 296.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -388,14 +388,14 @@ blocks:
 
 connections:
 - [Amplitude_Portadora, '0', blocks_add_xx_0, '1']
-- [Portadora, '0', blocks_throttle_0, '0']
+- [Portadora, '0', blocks_throttle2_0, '0']
 - [Sinal_Modulante, '0', blocks_add_xx_0, '0']
 - [Sinal_Modulante, '0', qtgui_time_sink_x_0, '0']
 - [blocks_add_xx_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_time_sink_x_0, '1']
-- [blocks_throttle_0, '0', blocks_multiply_xx_0, '1']
+- [blocks_throttle2_0, '0', blocks_multiply_xx_0, '1']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
+  grc_version: 3.10.7.0
