@@ -23,6 +23,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: "Desmodula\xE7\xE3o s\xEDncrona de AM-DSB-SC"
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -137,6 +138,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -159,6 +161,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -181,6 +184,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -218,6 +222,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
+    showports: 'False'
     type: float
     vlen: '1'
   states:
@@ -357,7 +362,7 @@ blocks:
     ctrlpanel: 'False'
     fc: '0'
     fftsize: '4096'
-    freqhalf: 'True'
+    freqhalf: 'False'
     grid: 'True'
     gui_hint: 0,1,1,1
     label: Relative Gain
@@ -619,3 +624,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.7.0
