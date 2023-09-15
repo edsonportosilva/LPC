@@ -23,12 +23,11 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: "Desmodula\xE7\xE3o s\xEDncrona de AM-DSB-SC"
-    window_size: 1280, 1024
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 16.0]
+    coordinate: [10, 10]
     rotation: 0
     state: enabled
 
@@ -41,9 +40,7 @@ blocks:
     label: Amp. Portadora
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: float
-    showports: 'False'
     start: '0'
     step: '0.1'
     stop: '3'
@@ -53,7 +50,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 184.0]
+    coordinate: [1384, 40.0]
+    rotation: 0
+    state: enabled
+- name: fc
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 2,1,1,1
+    label: Freq. receptor
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '4990'
+    step: '0.1'
+    stop: '5010'
+    value: '5000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1440, 216.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -65,7 +83,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 112.0]
+    coordinate: [256, 12.0]
+    rotation: 0
+    state: enabled
+- name: theta1
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 3,0,1,1
+    label: fase rec.
+    min_len: '100'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '72'
+    stop: '360'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1464, 400.0]
     rotation: 0
     state: enabled
 - name: Amplitude_Portadora
@@ -82,7 +121,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [200, 152.0]
+    coordinate: [400, 52.0]
     rotation: 0
     state: enabled
 - name: Portadora
@@ -104,7 +143,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 208.0]
+    coordinate: [64, 328.0]
     rotation: 0
     state: enabled
 - name: Portadora_0
@@ -114,7 +153,7 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: '5001'
+    freq: fc
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -126,7 +165,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 328]
+    coordinate: [56, 520.0]
     rotation: 0
     state: enabled
 - name: Sinal_Modulante
@@ -136,7 +175,7 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: '200'
+    freq: '400'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -148,7 +187,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [200, 8.0]
+    coordinate: [64, 144.0]
     rotation: 0
     state: enabled
 - name: blocks_add_xx_0
@@ -166,7 +205,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 96.0]
+    coordinate: [712, 116.0]
     rotation: 0
     state: enabled
 - name: blocks_delay_0
@@ -175,7 +214,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    delay: '0'
+    delay: int(theta1/72)
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
@@ -185,7 +224,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 368.0]
+    coordinate: [376, 564.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -203,7 +242,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [704, 112.0]
+    coordinate: [944, 260.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0
@@ -221,7 +260,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 328.0]
+    coordinate: [472, 460.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle_0
@@ -240,7 +279,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 216.0]
+    coordinate: [544, 252.0]
     rotation: 0
     state: enabled
 - name: dc_blocker_xx_0
@@ -249,7 +288,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    length: '600'
+    length: '1200'
     long_form: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -258,7 +297,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 296.0]
+    coordinate: [928, 452.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0
@@ -276,13 +315,13 @@ blocks:
     minoutbuf: '0'
     samp_rate: samp_rate
     type: fir_filter_fff
-    width: '100'
-    win: window.WIN_RECTANGULAR
+    width: '10'
+    win: window.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 288.0]
+    coordinate: [656, 400.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0_0
@@ -317,7 +356,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     fc: '0'
-    fftsize: 2**13
+    fftsize: '4096'
     freqhalf: 'True'
     grid: 'True'
     gui_hint: 0,1,1,1
@@ -363,7 +402,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1056, 136.0]
+    coordinate: [1168, 276.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -460,7 +499,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1064, 24.0]
+    coordinate: [1136, 44.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0_0
@@ -478,7 +517,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'True'
+    autoscale: 'False'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -493,7 +532,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     entags: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: ''
     label1: Sinal desmodulado
     label10: ''
@@ -557,7 +596,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1064, 280.0]
+    coordinate: [1168, 508.0]
     rotation: 0
     state: enabled
 
@@ -580,4 +619,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
