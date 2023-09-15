@@ -135,11 +135,11 @@ blocks:
     freq: '200'
     maxoutbuf: '0'
     minoutbuf: '0'
-    offset: '0'
+    offset: '-0.5'
     phase: '0'
     samp_rate: samp_rate
     type: float
-    waveform: analog.GR_SIN_WAVE
+    waveform: analog.GR_SQR_WAVE
   states:
     bus_sink: false
     bus_source: false
@@ -280,7 +280,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 396.0]
+    coordinate: [976, 420.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -377,7 +377,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1008, 76.0]
+    coordinate: [968, 76.0]
     rotation: 0
     state: enabled
 
