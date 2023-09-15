@@ -19,3 +19,13 @@ Repositório com material da disciplina de Laboratório de Princípios de Comuni
 * [Arquivo Labo2-2.grc](https://drive.google.com/file/d/1NR1AOOMTTOwY6LHg46iMd8IMz7PyzLs9/view?usp=sharing)
 * [Arquivo Labo2-3.grc](https://drive.google.com/file/d/1NHmle8_NR5-qWNqCWwOXJRsDQLt9-zjq/view?usp=sharing)
 * [Arquivo de áudio Labo2-3.wav](https://drive.google.com/file/d/1NAbWAc4XzlnJwToj-0A6VzH2h3RvGRob/view?usp=sharing)
+
+## Experimento 3: Modulação de amplitude (AM-DSB, AM-SSB).
+
+* [Guia do experimento](https://drive.google.com/file/d/1OcYVo4_rbN25TR9F1i_xrJGEtM3ehbWU/view?usp=sharing)  
+* [Jupyter notebook para estudo e preparação](https://colab.research.google.com/github/edsonportosilva/LPC/blob/master/Jupyter/Lab3/LPC-NotebookExperimento3.ipynb)
+* [Arquivo Labo3-1.grc](https://drive.google.com/file/d/1P8Mbtd6r5YNc5LsmXhOdeg7tRC0DEK8v/view?usp=sharing)
+* [Arquivo Labo3-2.grc](https://drive.google.com/file/d/1P-K03Q-NNc2DrZmy_mWdnxNNNFPtadcC/view?usp=sharing)
+* [Arquivo Labo3-3.grc](https://drive.google.com/file/d/1OzyMA1vyEt9hWkdWu9xkPJbF70mBp7it/view?usp=sharing)
+* [Arquivo Labo3-5.grc](https://drive.google.com/file/d/1OnJCiq7nzv57FgmI7n_0WxGPPsiUDWG7/view?usp=sharing)
+
