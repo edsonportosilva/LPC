@@ -23,7 +23,6 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: "Detec\xE7\xE3o de envolt\xF3ria de AM-DSB"
-    window_size: 1280, 1024
   states:
     bus_sink: false
     bus_source: false
@@ -41,9 +40,7 @@ blocks:
     label: Portadora
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: float
-    showports: 'False'
     start: '0'
     step: '0.1'
     stop: '3'
@@ -53,7 +50,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 161]
+    coordinate: [8, 240.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -65,7 +62,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 85]
+    coordinate: [16, 132.0]
     rotation: 0
     state: enabled
 - name: Amplitude_Portadora
@@ -82,7 +79,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [144, 240.0]
+    coordinate: [312, 204.0]
     rotation: 0
     state: enabled
 - name: Portadora
@@ -104,7 +101,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [96, 352.0]
+    coordinate: [280, 288.0]
     rotation: 0
     state: enabled
 - name: Sinal_Modulante
@@ -126,28 +123,26 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [200, 16]
+    coordinate: [312, 8.0]
     rotation: 0
     state: enabled
-- name: analog_am_demod_cf_0
-  id: analog_am_demod_cf
+- name: blocks_abs_xx_0
+  id: blocks_abs_xx
   parameters:
     affinity: ''
     alias: ''
-    audio_decim: '1'
-    audio_pass: '6000.0'
-    audio_stop: '7000.0'
-    chan_rate: samp_rate
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
+    type: float
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 352.0]
+    coordinate: [624, 432.0]
     rotation: 0
-    state: enabled
+    state: true
 - name: blocks_add_xx_0
   id: blocks_add_xx
   parameters:
@@ -163,23 +158,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 112.0]
-    rotation: 0
-    state: enabled
-- name: blocks_float_to_complex_0
-  id: blocks_float_to_complex
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [416, 368.0]
+    coordinate: [800, 108.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -197,7 +176,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [720, 176.0]
+    coordinate: [1072, 164.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle_0
@@ -216,7 +195,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 256.0]
+    coordinate: [776, 244.0]
     rotation: 0
     state: enabled
 - name: dc_blocker_xx_0_0
@@ -225,7 +204,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    length: '1000'
+    length: '1200'
     long_form: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -234,7 +213,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [832, 368.0]
+    coordinate: [1096, 412.0]
+    rotation: 0
+    state: enabled
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '2000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_fff
+    width: '10'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [808, 360.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -269,8 +272,8 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     fc: '0'
-    fftsize: 2**13
-    freqhalf: 'True'
+    fftsize: '4096'
+    freqhalf: 'False'
     grid: 'True'
     gui_hint: 0,1,1,1
     label: Relative Gain
@@ -315,7 +318,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1032, 256.0]
+    coordinate: [1352, 220.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -333,7 +336,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'True'
+    autoscale: 'False'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -412,7 +415,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1032, 48.0]
+    coordinate: [1352, 52.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0_0
@@ -430,7 +433,7 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    autoscale: 'True'
+    autoscale: 'False'
     axislabels: 'True'
     color1: blue
     color10: dark blue
@@ -447,7 +450,7 @@ blocks:
     entags: 'True'
     grid: 'True'
     gui_hint: 1,0,1,1
-    label1: SInal Demodulado
+    label1: Sinal Desmodulado
     label10: ''
     label2: ''
     label3: ''
@@ -509,7 +512,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1040, 400.0]
+    coordinate: [1360, 388.0]
     rotation: 0
     state: enabled
 
@@ -518,16 +521,15 @@ connections:
 - [Portadora, '0', blocks_throttle_0, '0']
 - [Sinal_Modulante, '0', blocks_add_xx_0, '0']
 - [Sinal_Modulante, '0', qtgui_time_sink_x_0, '0']
-- [analog_am_demod_cf_0, '0', dc_blocker_xx_0_0, '0']
+- [blocks_abs_xx_0, '0', low_pass_filter_0, '0']
 - [blocks_add_xx_0, '0', blocks_multiply_xx_0, '0']
-- [blocks_float_to_complex_0, '0', analog_am_demod_cf_0, '0']
-- [blocks_multiply_xx_0, '0', blocks_float_to_complex_0, '0']
+- [blocks_multiply_xx_0, '0', blocks_abs_xx_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '0']
 - [blocks_multiply_xx_0, '0', qtgui_time_sink_x_0, '1']
 - [blocks_throttle_0, '0', blocks_multiply_xx_0, '1']
 - [dc_blocker_xx_0_0, '0', qtgui_freq_sink_x_0, '1']
 - [dc_blocker_xx_0_0, '0', qtgui_time_sink_x_0_0, '0']
+- [low_pass_filter_0, '0', dc_blocker_xx_0_0, '0']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
