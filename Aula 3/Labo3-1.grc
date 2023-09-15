@@ -23,7 +23,6 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: AM-DSB
-    window_size: 1280, 1024
   states:
     bus_sink: false
     bus_source: false
@@ -51,7 +50,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 176.0]
+    coordinate: [8, 184.0]
     rotation: 0
     state: enabled
 - name: F
@@ -72,7 +71,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 312.0]
+    coordinate: [8, 360.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -101,7 +100,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 184.0]
+    coordinate: [304, 260.0]
     rotation: 0
     state: enabled
 - name: Portadora
@@ -117,14 +116,13 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
-    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [176, 304.0]
+    coordinate: [224, 424.0]
     rotation: 0
     state: enabled
 - name: Sinal_Modulante
@@ -140,14 +138,13 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
-    showports: 'False'
     type: float
     waveform: analog.GR_SIN_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 16.0]
+    coordinate: [288, 40.0]
     rotation: 0
     state: enabled
 - name: blocks_add_xx_0
@@ -165,7 +162,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [456, 160.0]
+    coordinate: [616, 244.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0
@@ -183,18 +180,16 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [600, 176.0]
+    coordinate: [784, 260.0]
     rotation: 0
     state: enabled
-- name: blocks_throttle2_0
-  id: blocks_throttle2
+- name: blocks_throttle_0
+  id: blocks_throttle
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     ignoretag: 'True'
-    limit: auto
-    maximum: '0.1'
     maxoutbuf: '0'
     minoutbuf: '0'
     samples_per_second: samp_rate
@@ -204,7 +199,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 296.0]
+    coordinate: [536, 476.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -239,14 +234,14 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     fc: '0'
-    fftsize: 2**13
-    freqhalf: 'True'
+    fftsize: '4096'
+    freqhalf: 'False'
     grid: 'True'
     gui_hint: 0,1,1,1
     label: Relative Gain
-    label1: ''
+    label1: Sinal mensagem
     label10: ''
-    label2: ''
+    label2: Portadora modulata
     label3: ''
     label4: ''
     label5: ''
@@ -257,9 +252,9 @@ blocks:
     legend: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: Espectro do Sinal Modulado
-    nconnections: '1'
-    norm_window: 'False'
+    name: Espectro dos sinais
+    nconnections: '2'
+    norm_window: 'True'
     showports: 'True'
     tr_chan: '0'
     tr_level: '0.0'
@@ -285,7 +280,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 328.0]
+    coordinate: [1000, 396.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -382,20 +377,20 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 48.0]
+    coordinate: [1008, 76.0]
     rotation: 0
     state: enabled
 
 connections:
 - [Amplitude_Portadora, '0', blocks_add_xx_0, '1']
-- [Portadora, '0', blocks_throttle2_0, '0']
+- [Portadora, '0', blocks_throttle_0, '0']
 - [Sinal_Modulante, '0', blocks_add_xx_0, '0']
+- [Sinal_Modulante, '0', qtgui_freq_sink_x_0, '0']
 - [Sinal_Modulante, '0', qtgui_time_sink_x_0, '0']
 - [blocks_add_xx_0, '0', blocks_multiply_xx_0, '0']
-- [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '1']
 - [blocks_multiply_xx_0, '0', qtgui_time_sink_x_0, '1']
-- [blocks_throttle2_0, '0', blocks_multiply_xx_0, '1']
+- [blocks_throttle_0, '0', blocks_multiply_xx_0, '1']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
