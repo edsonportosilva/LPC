@@ -23,6 +23,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: "Detec\xE7\xE3o de envolt\xF3ria de AM-DSB"
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -37,7 +38,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: 1,1,1,1
-    label: Portadora
+    label: Amplitude da Portadora
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -95,6 +96,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -117,6 +119,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -223,7 +226,7 @@ blocks:
     alias: ''
     beta: '6.76'
     comment: ''
-    cutoff_freq: '2000'
+    cutoff_freq: '3000'
     decim: '1'
     gain: '1'
     interp: '1'
@@ -533,3 +536,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.7.0
