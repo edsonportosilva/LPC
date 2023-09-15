@@ -23,6 +23,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: "Modula\xE7\xE3o AM-SSB"
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -36,12 +37,12 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '20000'
+    value: '40000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [48, 132.0]
+    coordinate: [32, 104.0]
     rotation: 0
     state: enabled
 - name: Portadora
@@ -51,19 +52,20 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: '5000'
+    freq: '10000'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
     phase: 3.14/4
     samp_rate: samp_rate
+    showports: 'False'
     type: complex
     waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [80, 400.0]
+    coordinate: [32, 368.0]
     rotation: 0
     state: enabled
 - name: Sinal_Modulante
@@ -79,13 +81,14 @@ blocks:
     offset: '-0.5'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
-    waveform: analog.GR_TRI_WAVE
+    waveform: analog.GR_SQR_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [80, 224.0]
+    coordinate: [32, 224.0]
     rotation: 0
     state: enabled
 - name: blocks_add_xx_0_0
@@ -103,7 +106,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1072, 172.0]
+    coordinate: [912, 144.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_imag_0
@@ -119,7 +122,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 464.0]
+    coordinate: [304, 416.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_imag_0_0
@@ -135,7 +138,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 112.0]
+    coordinate: [584, 112.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_real_0_0
@@ -151,7 +154,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 208.0]
+    coordinate: [584, 168.0]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '1.414'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 352.0]
     rotation: 0
     state: true
 - name: blocks_multiply_xx_0_0
@@ -169,7 +190,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 364.0]
+    coordinate: [544, 328.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0_0
@@ -187,7 +208,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [864, 156.0]
+    coordinate: [776, 128.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0_1
@@ -205,7 +226,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 564.0]
+    coordinate: [608, 488.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle_0
@@ -224,7 +245,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 276.0]
+    coordinate: [368, 264.0]
     rotation: 0
     state: enabled
 - name: dc_blocker_xx_0
@@ -233,7 +254,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    length: '32'
+    length: '512'
     long_form: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -242,9 +263,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1152, 556.0]
+    coordinate: [928, 488.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: hilbert_fc_0
   id: hilbert_fc
   parameters:
@@ -260,7 +281,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 100.0]
+    coordinate: [416, 104.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -270,9 +291,9 @@ blocks:
     alias: ''
     beta: '6.76'
     comment: ''
-    cutoff_freq: '8000'
+    cutoff_freq: '4000'
     decim: '1'
-    gain: '4'
+    gain: '2'
     interp: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -284,7 +305,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [904, 504.0]
+    coordinate: [736, 448.0]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '4000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_fff
+    width: '10'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 80.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -365,7 +410,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1312, 364.0]
+    coordinate: [1120, 328.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -436,10 +481,10 @@ blocks:
     style7: '1'
     style8: '1'
     style9: '1'
-    tr_chan: '0'
+    tr_chan: '2'
     tr_delay: '0'
-    tr_level: '1'
-    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_level: '0.1'
+    tr_mode: qtgui.TRIG_MODE_AUTO
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
     type: float
@@ -462,7 +507,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1352, 172.0]
+    coordinate: [1112, 208.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1
@@ -499,7 +544,7 @@ blocks:
     gui_hint: ''
     label1: Sinal demodulado
     label10: Signal 10
-    label2: Signal 2
+    label2: Sinal Transmitido
     label3: Signal 3
     label4: Signal 4
     label5: Signal 5
@@ -520,7 +565,7 @@ blocks:
     marker9: '-1'
     name: Sinal AM-SSB demodulado
     nconnections: '1'
-    size: '1024'
+    size: '500'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -552,22 +597,21 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '1'
-    ymin: '-1'
+    ymax: '2'
+    ymin: '-2'
     yunit: '""'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1376, 532.0]
+    coordinate: [1104, 472.0]
     rotation: 0
     state: true
 
 connections:
 - [Portadora, '0', blocks_complex_to_imag_0, '0']
 - [Portadora, '0', blocks_complex_to_real_0_0, '0']
-- [Sinal_Modulante, '0', blocks_throttle_0, '0']
-- [Sinal_Modulante, '0', hilbert_fc_0, '0']
+- [Sinal_Modulante, '0', low_pass_filter_0_0, '0']
 - [blocks_add_xx_0_0, '0', blocks_multiply_xx_0_0_1, '0']
 - [blocks_add_xx_0_0, '0', qtgui_freq_sink_x_0, '1']
 - [blocks_add_xx_0_0, '0', qtgui_time_sink_x_0, '1']
@@ -575,9 +619,10 @@ connections:
 - [blocks_complex_to_imag_0, '0', blocks_multiply_xx_0_0_1, '1']
 - [blocks_complex_to_imag_0_0, '0', blocks_multiply_xx_0_0_0, '0']
 - [blocks_complex_to_real_0_0, '0', blocks_multiply_xx_0_0_0, '1']
+- [blocks_multiply_const_vxx_0, '0', qtgui_freq_sink_x_0, '0']
+- [blocks_multiply_const_vxx_0, '0', qtgui_time_sink_x_0, '0']
 - [blocks_multiply_xx_0_0, '0', blocks_add_xx_0_0, '1']
-- [blocks_multiply_xx_0_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_multiply_xx_0_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_multiply_xx_0_0, '0', blocks_multiply_const_vxx_0, '0']
 - [blocks_multiply_xx_0_0_0, '0', blocks_add_xx_0_0, '0']
 - [blocks_multiply_xx_0_0_1, '0', low_pass_filter_0, '0']
 - [blocks_throttle_0, '0', blocks_multiply_xx_0_0, '0']
@@ -585,6 +630,9 @@ connections:
 - [dc_blocker_xx_0, '0', qtgui_time_sink_x_1, '0']
 - [hilbert_fc_0, '0', blocks_complex_to_imag_0_0, '0']
 - [low_pass_filter_0, '0', dc_blocker_xx_0, '0']
+- [low_pass_filter_0_0, '0', blocks_throttle_0, '0']
+- [low_pass_filter_0_0, '0', hilbert_fc_0, '0']
 
 metadata:
   file_format: 1
+  grc_version: 3.10.7.0
