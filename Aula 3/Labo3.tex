@@ -92,7 +92,7 @@ Os resultados destes problemas serão necessários para a realização dos exper
   \question Considere um tom modulante de frequência $f_{m} = 200$~Hz e uma portadora de frequência $f_{c} = 5$~kHz. Esboce os gráficos, no tempo e na frequência, do sinal modulante $m(t) = \cos{2\pi f_{m}t}$ e do sinal modulado $\varphi_{DSB}(t) = A\cos{2\pi f_{c}t} + m(t)\cos{2\pi f_{c}t}$ considerando índices de modulação $\mu = 0.5$, $1.0$, $2.0$ e $\infty$. %($A = 0$).
   \question Descreva um diagrama de blocos de um receptor síncrono (coerente) para $\varphi_{DSB}(t)$.
   \question Descreva um diagrama de blocos de um detector de envoltória para $\varphi_{DSB}(t)$.
-  \question O AM comercial usa um receptor super-heteródino com detecção de envoltória. Nele, o sinal recebido é deslocado para uma frequência intermediária $f_{i} = 455$~kHz. Quais as frequências do oscilador local do misturador para $f_{c} = 1050$, $1160$ e $1310$~kHz para deslocar o sinal para a frequência intermediária $f_i$?
+  %\question O AM comercial usa um receptor super-heteródino com detecção de envoltória. Nele, o sinal recebido é deslocado para uma frequência intermediária $f_{i} = 455$~kHz. Quais as frequências do oscilador local do misturador para $f_{c} = 1050$, $1160$ e $1310$~kHz para deslocar o sinal para a frequência intermediária $f_i$?
 \end{questions}
 
 \section{Experimentos}
@@ -105,10 +105,11 @@ O objetivo deste experimento é analisar as modulações em amplitude DSB e DSB-
 
 \begin{enumerate}   
     \item Execute o software GRC e abra o arquivo \textbf{Labo3-1.grc}. A Figura \ref{fig:GRC_3-1} ilustra o diagrama deste experimento. Ele consiste na simulação do sinal AM-DSB $\varphi_{DSB}(t)$, dado por 
-\begin{equation} \label{eq:am}
-    \varphi_{DSB}(t) = [A + m(t)]\cos(2\pi f_{c}t),
-\end{equation}
-em que $m(t)$ é o sinal modulante (com nível DC zero), $A$ corresponde a um nível DC adicionado a $m(t)$ e $f_c$ é a frequência da portadora em Hz. Nesta simulação, utilizaremos como sinal modulante $m(t)$ uma sinal senoidal, o qual facilmente podemos reproduzir e variar sua amplitude e frequência. Os parâmetros $A$ e $f_c$ podem ser alterados por suas respectivas réguas deslizantes disponíveis acima dos gráficos durante a execução do diagrama;
+\begin{align} \label{eq:am}
+    \varphi_{DSB}(t) =& [A + m(t)]\cos(2\pi f_{c}t),\\
+        		    =& A\cos(2\pi f_{c}t) + m(t)\cos(2\pi f_{c}t)    
+\end{align}
+em que $m(t)$ é o sinal modulante (com nível DC zero), $A$ corresponde à amplitude da portadora não-modulada e $f_c$ é a frequência da portadora em Hz. Nesta simulação, utilizaremos como sinal modulante $m(t)$ um sinal senoidal, o qual facilmente podemos reproduzir e variar sua amplitude e frequência. Os parâmetros $A$ e $f_c$ podem ser alterados por suas respectivas réguas deslizantes disponíveis acima dos gráficos durante a execução do diagrama.
     \begin{figure}[htb]
         \centering
         \includegraphics[scale=\myscale]{./Figuras/Labo3-1}
@@ -150,22 +151,22 @@ O objetivo deste experimento é observar o efeito da sobremodulação ($\mu > 1$
   \item Responda as questões propostas na Folha de Respostas.
 \end{enumerate}
 
-\subsection{Experimento 4 -- Receptor Super-heteródino}
+%\subsection{Experimento 4 -- Receptor Super-heteródino}
+%
+%O objetivo deste experimento é mostrar o conceito de um receptor super-heteródino.
+%
+%\begin{enumerate}
+%    \item  Abra o arquivo \textbf{Labo3-4.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_3-1d} ilustra o diagrama deste experimento. Ele consiste de um modulador AM-DSB para um sinal de voz gravado. No esquema, é possível alterar as frequências da portadora e de sintonia do receptor bem como a amplitude da portadora. A frequência intermediária é $fi = 25$~kHz, de modo que toda vez que uma frequência é sintonizada o sinal é transladado para $fi$. 
+%    \begin{figure}[htb]
+%        \centering
+%        \includegraphics[scale=\myscale]{./Figuras/Labo3-4}
+%        \caption{Diagrama de blocos de um receptor super-heteródino.} 
+%        \label{fig:GRC_3-1d}
+%    \end{figure}
+%  \item Execute o experimento e responda as questões propostas na Folha de Respostas.
+%\end{enumerate}
 
-O objetivo deste experimento é mostrar o conceito de um receptor super-heteródino.
-
-\begin{enumerate}
-    \item  Abra o arquivo \textbf{Labo3-4.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_3-1d} ilustra o diagrama deste experimento. Ele consiste de um modulador AM-DSB para um sinal de voz gravado. No esquema, é possível alterar as frequências da portadora e de sintonia do receptor bem como a amplitude da portadora. A frequência intermediária é $fi = 25$~kHz, de modo que toda vez que uma frequência é sintonizada o sinal é transladado para $fi$. 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[scale=\myscale]{./Figuras/Labo3-4}
-        \caption{Diagrama de blocos de um receptor super-heteródino.} 
-        \label{fig:GRC_3-1d}
-    \end{figure}
-  \item Execute o experimento e responda as questões propostas na Folha de Respostas.
-\end{enumerate}
-
-\newpage \ \newpage \pagenumbering{arabic}
+\newpage \pagenumbering{arabic}
 
 \noindent \includegraphics[height=2cm]{../Figuras/UFCGLogo} \hfill
 \begin{minipage}{.66\textwidth} \large \centering \vspace{-1.8cm}
@@ -195,18 +196,18 @@ O objetivo deste experimento é mostrar o conceito de um receptor super-heteród
     % \question Faça $A = 1$ (deslizando a respectiva régua) observe no espectro de frequência a introdução do espectro da portadora  em relação a questão anterior, quando $A=0$. Qual o novo índice de modulação? Qual a potência média da portadora? Qual a amplitude da portadora em dB no espectro de frequência?
     % \fillwithlines{0.25in}
     \question Qual a largura de faixa do sinal modulante e do sinal modulado?
-    \fillwithlines{0.25in}
-
-    \question Alterar a frequência da portadora, para 3 kHz por exemplo, altera a largura de faixa do sinal modulado? Altera a sua potência? Justifique.
     \fillwithlines{0.5in}
 
-    \question Faça $A = 1$ (deslizando a respectiva régua) observe no espectro de frequência a introdução do espectro da portadora  em relação a questão anterior, quando $A=0$. Qual o novo índice de modulação? Observe que a envoltória do sinal modulado segue o sinal mensagem e que a introdução da portadora não alterou a largura de faixa do sinal modulado. % Qual a diferença entre a potência da portadora e da mensagem em dB observando o espectro de frequência? Quantas vezes a potência da portadora é maior do que a do sinal mensagem?
+    \question Alterar a frequência da portadora, para 3 kHz por exemplo, altera a largura de faixa do sinal modulado? Altera a sua potência? Justifique.
+    \fillwithlines{0.75in}
+
+    \question Faça $A = 1$ (deslizando a respectiva régua) observe no espectro de frequência a introdução do espectro da portadora  em relação a questão anterior, quando $A=0$. Qual é o valor do índice de modulação? Observe que a envoltória do sinal modulado segue o sinal mensagem e que a introdução da portadora não alterou a largura de faixa do sinal modulado. % Qual a diferença entre a potência da portadora e da mensagem em dB observando o espectro de frequência? Quantas vezes a potência da portadora é maior do que a do sinal mensagem?
     \fillwithlines{0.5in}
 
 %    \question A introdução da portadora alterou a largura de faixa do sinal modulado?
 %    \fillwithlines{0.25in}
 
-    \question Qaunto de potência a mais temos que ter no transmissor para transmitir o sinal modulado com $A=1$ em relação ao sinal modulado com $A=0$?
+    \question Quanto de potência a mais temos que ter no transmissor para transmitir o sinal modulado com $A=1$ em relação ao sinal modulado com $A=0$?
     \fillwithlines{0.5in}
 
     % \question Altere a frequência do sinal modulante para 400 Hz. Que alteração foi observada no espectro de frequência do sinal modulado?
@@ -224,8 +225,8 @@ O objetivo deste experimento é mostrar o conceito de um receptor super-heteród
     % \question Altere a frequência da portadora deslizando a sua respectiva régua. O que aconteceu com o sinal modulado? (Observe o gráfico em frequência.)
     % \fillwithlines{0.5in}
     
-    \question Coloque uma onda quadrada como mensagem e ajuste o parâmetro \textbf{Offset} para $-0.5$. Execute experimento para $A = 0$ e verifique que não há mais diferenças nas amplitudes do sinal. Explique onde está a diferença entre os níveis da onda quadrada? Esse fato não ocorre para $A \ne 0$. Nota: Essa é uma modulação digital chamada de PSK ({\it Phase Shift Keing}).
-   \fillwithlines{0.5in}
+    %\question Coloque uma onda quadrada como mensagem e ajuste o parâmetro \textbf{Offset} para $-0.5$. Execute experimento para $A = 0$ e verifique que não há mais diferenças nas amplitudes do sinal. Explique onde está a diferença entre os níveis da onda quadrada? Esse fato não ocorre para $A \ne 0$. Nota: Essa é uma modulação digital chamada de PSK ({\it Phase Shift Keing}).
+   % \fillwithlines{0.5in}
     
  
 
@@ -269,24 +270,24 @@ O objetivo deste experimento é mostrar o conceito de um receptor super-heteród
     \fillwithlines{0.75in}
 \end{questions}
 
-\section*{Experimento 4 -- Receptor Super-heteródino}
-
- \begin{questions}
-%     \question Por que o sinal sintonizado é sempre transladado para $f_{i} = 25$~kHz? Observe o bloco \textbf{Signal Source} correspondente ao oscilador local do receptor e use os resultados da preparação.
-%     \fillwithlines{1in}
-    
-    \question Na prática é possível se estimar o índice de modulação pela observação da envoltória do sinal modulado. Considere $S_{max}$ e $S_{min}$ os valores máximo e mínimo da envoltória respectivamente, então
-    \begin{equation}
-      \label{eq:mu100}
-      \mu \times 100\% = \frac{S_{max} - S_{min}}{S_{max} + S_{min}}
-      \times 100\%
-    \end{equation}
-    Estime o índice de modulação do sinal de voz modulado desse experimento. Para qual valor de amplitude teríamos um indice de modulação de aproximadamente 1? Altere o índice de modulaçao para infinito ($A = 0$) e observe o que ocorre.
-    \fillwithlines{0.5in}
-
-   \question Coloque o transmissor AM (a frequência da  portadora do transmissor) na frequência de 125~kHz. Sintonize na nova frequência, perceba que não precisa termos a frequência exata para que o sinal de voz seja capturado. Existe uma outra frequência de sintonia no receptor, além da de 125~kHz, em que o sinal é também desmodulado. A rádio em 125~kHz é uma rádio fantasma para essa frequência. Qual é essa frequência e por que isso ocorre?
-   \fillwithlines{1in}
-
- \end{questions}
+%\section*{Experimento 4 -- Receptor Super-heteródino}
+%
+% \begin{questions}
+%%     \question Por que o sinal sintonizado é sempre transladado para $f_{i} = 25$~kHz? Observe o bloco \textbf{Signal Source} correspondente ao oscilador local do receptor e use os resultados da preparação.
+%%     \fillwithlines{1in}
+%    
+%    \question Na prática é possível se estimar o índice de modulação pela observação da envoltória do sinal modulado. Considere $S_{max}$ e $S_{min}$ os valores máximo e mínimo da envoltória respectivamente, então
+%    \begin{equation}
+%      \label{eq:mu100}
+%      \mu \times 100\% = \frac{S_{max} - S_{min}}{S_{max} + S_{min}}
+%      \times 100\%
+%    \end{equation}
+%    Estime o índice de modulação do sinal de voz modulado desse experimento. Para qual valor de amplitude teríamos um indice de modulação de aproximadamente 1? Altere o índice de modulaçao para infinito ($A = 0$) e observe o que ocorre.
+%    \fillwithlines{0.5in}
+%
+%   \question Coloque o transmissor AM (a frequência da  portadora do transmissor) na frequência de 125~kHz. Sintonize na nova frequência, perceba que não precisa termos a frequência exata para que o sinal de voz seja capturado. Existe uma outra frequência de sintonia no receptor, além da de 125~kHz, em que o sinal é também desmodulado. A rádio em 125~kHz é uma rádio fantasma para essa frequência. Qual é essa frequência e por que isso ocorre?
+%   \fillwithlines{1in}
+%
+% \end{questions}
 
 \end{document}
