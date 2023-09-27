@@ -1,6 +1,6 @@
 options:
   parameters:
-    author: ''
+    author: Edson P. da Silva
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Not titled yet
+    title: "Modula\xE7\xE3o/Desmodula\xE7\xE3o PM"
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -45,13 +45,13 @@ blocks:
     start: '0'
     step: '10'
     stop: '1000'
-    value: '100'
+    value: '500'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1312, 288.0]
+    coordinate: [1344, 304.0]
     rotation: 0
     state: true
 - name: fc
@@ -72,7 +72,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1312, 152.0]
+    coordinate: [1344, 160.0]
     rotation: 0
     state: true
 - name: kp
@@ -84,16 +84,16 @@ blocks:
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
-    start: '0.01'
-    step: '0.1'
-    stop: '20'
-    value: '10'
+    start: '0.05'
+    step: '0.05'
+    stop: '10'
+    value: '1'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1312, 16.0]
+    coordinate: [1344, 16.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -128,8 +128,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 232.0]
-    rotation: 0
+    coordinate: [16.0, 120]
+    rotation: 270
     state: true
 - name: analog_sig_source_x_0_0
   id: analog_sig_source_x
@@ -151,7 +151,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 376.0]
+    coordinate: [16, 344.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_imag_0
@@ -167,7 +167,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 416.0]
+    coordinate: [280, 328.0]
     rotation: 0
     state: true
 - name: blocks_complex_to_real_0
@@ -183,7 +183,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [400, 352.0]
+    coordinate: [280, 392.0]
     rotation: 0
     state: true
 - name: blocks_divide_xx_0
@@ -201,7 +201,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1008, 488.0]
+    coordinate: [896, 376.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0
@@ -219,7 +219,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 144.0]
+    coordinate: [424, 64.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0_0
@@ -237,8 +237,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1112.0, 408]
-    rotation: 90
+    coordinate: [1184, 384.0]
+    rotation: 0
     state: true
 - name: blocks_multiply_xx_0
   id: blocks_multiply_xx
@@ -255,7 +255,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 96.0]
+    coordinate: [808, 24.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0
@@ -273,7 +273,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 200.0]
+    coordinate: [808, 96.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0_0
@@ -291,7 +291,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 400.0]
+    coordinate: [528, 296.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0_0_0
@@ -309,7 +309,25 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 560.0]
+    coordinate: [528, 400.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_0_0_0_0_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 192.0]
     rotation: 0
     state: enabled
 - name: blocks_sub_xx_0
@@ -327,7 +345,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 152.0]
+    coordinate: [960, 64.0]
     rotation: 0
     state: true
 - name: blocks_throttle_0
@@ -346,7 +364,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 144.0]
+    coordinate: [248, 64.0]
     rotation: 0
     state: true
 - name: blocks_transcendental_0
@@ -363,7 +381,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [536, 80.0]
+    coordinate: [576, 16.0]
     rotation: 0
     state: true
 - name: blocks_transcendental_1
@@ -380,7 +398,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [528, 224.0]
+    coordinate: [576, 120.0]
     rotation: 0
     state: true
 - name: blocks_transcendental_2
@@ -397,26 +415,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1176.0, 408]
-    rotation: 270
-    state: true
-- name: dc_blocker_xx_0
-  id: dc_blocker_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    length: '2000'
-    long_form: 'True'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: ff
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1248.0, 456]
-    rotation: 90
+    coordinate: [1000, 384.0]
+    rotation: 0
     state: true
 - name: low_pass_filter_0
   id: low_pass_filter
@@ -427,7 +427,7 @@ blocks:
     comment: ''
     cutoff_freq: '2000'
     decim: '1'
-    gain: '1'
+    gain: '-1'
     interp: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -439,7 +439,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 360.0]
+    coordinate: [680, 256.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0_0
@@ -463,7 +463,55 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 520.0]
+    coordinate: [184.0, 160]
+    rotation: 90
+    state: true
+- name: low_pass_filter_0_1
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '2000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_fff
+    width: '150'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 408.0]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0_1_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: ''
+    cutoff_freq: '2000'
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fir_filter_fff
+    width: '150'
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [904, 200.0]
     rotation: 0
     state: true
 - name: qtgui_freq_sink_x_0
@@ -488,7 +536,7 @@ blocks:
     color1: '"blue"'
     color10: '"dark blue"'
     color2: '"red"'
-    color3: '"green"'
+    color3: '"black"'
     color4: '"black"'
     color5: '"cyan"'
     color6: '"magenta"'
@@ -498,15 +546,15 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     fc: '0'
-    fftsize: '8192'
+    fftsize: '4096'
     freqhalf: 'False'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0,0,1,2
     label: Relative Gain
-    label1: Portadora modulada
+    label1: Portadora modulada PM
     label10: ''''''
     label2: Sinal mensagem
-    label3: ''''''
+    label3: Portadora modulada AM-DSB-SC
     label4: ''''''
     label5: ''''''
     label6: ''''''
@@ -517,8 +565,8 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     name: '""'
-    nconnections: '2'
-    norm_window: 'True'
+    nconnections: '3'
+    norm_window: 'False'
     showports: 'False'
     tr_chan: '0'
     tr_level: '0.0'
@@ -539,12 +587,12 @@ blocks:
     width9: '1'
     wintype: window.WIN_BLACKMAN_hARRIS
     ymax: '0'
-    ymin: '-150'
+    ymin: '-180'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1120, 64.0]
+    coordinate: [1192, 16.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -578,7 +626,7 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
+    gui_hint: 0,2,1,2
     label1: Portadora modulada PM
     label10: Signal 10
     label2: Sinal mensagem
@@ -615,7 +663,7 @@ blocks:
     style7: '1'
     style8: '1'
     style9: '1'
-    tr_chan: '0'
+    tr_chan: '1'
     tr_delay: '0'
     tr_level: '0.0'
     tr_mode: qtgui.TRIG_MODE_FREE
@@ -641,7 +689,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 240.0]
+    coordinate: [1192, 120.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_1
@@ -675,10 +723,10 @@ blocks:
     ctrlpanel: 'False'
     entags: 'True'
     grid: 'False'
-    gui_hint: ''
-    label1: Signal 1
+    gui_hint: 2,0,1,4
+    label1: "Sa\xEDda do demodulador"
     label10: Signal 10
-    label2: Signal 2
+    label2: Sinal mensagem
     label3: Signal 3
     label4: Signal 4
     label5: Signal 5
@@ -698,7 +746,7 @@ blocks:
     marker8: '-1'
     marker9: '-1'
     name: '""'
-    nconnections: '1'
+    nconnections: '2'
     size: '1024'
     srate: samp_rate
     stemplot: 'False'
@@ -712,10 +760,10 @@ blocks:
     style7: '1'
     style8: '1'
     style9: '1'
-    tr_chan: '0'
+    tr_chan: '1'
     tr_delay: '0'
     tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_mode: qtgui.TRIG_MODE_AUTO
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
     type: float
@@ -738,28 +786,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1392, 432.0]
+    coordinate: [1192, 208.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_sig_source_x_0, '0', blocks_throttle_0, '0']
-- [analog_sig_source_x_0, '0', qtgui_freq_sink_x_0, '1']
-- [analog_sig_source_x_0, '0', qtgui_time_sink_x_0, '1']
+- [analog_sig_source_x_0, '0', low_pass_filter_0_0, '0']
 - [analog_sig_source_x_0_0, '0', blocks_complex_to_imag_0, '0']
 - [analog_sig_source_x_0_0, '0', blocks_complex_to_real_0, '0']
 - [blocks_complex_to_imag_0, '0', blocks_multiply_xx_0_0, '0']
 - [blocks_complex_to_imag_0, '0', blocks_multiply_xx_0_0_0, '1']
+- [blocks_complex_to_imag_0, '0', blocks_multiply_xx_0_0_0_0_0, '1']
 - [blocks_complex_to_real_0, '0', blocks_multiply_xx_0, '1']
 - [blocks_complex_to_real_0, '0', blocks_multiply_xx_0_0_0_0, '1']
-- [blocks_divide_xx_0, '0', blocks_multiply_const_vxx_0_0, '0']
+- [blocks_divide_xx_0, '0', blocks_transcendental_2, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_transcendental_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_transcendental_1, '0']
-- [blocks_multiply_const_vxx_0_0, '0', blocks_transcendental_2, '0']
+- [blocks_multiply_const_vxx_0_0, '0', qtgui_time_sink_x_1, '0']
 - [blocks_multiply_xx_0, '0', blocks_sub_xx_0, '0']
 - [blocks_multiply_xx_0_0, '0', blocks_sub_xx_0, '1']
 - [blocks_multiply_xx_0_0_0, '0', low_pass_filter_0, '0']
-- [blocks_multiply_xx_0_0_0_0, '0', low_pass_filter_0_0, '0']
+- [blocks_multiply_xx_0_0_0_0, '0', low_pass_filter_0_1, '0']
+- [blocks_multiply_xx_0_0_0_0_0, '0', qtgui_freq_sink_x_0, '2']
 - [blocks_sub_xx_0, '0', blocks_multiply_xx_0_0_0, '0']
 - [blocks_sub_xx_0, '0', blocks_multiply_xx_0_0_0_0, '0']
 - [blocks_sub_xx_0, '0', qtgui_freq_sink_x_0, '0']
@@ -767,10 +815,15 @@ connections:
 - [blocks_throttle_0, '0', blocks_multiply_const_vxx_0, '0']
 - [blocks_transcendental_0, '0', blocks_multiply_xx_0, '0']
 - [blocks_transcendental_1, '0', blocks_multiply_xx_0_0, '1']
-- [blocks_transcendental_2, '0', dc_blocker_xx_0, '0']
-- [dc_blocker_xx_0, '0', qtgui_time_sink_x_1, '0']
+- [blocks_transcendental_2, '0', blocks_multiply_const_vxx_0_0, '0']
 - [low_pass_filter_0, '0', blocks_divide_xx_0, '0']
-- [low_pass_filter_0_0, '0', blocks_divide_xx_0, '1']
+- [low_pass_filter_0_0, '0', blocks_multiply_xx_0_0_0_0_0, '0']
+- [low_pass_filter_0_0, '0', blocks_throttle_0, '0']
+- [low_pass_filter_0_0, '0', low_pass_filter_0_1_0, '0']
+- [low_pass_filter_0_0, '0', qtgui_freq_sink_x_0, '1']
+- [low_pass_filter_0_0, '0', qtgui_time_sink_x_0, '1']
+- [low_pass_filter_0_1, '0', blocks_divide_xx_0, '1']
+- [low_pass_filter_0_1_0, '0', qtgui_time_sink_x_1, '1']
 
 metadata:
   file_format: 1
