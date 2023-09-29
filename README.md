@@ -29,3 +29,9 @@ Repositório com material da disciplina de Laboratório de Princípios de Comuni
 * [Arquivo Labo3-3.grc](https://drive.google.com/file/d/1OzyMA1vyEt9hWkdWu9xkPJbF70mBp7it/view?usp=sharing)
 * [Arquivo Labo3-5.grc](https://drive.google.com/file/d/1OnJCiq7nzv57FgmI7n_0WxGPPsiUDWG7/view?usp=sharing)
 
+## Experimento 4: Modulação de ângulo (PM, FM).
+
+* [Guia do experimento](https://drive.google.com/file/d/1PuZhZqX4DGZiVlg7DyeqKnFNI8Y2HaKO/view?usp=sharing) 
+* [Arquivo Labo4-1.grc](https://drive.google.com/file/d/1QBA-HQtR4TXA_AUZtmN23672-uyruGvQ/view?usp=sharing)
+* [Arquivo Labo4-2.grc](https://drive.google.com/file/d/1Q6pkiA0uFQkBmakt-OiPqEvqUNh2mkxu/view?usp=sharing)
+* [Arquivo Labo4-4.grc](https://drive.google.com/file/d/1Q56rAkgR0br_OCsuFah8q_b9Oaxrt5Ys/view?usp=sharing).
