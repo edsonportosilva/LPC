@@ -415,7 +415,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1048, 384.0]
+    coordinate: [1000, 384.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -548,7 +548,7 @@ blocks:
     fc: '0'
     fftsize: '4096'
     freqhalf: 'False'
-    grid: 'False'
+    grid: 'True'
     gui_hint: 0,0,1,2
     label: Relative Gain
     label1: Portadora modulada PM
@@ -722,9 +722,9 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     entags: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: 2,0,1,4
-    label1: "Sa\xEDda do demodulador PM"
+    label1: "Sa\xEDda do desmodulador PM"
     label10: Signal 10
     label2: Sinal mensagem
     label3: Signal 3
