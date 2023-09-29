@@ -89,22 +89,34 @@ Os problemas propostos a seguir devem ser obrigatoriamente resolvidos e apresent
         \part Calcule o desvio de frequência $\Delta f_{\text{PM}}$, a razão de desvio $\beta_{\text{PM}}$ (também chamada de índice de modulação) e a largura de faixa estimada $B_{\text{PM}}$ para o caso PM.
         \part Calcule o desvio de frequência $\Delta f_{\text{FM}}$, a razão de desvio $\beta_{\text{FM}}$ (também chamada de índice de modulação) e a largura de faixa estimada $B_{\text{FM}}$ para o caso FM.
     \end{parts}
-    \item Explique o que é e como funciona um VCO (\textit{Voltage Controlled Oscillator}). Explique como um VCO pode ser utilizado na geração de um sinal FM.
-\end{enumerate}
+    \item Explique o que é e como funciona um VCO (\textit{Voltage Controlled Oscillator}). Explique como um VCO pode ser utilizado na geração de um sinal FM.    
+    
+    \item Mostre que a fase $\theta(t)$ do sinal PM $\varPsi(t) = A\cos[2\pi f_c t + \theta(t)]$ pode ser recuperada na saída do desmodulador coerente ilustrado na Fig.~\ref{fig:GRC_4-0}.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.85\linewidth]{./Figuras/PM-Demod.png}
+        \caption{Diagrama de blocos de um desmodulador PM coerente.} 
+        \label{fig:GRC_4-0}
+    \end{figure}
+  
+  \end{enumerate}
+  
+\clearpage
 
 \section{Experimentos}
 
-A seguir são descritas práticas experimentais a serem realizadas pelo aluno em aula de laboratório. 
+A seguir são descritas práticas experimentais a serem realizadas no laboratório. 
 
-\subsection{Experimento 1 -- Modulação PM}
+\subsection{Experimento 1 -- Modulação PM com Detecção Síncrona}
 
 O objetivo deste experimento é analisar as características da modulação PM.
 
 \begin{enumerate}   
     \item Execute o software GRC e abra o arquivo \textbf{Labo4-1.grc}. A Figura \ref{fig:GRC_4-1} ilustra o diagrama deste experimento. Ele consiste na simulação da equação 
 \begin{align}
-  \varPsi(t) &= A\cos[\omega_ct + \Phi(t)[\nonumber\\
-   &= A\{\cos(\omega_ct) \cos[\Phi(t)] -  \sin(\omega_ct) \sin[\Phi(t)]\}
+  \varPsi(t) &= A\cos[2\pi f_c t + \Phi(t)[\nonumber\\
+   &= A\{\cos(2\pi f_c t) \cos[\Phi(t)] -  \sin(2\pi f_c t) \sin[\Phi(t)]\}
   \label{eq:pm}
 \end{align}
 em que o $\Phi(t) = K_pm(t)$, de modo que $\varPsi(t)$ é um sinal PM ({\it Phase Modulation}), ou seja, uma portadora modulada em fase.
@@ -137,7 +149,7 @@ em que o $\Phi(t) = K_pm(t)$, de modo que $\varPsi(t)$ é um sinal PM ({\it Phas
 %   \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
 % \end{enumerate}
 
-\subsection{Experimento 2 -- Modulação FM de Faixa Larga}
+\subsection{Experimento 2 -- Modulação FM}
 
 O objetivo deste experimento é analisar o modulador FM de faixa larga. 
 
@@ -166,7 +178,7 @@ O objetivo deste experimento é analisar o modulador FM de faixa larga.
 %    \end{figure}
 %  \item Execute o experimento e responda as questões propostas na Folha de Respostas.
 %\end{enumerate}
-
+\newpage
 \subsection{Experimento 3 -- Desmodulação com Detecção por Inclinação}
 
 O objetivo deste experimento é mostrar o conceito de um receptor FM usando deteção por inclinação.
@@ -221,7 +233,7 @@ O objetivo deste experimento é mostrar o conceito de um receptor FM usando dete
 \end{tabular*}
 \noindent\rule[2ex]{\textwidth}{2pt}
 
-\section*{Experimento 1 -- Modulação PM}
+\section*{Experimento 1 -- Modulação PM com Detecção Síncrona}
 
 \begin{questions}
     \question Quais as diferenças mais visíveis entre o sinal PM e o sinal AM-DSB-SC no domínio da frequência? E no domínio do tempo?
@@ -229,11 +241,17 @@ O objetivo deste experimento é mostrar o conceito de um receptor FM usando dete
     \question Estime o desvio de frequência $\Delta f$ e a largura de faixa $B_{\text{PM}}$ do sinal modulado usando os gráficos no tempo e na frequência. Qual a razão de desvio $\beta$?
     \fillwithlines{0.75in}
     
-    \question Observe as formas de onda no domínio do tempo do sinal mensagem e do sinal demodulado. Para que intervalo de valores de $K_p$ o sinal mensagem é recuperado sem distorção? O que poderia explicar esse fato?
+    \question Observando o espectro dos sinais, descreva qualitativamente a relação que existe entre a variação no valor de $K_{p}$ e a largura de banda da portadora modulada.
+    \fillwithlines{1.0in}
+     
+    \question Observe as formas de onda no domínio do tempo do sinal mensagem e do sinal desmodulado. Para que intervalo de valores de $K_p$ o sinal mensagem é recuperado sem distorção? Acima de um determinado valor limiar de $K_p$ o sinal desmodulado sofre distorções. O que explica esse fenômeno?
     \fillwithlines{1.50in}
 
-    \question Varie a frequência da portadora $f_c$ para 20 kHz e observe que isso não altera a largura de faixa do sinal PM. Altere a frequência da fonte para 1 kHz e explique o que ocorreu com a largura de faixa do sinal modulado em fase, $B_{PM}$. A razâo de desvio $\beta$ se altera?
-    \fillwithlines{0.5in}
+
+    
+%    \fillwithlines{0.5in}
+%    \question Varie a frequência da portadora $f_c$ para 20 kHz e observe que isso não altera a largura de faixa do sinal PM. Altere a frequência da fonte para 1 kHz e explique o que ocorreu com a largura de faixa do sinal modulado em fase, $B_{PM}$. A razão de desvio $\beta$ se altera?
+%    \fillwithlines{0.5in}
     
 %    \question Quando temos um $K_{p} < 0.5$ o sinal PM é considerado de faixa estreita e pode ser aproximado pela equação
 %    \begin{equation}
@@ -303,11 +321,11 @@ O objetivo deste experimento é mostrar o conceito de um receptor FM usando dete
 \section*{Experimento 3 -- Desmodulação com Detecção por Inclinação}
 
 \begin{questions}
-    \question Observe que o sinal na saída do derivador (bloco {\em High Pass Filter}) está modulado em amplitude e também em frequência. Qual o índice de modulação do sinal AM? Mude a amplitude do sinal modulante para cima e para baixo, para se obter um índice de modulaçao 0,5 e 1,0. Quais são esses valores de amplitude? % O que ocorre com a largura de faixa do sinal FM, para os dois casos em relação à amplitude de 0,2?
+    \question Observe que o sinal na saída do derivador (bloco {\em High Pass Filter}) está modulado em amplitude e também em frequência. Qual o índice de modulação do sinal AM? Mude a amplitude do sinal modulante para cima e para baixo, para se obter um índice de modulação 0,5 e 1,0. Quais são esses valores de amplitude? % O que ocorre com a largura de faixa do sinal FM, para os dois casos em relação à amplitude de 0,2?
     \fillwithlines{1in}
 
-    \question Se usassemos um oscilador local para detetar, o sinal da saída do derivador, como no caso de um detetor síncrono para um sinal AM. Qual seria a frequência desse oscilador local? Justifique.
-    \fillwithlines{1in}
+%    \question Se usássemos um oscilador local para detetar, o sinal da saída do derivador, como no caso de um detetor síncrono para um sinal AM. Qual seria a frequência desse oscilador local? Justifique.
+%    \fillwithlines{1in}
 
 \end{questions}
 
