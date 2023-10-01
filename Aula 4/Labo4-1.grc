@@ -38,7 +38,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: f msg
+    label: Frequencia do sinal mensagem
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -59,7 +59,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: fc
+    label: Frequencia da portadora (fc)
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -80,7 +80,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: kp
+    label: "Par\xE2metro Kp"
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
