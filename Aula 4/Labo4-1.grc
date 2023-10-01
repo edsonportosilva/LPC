@@ -38,7 +38,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: Frequencia do sinal mensagem
+    label: "Frequ\xEAncia do sinal mensagem"
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -59,7 +59,7 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: Frequencia da portadora (fc)
+    label: "Frequ\xEAncia da portadora (fc)"
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
@@ -130,7 +130,7 @@ blocks:
     bus_structure: null
     coordinate: [16.0, 120]
     rotation: 270
-    state: true
+    state: enabled
 - name: analog_sig_source_x_0_0
   id: analog_sig_source_x
   parameters:
