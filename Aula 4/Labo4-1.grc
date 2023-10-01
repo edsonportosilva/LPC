@@ -65,7 +65,7 @@ blocks:
     rangeType: float
     start: '0'
     step: '100'
-    stop: '40000'
+    stop: '30000'
     value: '10000'
     widget: counter_slider
   states:
@@ -85,7 +85,7 @@ blocks:
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: '0.05'
-    step: '0.05'
+    step: '0.01'
     stop: '10'
     value: '0.5'
     widget: counter_slider
@@ -100,12 +100,12 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '80000'
+    value: '320000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12]
+    coordinate: [176, 16.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -151,7 +151,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 344.0]
+    coordinate: [0, 344.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_imag_0
@@ -219,7 +219,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 64.0]
+    coordinate: [472, 64.0]
     rotation: 0
     state: true
 - name: blocks_multiply_const_vxx_0_0
@@ -327,7 +327,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [416, 192.0]
+    coordinate: [448, 176.0]
     rotation: 0
     state: enabled
 - name: blocks_sub_xx_0
@@ -364,7 +364,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [248, 64.0]
+    coordinate: [328, 16.0]
     rotation: 0
     state: true
 - name: blocks_transcendental_0
@@ -546,7 +546,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     fc: '0'
-    fftsize: '4096'
+    fftsize: '8192'
     freqhalf: 'False'
     grid: 'True'
     gui_hint: 0,0,1,2
@@ -587,7 +587,7 @@ blocks:
     width9: '1'
     wintype: window.WIN_BLACKMAN_hARRIS
     ymax: '0'
-    ymin: '-180'
+    ymin: '-150'
   states:
     bus_sink: false
     bus_source: false
@@ -650,7 +650,7 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '3'
-    size: '1024'
+    size: '2048'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -747,7 +747,7 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '2'
-    size: '1024'
+    size: '2048'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -828,4 +828,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
+  grc_version: 3.10.6.0
