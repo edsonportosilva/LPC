@@ -86,13 +86,13 @@ blocks:
     start: '150'
     step: '50'
     stop: '1000'
-    value: '450'
+    value: '400'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 296.0]
+    coordinate: [240, 296.0]
     rotation: 0
     state: enabled
 - name: Fp
@@ -107,13 +107,13 @@ blocks:
     start: '10000'
     step: '500'
     stop: '32000'
-    value: '25000'
+    value: '20000'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [408, 288.0]
+    coordinate: [176, 472.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -125,7 +125,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [256, 20.0]
+    coordinate: [272, 12.0]
     rotation: 0
     state: enabled
 - name: analog_pll_freqdet_cf_0
@@ -218,7 +218,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [544, 44.0]
+    coordinate: [480, 36.0]
     rotation: 0
     state: enabled
 - name: blocks_vco_f_0
@@ -236,7 +236,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 112.0]
+    coordinate: [848, 112.0]
     rotation: 0
     state: enabled
 - name: dc_blocker_xx_0
@@ -278,7 +278,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 96.0]
+    coordinate: [272, 96.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0_0
@@ -296,7 +296,7 @@ blocks:
     minoutbuf: '0'
     samp_rate: samp_rate
     type: fir_filter_fff
-    width: 0.1*F
+    width: '10'
     win: window.WIN_HAMMING
   states:
     bus_sink: false
@@ -480,7 +480,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1064, 28.0]
+    coordinate: [1088, 12.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1
