@@ -23,7 +23,6 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: FM de Faixa Larga
-    window_size: 1280,1024
   states:
     bus_sink: false
     bus_source: false
@@ -72,7 +71,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 448.0]
+    coordinate: [16, 472.0]
     rotation: 0
     state: enabled
 - name: F
@@ -93,7 +92,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [168, 296.0]
+    coordinate: [184, 296.0]
     rotation: 0
     state: enabled
 - name: Fp
@@ -114,19 +113,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 296.0]
+    coordinate: [408, 288.0]
     rotation: 0
     state: enabled
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '128000'
+    value: '320000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 13]
+    coordinate: [256, 20.0]
     rotation: 0
     state: enabled
 - name: analog_pll_freqdet_cf_0
@@ -144,7 +143,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1120, 432.0]
+    coordinate: [1320, 456.0]
     rotation: 180
     state: enabled
 - name: analog_sig_source_x_0
@@ -160,7 +159,6 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
-    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -201,7 +199,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1160, 136.0]
+    coordinate: [1368, 148.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle_0
@@ -220,7 +218,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 56.0]
+    coordinate: [544, 44.0]
     rotation: 0
     state: enabled
 - name: blocks_vco_f_0
@@ -238,7 +236,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [680, 112.0]
+    coordinate: [768, 112.0]
     rotation: 0
     state: enabled
 - name: dc_blocker_xx_0
@@ -256,7 +254,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 440.0]
+    coordinate: [824, 468.0]
     rotation: 180
     state: enabled
 - name: low_pass_filter_0
@@ -304,7 +302,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [912, 400.0]
+    coordinate: [1056, 416.0]
     rotation: 180
     state: true
 - name: qtgui_freq_sink_x_0
@@ -385,7 +383,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [880, 184.0]
+    coordinate: [840, 244.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -443,7 +441,7 @@ blocks:
     marker9: '-1'
     name: Sinal mensagem e portadora modulada
     nconnections: '2'
-    size: '1024'
+    size: '2048'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -482,7 +480,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [880, 40.0]
+    coordinate: [1064, 28.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1
@@ -540,7 +538,7 @@ blocks:
     marker9: '-1'
     name: Sinal desmodulado
     nconnections: '1'
-    size: '1024'
+    size: '2048'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -579,7 +577,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 432.0]
+    coordinate: [488, 500.0]
     rotation: 180
     state: enabled
 
@@ -601,4 +599,3 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
