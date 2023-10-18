@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 296.0]
+    coordinate: [8, 304.0]
     rotation: 0
     state: enabled
 - name: constelacao
@@ -61,7 +61,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 368.0]
+    coordinate: [8, 384.0]
     rotation: 0
     state: true
 - name: noisePower
@@ -75,9 +75,9 @@ blocks:
     rangeType: float
     start: '0'
     step: '0.0001'
-    stop: '1'
-    value: '0.0255'
-    widget: slider
+    stop: '10'
+    value: '0.04'
+    widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
@@ -125,8 +125,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [840.0, 144]
-    rotation: 90
+    coordinate: [624.0, 16]
+    rotation: 270
     state: enabled
 - name: analog_random_source_x_1
   id: analog_random_source_x
@@ -163,7 +163,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [944, 48.0]
+    coordinate: [728, 168.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_real_0_1
@@ -179,8 +179,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 40.0]
-    rotation: 0
+    coordinate: [376.0, 168]
+    rotation: 270
     state: enabled
 - name: blocks_multiply_xx_0
   id: blocks_multiply_xx
@@ -197,7 +197,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 232.0]
+    coordinate: [272, 336.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_xx_0_0
@@ -215,7 +215,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [368, 304.0]
+    coordinate: [208, 408.0]
     rotation: 0
     state: enabled
 - name: blocks_nlog10_ff_0_0
@@ -233,7 +233,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 312.0]
+    coordinate: [568, 416.0]
     rotation: 0
     state: enabled
 - name: blocks_nlog10_ff_0_1
@@ -251,7 +251,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 240.0]
+    coordinate: [568, 344.0]
     rotation: 0
     state: enabled
 - name: blocks_sub_xx_0
@@ -269,7 +269,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 272.0]
+    coordinate: [688, 376.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle_0
@@ -288,7 +288,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1160, 168.0]
+    coordinate: [464, 112.0]
     rotation: 180
     state: enabled
 - name: digital_constellation_modulator_0
@@ -310,7 +310,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 8.0]
+    coordinate: [344, 8.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0_0_0_0
@@ -334,7 +334,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1144, 8.0]
+    coordinate: [816, 8.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0_0_0_0_0
@@ -358,8 +358,32 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [168.0, 192]
+    coordinate: [168.0, 160]
     rotation: 270
+    state: enabled
+- name: low_pass_filter_0_0_0_0_1
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '1000'
+    comment: ''
+    cutoff_freq: samp_rate/sps/2
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: interp_fir_filter_fff
+    width: (samp_rate/sps)*0.83
+    win: window.WIN_RECTANGULAR
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [448, 168.0]
+    rotation: 0
     state: enabled
 - name: qtgui_eye_sink_x_0
   id: qtgui_eye_sink_x
@@ -389,7 +413,7 @@ blocks:
     color8: blue
     color9: blue
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     entags: 'True'
     grid: 'True'
     gui_hint: 0,2,1,2
@@ -415,7 +439,7 @@ blocks:
     marker8: '-1'
     marker9: '-1'
     nconnections: '1'
-    samp_per_symbol: 2*sps
+    samp_per_symbol: sps
     size: 4096*8
     srate: samp_rate
     style1: '1'
@@ -454,7 +478,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 144.0]
+    coordinate: [816, 160.0]
     rotation: 180
     state: true
 - name: qtgui_number_sink_0
@@ -497,8 +521,8 @@ blocks:
     label7: ''
     label8: ''
     label9: ''
-    max: '100'
-    min: '-100'
+    max: '50'
+    min: '-10'
     name: '"SNR (dB)"'
     nconnections: '1'
     type: float
@@ -517,7 +541,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 248.0]
+    coordinate: [824, 352.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -554,7 +578,7 @@ blocks:
     gui_hint: 0,0,1,2
     label1: 'Sinal '
     label10: Signal 10
-    label2: Signal 2
+    label2: "Signal + ru\xEDdo"
     label3: Signal 3
     label4: Signal 4
     label5: Signal 5
@@ -573,9 +597,9 @@ blocks:
     marker7: '-1'
     marker8: '-1'
     marker9: '-1'
-    name: '"Sinal"'
-    nconnections: '1'
-    size: '128'
+    name: "\"Sequ\xEAncia de pulsos modulados\""
+    nconnections: '2'
+    size: '512'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -590,7 +614,7 @@ blocks:
     style9: '1'
     tr_chan: '0'
     tr_delay: '0'
-    tr_level: '0.0'
+    tr_level: '0.1'
     tr_mode: qtgui.TRIG_MODE_FREE
     tr_slope: qtgui.TRIG_SLOPE_POS
     tr_tag: '""'
@@ -614,7 +638,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1144, 240.0]
+    coordinate: [656, 256.0]
     rotation: 180
     state: true
 - name: single_pole_iir_filter_xx_0
@@ -632,7 +656,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 312.0]
+    coordinate: [376, 416.0]
     rotation: 0
     state: enabled
 - name: single_pole_iir_filter_xx_0_0
@@ -650,29 +674,31 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 240.0]
+    coordinate: [384, 344.0]
     rotation: 0
     state: enabled
 
 connections:
-- [analog_noise_source_x_0, '0', blocks_add_xx_0, '1']
-- [analog_noise_source_x_0, '0', low_pass_filter_0_0_0_0_0, '0']
+- [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']
+- [analog_noise_source_x_0, '0', blocks_throttle_0, '0']
 - [analog_random_source_x_1, '0', digital_constellation_modulator_0, '0']
 - [blocks_add_xx_0, '0', low_pass_filter_0_0_0_0, '0']
-- [blocks_complex_to_real_0_1, '0', blocks_add_xx_0, '0']
+- [blocks_complex_to_real_0_1, '0', blocks_add_xx_0, '1']
 - [blocks_complex_to_real_0_1, '0', blocks_multiply_xx_0, '0']
 - [blocks_complex_to_real_0_1, '0', blocks_multiply_xx_0, '1']
+- [blocks_complex_to_real_0_1, '0', low_pass_filter_0_0_0_0_1, '0']
 - [blocks_multiply_xx_0, '0', single_pole_iir_filter_xx_0_0, '0']
 - [blocks_multiply_xx_0_0, '0', single_pole_iir_filter_xx_0, '0']
 - [blocks_nlog10_ff_0_0, '0', blocks_sub_xx_0, '1']
 - [blocks_nlog10_ff_0_1, '0', blocks_sub_xx_0, '0']
 - [blocks_sub_xx_0, '0', qtgui_number_sink_0, '0']
-- [blocks_throttle_0, '0', qtgui_eye_sink_x_0, '0']
+- [blocks_throttle_0, '0', low_pass_filter_0_0_0_0_0, '0']
 - [digital_constellation_modulator_0, '0', blocks_complex_to_real_0_1, '0']
-- [low_pass_filter_0_0_0_0, '0', blocks_throttle_0, '0']
-- [low_pass_filter_0_0_0_0, '0', qtgui_time_sink_x_0, '0']
+- [low_pass_filter_0_0_0_0, '0', qtgui_eye_sink_x_0, '0']
+- [low_pass_filter_0_0_0_0, '0', qtgui_time_sink_x_0, '1']
 - [low_pass_filter_0_0_0_0_0, '0', blocks_multiply_xx_0_0, '0']
 - [low_pass_filter_0_0_0_0_0, '0', blocks_multiply_xx_0_0, '1']
+- [low_pass_filter_0_0_0_0_1, '0', qtgui_time_sink_x_0, '0']
 - [single_pole_iir_filter_xx_0, '0', blocks_nlog10_ff_0_0, '0']
 - [single_pole_iir_filter_xx_0_0, '0', blocks_nlog10_ff_0_1, '0']
 
