@@ -6,13 +6,15 @@
 \usepackage{graphicx, amsmath, amsfonts, amssymb, xcolor, url, tikz, pgfplots, subfigure}
 
 \newcommand{\disciplina}{Laboratório de Princípios de Comunicações}
-\newcommand{\periodo}{2020.1e}
+\newcommand{\periodo}{2023.1}
 \newcommand{\avaliacao}{Guia de Experimentos 5}
-\newcommand{\tema}{Comunicações digitais.}
+\newcommand{\tema}{Introdução às comunicações digitais}
 %\newcommand{\professor}{Leocarlos B.\ S.\ Lima e Edson P.\ da Silva}
 \newcommand{\professor}{Edson P.\ da Silva e Luciana Veloso}
 %\newcommand{\professor}{Edmar C. Gurjão e Luciana Veloso}
 %\newcommand{\professor}{Bruno\ B.\ Albert e Edson P.\ da Silva}
+%\newcommand{\professor}{Adolfo Herbster e Bruno Albert}
+%\newcommand{\professor}{Edson Porto e Bruno Albert}
 
 \pagestyle{head}
 \firstpageheader{}{}{}
@@ -51,15 +53,15 @@ Os experimentos propostos deverão ser realizados no Laboratório de Princípios
     \item Módulo USRP (do inglês \textit{Universal Software Radio Peripheral}) para transmissão e recepção de sinais numa abordagem conhecida como Rádio Definido por Software -- RDS.
 \end{itemize}
 
-Na seção \ref{sect:Preparacao} deste guia, propõe-se um conjunto de atividades de preparação a serem desenvolvidas pelo aluno antes da aula em que serão realizadas as práticas experimentais. Sem a realização prévia destas atividades pelo aluno, as práticas experimentais propostas ficarão comprometidas, tanto no tempo necessário para sua realização quanto no aproveitamento pelo aluno. Por essa razão, \textbf{o aluno só poderá realizar os experimentos em laboratório se apresentar ao professor no início da aula os resultados da preparação proposta}. 
+ Na seção \ref{sect:Preparacao} deste guia, propõe-se um conjunto de atividades de preparação a serem desenvolvidas antes da aula em que serão realizadas as práticas experimentais. Sem a realização prévia destas atividades, as práticas experimentais propostas ficarão comprometidas, tanto no tempo necessário para sua realização quanto no aproveitamento. Por essa razão, \textbf{só poderá realizar os experimentos em laboratório quem apresentar ao(a) professor(a) no início da aula os resultados da preparação proposta}. 
 
-A aula terá duração de duas horas e o aluno deverá entregar ao seu término, por escrito, respostas às questões referentes aos experimentos realizados propostas na Folha de Respostas (parte final do guia).
+A aula terá duração de duas horas e cada participante deverá entregar ao seu término, a Folha de Respostas (parte final do guia) com as respostas cada um dos questionamentos de cada experimento.
 
 \section{Objetivos}
 
 As práticas experimentais aqui propostas têm por objetivos:
 \begin{itemize}
-    \item Analisar diagrama de olho de sinal digital;
+    \item Analisar diagrama de olho de sinais digitais;
     \item Projetar e analisar equalizador de canal e seu efeito sobre o sinal recebido;
     \item Observar emprego de código duobinário sobre sinal transmitido;
     \item Observar efeito de ruído de canal em BER e SNR em sinal modulado digital transmitido.
@@ -76,9 +78,34 @@ Revise e pesquise sobre os conceitos:
     \item Código duobinário;
     \item Modulações M-PAM e M-QAM.
 \end{itemize}
+\subsection{Diagrama de olho}
+Um diagrama de olho, no contexto de sistemas de comunicações, é uma ferramenta amplamente utilizada para a análise e avaliação da qualidade de sinais transmitidos. Ele é especialmente útil em sistemas digitais de comunicação, como telecomunicações e transmissões de dados, onde a detecção precisa dos pulsos transmitidos é essencial. Um exemplo de um diagrama de olho para um sinal binário NRZ está ilustrado na Fig.~\ref{fig:eye}.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{Figuras/EyeDiagram.png}
+        \caption{Diagrama de olho e suas principais características.}
+        \label{fig:eye}
+\end{figure}
+
+O diagrama de olho é uma representação gráfica obtida a partir de um sinal recebido em um osciloscópio, onde os pulsos transmitidos são sobrepostos ao longo do tempo. É chamado de \textit{diagrama de olho} devido à semelhança visual com um par de olhos e pálpebras. Para construir um diagrama de olho, o sinal é amostrado em momentos específicos que correspondem ao período de sinalização. As amostras de múltiplos símbolos transmitidos são sobrepostas no mesmo gráfico. A repetição das formas de onda de símbolos adjacentes dá o formato de \textit{olho} ao diagrama.
+
+O diagrama de olho serve a alguns propósitos:
+
+\begin{itemize}
+\item Avaliação da qualidade e integridade do sinal: Ele permite uma avaliação visual da qualidade do sinal, ajudando a identificar problemas de transmissão, como ruído, distorção, atenuação e \textit{jitter} (variação no atraso dos sinais).
+
+\item Sincronização temporal: também é usado para verificar se os símbolos estão sincronizados adequadamente no receptor.
+Como Funciona:
+\end{itemize}
+
+Um diagrama de olho \textit{aberto} e bem definido é desejável, indicando que os níveis do sinal são facilmente distinguíveis, o que é fundamental para uma detecção precisa dos símbolos e bits transmitidos. Um diagrama de olho \textit{fechado} ou distorcido sugere problemas de transmissão que podem afetar a qualidade da comunicação.
+
+Logo, trata-se de uma ferramenta que permite a realização uma avaliação visual da qualidade de sinais, processo necessário durante a otimização da transmissão e recepção de sinal digitais.
+
 
 \subsection{Estudo de caso: compensação da dispersão cromática em fibras ópticas}
-Em óptica, a dispersão é o fenômeno que ocorre em meios no quais a velocidade de fase de uma onda propagante depende de sua frequência. Meios com essa propriedade são conhecidos como meios dispersivos. Algumas vezes o termo \textit{dispersão cromática} é usado para melhor definir a origem do fenômeno. Embora o conceito seja comumente vinculado à óptica, fenômenos similares pode ocorrer em qualquer tipo de propagação de onda, como é o caso da dispersão acústica de ondas sonoras.
+Em óptica, a dispersão é o fenômeno que ocorre em meios nos quais a velocidade de fase de uma onda propagante depende de sua frequência. Meios com essa propriedade são conhecidos como meios dispersivos. Algumas vezes o termo \textit{dispersão cromática} é usado para melhor definir a origem do fenômeno. Embora o conceito seja comumente vinculado à óptica, fenômenos similares podem ocorrer em qualquer tipo de propagação de onda, como é o caso da dispersão acústica de ondas sonoras.
  
 Uma consequência óptica importante e familiar da dispersão é a mudança no ângulo de refração de diferentes cores (componentes de frequência) de luz, como visto no espectro produzido por um prisma dispersivo e na aberração cromática de lentes. O exemplo mais conhecido de dispersão é provavelmente um arco-íris, no qual a dispersão causa a separação espacial de uma luz branca em componentes de diferentes comprimentos de onda (cores diferentes). 
 
@@ -133,15 +160,13 @@ A seguir são descritas práticas experimentais a serem realizadas pelo aluno em
 
 O objetivo deste experimento é identificar os elementos de um diagrama de olho de um sinal 2-PAM e observar seu comportamento mediante adição de ruído.
 
-\begin{enumerate}
-    \item Antes de iniciar as atividades com o GRC, crie uma pasta para guardar os arquivos de seus experimentos e copie nela os modelos de diagrama (arquivos .GRC) disponibilizados pelo professor para esta aula. \textbf{Não deixe de realizar isso, pois o computador deste laboratório não é para seu uso pessoal e os arquivos que você utilizará serão alterados por você durante o experimento};
-    \item Execute o software GRC e abra o arquivo \textbf{Labo5-1.grc}. A Figura \ref{fig:GRC_5-1} ilustra o diagrama deste experimento. Ele consiste na transmissão de um sinal 2-PAM e recepção do mesmo acrescido de ruído de canal. O gráfico apresentado permite observar o diagrama de olho construído a partir da parte real do sinal recebido;
-    \item Para conseguir visualizar o diagrama de olho, marque a opção \textbf{Persistence} no canto superior do painel, à direita do gráfico, ajuste o valor \textbf{Analog Alpha} (pequena régua deslizante que surge sob a opção \textbf{Persistence}) para seu valor mínimo (0.01000) e aguarde a transmissão de vários pulsos para que o diagrama de olho seja desenhado. 
-    \item Um régua deslizante localizada sob o painel do diagrama de olho permite alterar a potência do ruído de canal e observar seu efeito sobre o diagrama de olho e sobre a relação sinal-ruído (SNR) no sinal recebido. Após alterar o nível de ruído, desmarque a opção \textbf{Persistence} para limpar o gráfico e volte a marcá-la para que novo diagrama de olho seja desenhado para o novo nível de ruído;
+\begin{enumerate}    
+    \item Execute o software GRC e abra o arquivo \textbf{Labo5-1.grc}. A Figura \ref{fig:GRC_5-1} ilustra o diagrama deste experimento. Ele consiste na transmissão de um sinal 2-PAM e recepção do mesmo acrescido de ruído. O gráfico apresentado permite observar o diagrama de olho do sinal recebido;
+    \item Um régua deslizante localizada sob o painel do diagrama de olho permite alterar a potência do ruído de canal e observar seu efeito sobre o diagrama de olho e sobre a relação sinal-ruído (SNR) no sinal recebido.
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\textwidth]{Figuras/Labo5-1}
-        \caption{Diagrama de blocos para análise de diagrama de olho de sinal 2-PAM.}
+        \includegraphics[width=0.85\textwidth]{Figuras/Labo5-1}
+        \caption{Diagrama de blocos para análise de diagrama de olho de sinal 2-PAM (ou BPSK).}
         \label{fig:GRC_5-1}
     \end{figure}
   \item Execute o diagrama e responda às questões propostas na Folha de Respostas.
@@ -149,23 +174,23 @@ O objetivo deste experimento é identificar os elementos de um diagrama de olho 
 
 \subsection{Experimento 2 -- Equalização}
 
-O objetivo deste experimento é analisar o emprego de equalizador de zero forçado para minimizar a interferência intersimbólica observada através de diagrama de olho de sinal recebido após o sinal trafegar por canal com resposta $H(\omega, z) = e^{-j\frac{\beta_2}{2} \omega^2z}$ (dispersão cromática no canal óptico).
+O objetivo deste experimento é analisar o emprego de equalizador de zero forçado para minimizar a interferência intersimbólica (ISI) observada através de diagrama de olho de sinal recebido após o sinal trafegar por canal com resposta $H(\omega, z) = e^{-j\frac{\beta_2}{2} \omega^2z}$ (dispersão cromática na fibra óptica).
 
 \begin{enumerate}
     \item Abra o arquivo \textbf{Labo5-2.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_5-2} ilustra o diagrama deste experimento. Uma modulação 4-PAM é empregada e três diagramas de olho são apresentados: 
     \begin{itemize}
-        \item um do sinal transmitido, portanto sem distorção de canal, em azul;
-        \item um do sinal recebido não equalizado, portanto distorcido pelo canal, em verde, e;
-        \item um do sinal recebido e equalizado, em vermelho.
+        \item um com o sinal enviado ao canal, portanto livre de ISI;
+        \item um com o sinal recebido na saída do canal, distorcido pela ISI, e;
+        \item um com sinal recebido após ser processado pelo equalizador.
     \end{itemize}
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\textwidth]{Figuras/Labo5-2}
-        \caption{Diagrama de blocos ilustrando a aplicação de um equalizador de zero forçado para compensação da dispersão cromática da fibra óptica.}
+        \includegraphics[width=0.85\textwidth]{Figuras/Labo5-2}
+        \caption{Diagrama de blocos ilustrando a aplicação de um equalizador de zero forçado para compensação da dispersão cromática em fibras ópticas.}
         \label{fig:GRC_5-2}
     \end{figure}
-    \item Introduza no bloco \textbf{Interpolating FIR Filter} localizado na parte inferior do diagrama, na vertical, os coeficientes do canal calculados na preparação;
-    \item Introduza no bloco \textbf{Interpolating FIR Filter} localizado na parte inferior do diagrama, na horizontal, os coeficientes do equalizador de zero forçado calculados na preparação;
+    \item Introduza no bloco \textbf{Interpolating FIR Filter} \textbf{localizado na parte superior} do diagrama, os coeficientes do canal calculados na preparação para 1500 km;
+    \item Introduza no bloco \textbf{Interpolating FIR Filter} \textbf{localizado na parte inferior} do diagrama, os coeficientes do equalizador de zero forçado calculados na preparação para 1500 km;
     \item Responda as questões propostas na Folha de Respostas.
 \end{enumerate}
 
@@ -173,29 +198,28 @@ O objetivo deste experimento é analisar o emprego de equalizador de zero força
 
 O objetivo deste experimento é observar o emprego de código duobinário na transmissão digital.
 \begin{enumerate}
-    \item Abra o arquivo \textbf{Labo5-3.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_5-3} ilustra o diagrama de blocos deste experimento. Ele consiste de um sistema de transmissão QPSK com pulsos NRZ e com pulsos duobinários, com ajuste da largura de faixa do canal. O objetivo é comparar o efeito de pulsos duobinários em canais com restrição de largura de faixa;
+    \item Abra o arquivo \textbf{Labo5-3.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_5-3} ilustra o diagrama de blocos deste experimento. Ele consiste de um sistema de transmissão 2-PAM com pulsos NRZ e com pulsos duobinários, com ajuste da largura de faixa do canal. O objetivo é comparar o efeito de pulsos duobinários em canais com restrição de largura de faixa;
     \begin{figure}[htb]
         \centering
-        \includegraphics[width=\textwidth]{Figuras/Labo5-3}
-        \caption{Diagrama de blocos de sistema de transmissão QPSK com pulsos NRZ e com pulsos duobinários.} 
+        \includegraphics[width=0.85\textwidth]{Figuras/Labo5-3}
+        \caption{Diagrama de blocos de sistema de transmissão 2-PAM com pulsos NRZ e com pulsos duobinários.} 
         \label{fig:GRC_5-3}
     \end{figure}
   \item Execute o experimento e responda as questões propostas na Folha de Respostas.
 \end{enumerate}
 
-\subsection{Experimento 4 -- Modulação digital}
+ \subsection{Experimento 4 -- Modulação digital}
 
 O objetivo deste experimento é mostrar o conceito de um receptor FM usando deteção por inclinação.
-
-\begin{enumerate}
-    \item  Abra o arquivo \textbf{Labo5-4.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_5-4} ilustra o diagrama deste experimento. Ele consiste de um sistema de transmissão digital modulada, que permite monitorar as constelações dos sinais transmitidos e recebidos, o espectro do sinal recebido, além da taxa de erro de bits (BER) e da relação sinal-ruído (SNR) obtidas na recepção.
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=0.8\textwidth]{Figuras/Labo5-4}
-        \caption{Diagrama de blocos de sistema de transmissão digital modulada.} 
-        \label{fig:GRC_5-4}
-    \end{figure}
-  \item Execute o experimento e responda as questões propostas na Folha de Respostas.
+ \begin{enumerate}
+     \item  Abra o arquivo \textbf{Labo5-4.grc} disponibilizado pelo professor. A Figura \ref{fig:GRC_5-4} ilustra o diagrama deste experimento. Ele consiste de um sistema de transmissão digital modulada, que permite monitorar as constelações dos sinais transmitidos e recebidos, o espectro do sinal recebido, além da taxa de erro de bits (BER) e da relação sinal-ruído (SNR) obtidas na recepção.
+     \begin{figure}[htb]
+         \centering
+         \includegraphics[width=0.85\textwidth]{Figuras/Labo5-4}
+         \caption{Diagrama de blocos de sistema de transmissão digital modulada.} 
+         \label{fig:GRC_5-4}
+     \end{figure}
+   \item Execute o experimento e responda as questões propostas na Folha de Respostas.
 \end{enumerate}
 
 
@@ -224,46 +248,50 @@ O objetivo deste experimento é mostrar o conceito de um receptor FM usando dete
 \section*{Experimento 1 -- Diagrama de olho}
 
 \begin{questions}
-    \question Observe o diagrama de olho desenhado para o sinal 2-PAM recebido sob baixo ruído (SNR de 30~dB). Esboce esse diagrama e identifique suas componentes (período, amplitude de abertura, etc.).
-    \makeemptybox{5cm}
+%    \question Observe o diagrama de olho desenhado para o sinal 2-PAM recebido sob baixo ruído (SNR de $\approx$30~dB). Esboce esse diagrama e identifique suas componentes (período, amplitude de abertura, etc.).
+%    \makeemptybox{5cm}
     
-    \question Aumente o nível de ruído até obter SNR de $\approx$20~dB. Qual o efeito observado no diagrama de olho?
-    \fillwithlines{0.75in}
-    
-    \question Retorne a SNR para 30~dB. Em seguida, altere a variável M de 2 para 4, para mudar a modulação de 2-PAM para 4-PAM. Explique porque o diagrama de olho agora apresenta mais níveis de amplitude e o que cada nível representa.
+    \question Observe o diagrama do sinal 2-PAM, com cada nível representando um bit (0 ou 1). Varie o nível de ruído de modo que a SNR varie entre 30~dB e 10~dB e observe o que acontece com o digrama de olho. Descreva qualitativamente a relação entre SNR e as características do diagrama de olho.
+    \fillwithlines{1.75in}
+
+    \question Altere o {\it Constellation Type} no bloco {\it Constellation Object} para 16QAM. Note que agora o diagrama de olho apresenta quatro níveis, correspondendo ao diagrama de olho de um sinal 4-PAM. Ajuste a SNR para $\approx$30~dB. Explique o que cada nível do sinal representa.
     \fillwithlines{1in}
+
+    % \question Retorne a SNR para 30~dB. Em seguida, altere a variável M de 2 para 4, para mudar a modulação de 2-PAM para 4-PAM. Explique porque o diagrama de olho agora apresenta mais níveis de amplitude e o que cada nível representa.
+    % \fillwithlines{1in}
 \end{questions}
 
 \section*{Experimento 2 -- Equalização}
 
 \begin{questions}
-    \question Descreva o que acontece com o diagrama de olho na saída do canal à medida em que distâncias de propagação aumentam. Justifique.
+    \question Teste a simulação para diferentes combinações de canal e equalizador (diferentes distâncias). Descreva o que acontece com o diagrama de olho na saída do canal à medida em que distâncias de propagação aumentam. Justifique.
+    \fillwithlines{1.25in}
+    \question Descreva o que aconteceu com o diagrama de olho do sinal após o emprego do equalizador projetado para aquela distância. Justifique.
     \fillwithlines{0.75in}
-    \question Descreva o que aconteceu com o diagrama de olho do sinal após o emprego do equalizador projetado. Justifique.
-    \fillwithlines{0.75in}
-    \question Que arranjo de blocos permite a equalização da dispersão cromática para uma distância de 4000~km com um filtro projetado para compensar uma distância 2000~km? Teste-o na simulação. Funciona? Desenhe o arranjo abaixo. (Vide questão 3 da preparação)
-    \makeemptybox{4cm}  
+%    \question Que arranjo de blocos permite a equalização da dispersão cromática para uma distância de 8000~km com um filtro projetado para compensar uma distância 4000~km? Teste-o na simulação. Funciona? Justifique. % Desenhe o arranjo abaixo. (Vide questão 3 da preparação)
+%    \fillwithlines{0.75in}
+    % \makeemptybox{4cm}  
 \end{questions}
 
 \section*{Experimento 3 -- Código duobinário}
 
 \begin{questions}
-    \question Considerando o canal com largura de faixa de 2~kHz, como inicialmente configurado, observe os espectros dos sinais e os diagramas de olho para o uso de pulsos NRZ (em azul) e de pulsos duobinários (em verde). Observe que ambos os diagramas de olho apresentam igual nível de abertura do olho. Agora, reduza a largura de faixa do canal para 1~kHz depois para 0.8~kHz e observe os diagramas de olho resultantes. Com base no observado, descreva as vantagens ou desvantagens do uso de pulsos duobinários em sistemas com restrição de largura de faixa em relação a pulsos NRZ.
+    \question Considerando o canal com largura de faixa de 4~kHz, como inicialmente configurado, observe os espectros dos sinais e os diagramas de olho para o uso de pulsos NRZ e de pulsos duobinários. Observe que ambos os diagramas de olho apresentam igual nível de abertura do olho. Agora, reduza a largura de banda do canal para 2~kHz e depois para 1.6~kHz e observe os diagramas de olho resultantes. Justificando com base no que foi observado nos diagramas de olho, indique qual dos sinais é mais resiliente à filtragem de componentes de frequência pelo canal.
     \fillwithlines{0.75in}
 \end{questions}
 
-\section*{Experimento 4 -- Modulação digital}
+ \section*{Experimento 4 -- Modulação digital}
 
 \begin{questions}
-    \question Qual a SNR$_b$ (SNR por bit) e a BER observadas? Varie o nível de ruído do canal através da régua deslizante. O que ocorre com a SNR$_b$ e a BER quando o nível de ruído é aumentado ou diminuído.
-    \fillwithlines{0.75in}
+     \question Varie o nível de ruído do canal através da régua deslizante de modo a alterar os valores de SNR$_b$. Descreva qualitativamente a relação entre a SNR$_b$ e a BER, justificando as conclusões com valores observados no experimento.
+     \fillwithlines{1.25in}
     
-    \question A que nível de SNR$_b$ obtém-se uma BER de aproximadamente $10^{-4}$, ou seja, um erro em cada 10~kbits transmitidos?
-    \fillwithlines{0.25in}
+     \question A que nível de SNR$_b$ obtém-se uma BER de aproximadamente $10^{-4}$, ou seja, um bit detectado com erro em cada 10~mil bits transmitidos?
+     \fillwithlines{0.25in}
     
-    \question Altere a variável M de 4 para 16 de forma a gerar o formato de modulação 16-QAM. Para esta modulação, a que nível de SNR$_b$ obtém-se uma BER de aproximadamente $10^{-4}$? Compare com o valor obtido para 4-QAM e apresente razões para a diferença. Repita o mesmo para M = 64.
+     \question Altere a variável M de 4 para 16 e o parâmetro {\it Constellation Type} no bloco {\it Constellation Object} para 16QAM, de forma a gerar na simulação o formato de modulação 16-QAM. Para esta modulação, a que nível de SNR$_b$ obtém-se uma BER de aproximadamente $10^{-4}$? Compare com o valor obtido para 4-QAM e apresente razões para a diferença.
     
     \fillwithlines{1in}
-\end{questions}
+ \end{questions}
 
 \end{document}
