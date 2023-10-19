@@ -1,11 +1,11 @@
 options:
   parameters:
-    author: ''
+    author: Edson Porto da Silva
     catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
-    copyright: ''
+    copyright: '2023'
     description: ''
     gen_cmake: 'On'
     gen_linking: dynamic
@@ -22,13 +22,13 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: ''
+    title: "Visualiza\xE7\xE3o de diagramas de olho"
     window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 8]
+    coordinate: [8, 8.0]
     rotation: 0
     state: enabled
 
@@ -42,7 +42,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 304.0]
+    coordinate: [576, 8.0]
     rotation: 0
     state: enabled
 - name: constelacao
@@ -61,7 +61,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 384.0]
+    coordinate: [8, 336.0]
     rotation: 0
     state: true
 - name: noisePower
@@ -82,7 +82,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 160.0]
+    coordinate: [8, 200.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -94,7 +94,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 80.0]
+    coordinate: [8, 128.0]
     rotation: 0
     state: enabled
 - name: sps
@@ -106,7 +106,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [96, 80.0]
+    coordinate: [96, 128.0]
     rotation: 0
     state: enabled
 - name: analog_noise_source_x_0
@@ -125,7 +125,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [624.0, 16]
+    coordinate: [712.0, 16]
     rotation: 270
     state: enabled
 - name: analog_random_source_x_1
@@ -163,7 +163,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 168.0]
+    coordinate: [680, 200.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_real_0_1
@@ -179,11 +179,11 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376.0, 168]
+    coordinate: [368.0, 144]
     rotation: 270
     state: enabled
-- name: blocks_multiply_xx_0
-  id: blocks_multiply_xx
+- name: blocks_divide_xx_0
+  id: blocks_divide_xx
   parameters:
     affinity: ''
     alias: ''
@@ -197,45 +197,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 336.0]
+    coordinate: [456, 336.0]
     rotation: 0
-    state: enabled
-- name: blocks_multiply_xx_0_0
-  id: blocks_multiply_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [208, 408.0]
-    rotation: 0
-    state: enabled
-- name: blocks_nlog10_ff_0_0
-  id: blocks_nlog10_ff
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    k: '0'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    n: '10'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [568, 416.0]
-    rotation: 0
-    state: enabled
+    state: true
 - name: blocks_nlog10_ff_0_1
   id: blocks_nlog10_ff
   parameters:
@@ -245,33 +209,49 @@ blocks:
     k: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
-    n: '10'
+    n: '20'
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 344.0]
+    coordinate: [568, 320.0]
     rotation: 0
     state: enabled
-- name: blocks_sub_xx_0
-  id: blocks_sub_xx
+- name: blocks_rms_xx_0
+  id: blocks_rms_xx
   parameters:
     affinity: ''
     alias: ''
+    alpha: '0.00001'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    num_inputs: '2'
     type: float
-    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [688, 376.0]
+    coordinate: [328, 328.0]
     rotation: 0
-    state: enabled
+    state: true
+- name: blocks_rms_xx_0_0
+  id: blocks_rms_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '0.00001'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [232, 360.0]
+    rotation: 0
+    state: true
 - name: blocks_throttle_0
   id: blocks_throttle
   parameters:
@@ -288,7 +268,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 112.0]
+    coordinate: [472, 112.0]
     rotation: 180
     state: enabled
 - name: digital_constellation_modulator_0
@@ -334,7 +314,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 8.0]
+    coordinate: [832, 24.0]
     rotation: 0
     state: enabled
 - name: low_pass_filter_0_0_0_0_0
@@ -382,7 +362,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 168.0]
+    coordinate: [464, 168.0]
     rotation: 0
     state: enabled
 - name: qtgui_eye_sink_x_0
@@ -478,7 +458,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [816, 160.0]
+    coordinate: [816, 296.0]
     rotation: 180
     state: true
 - name: qtgui_number_sink_0
@@ -541,7 +521,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [824, 352.0]
+    coordinate: [672, 288.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -638,45 +618,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [656, 256.0]
+    coordinate: [800, 184.0]
     rotation: 180
     state: true
-- name: single_pole_iir_filter_xx_0
-  id: single_pole_iir_filter_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    alpha: '0.001'
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [376, 416.0]
-    rotation: 0
-    state: enabled
-- name: single_pole_iir_filter_xx_0_0
-  id: single_pole_iir_filter_xx
-  parameters:
-    affinity: ''
-    alias: ''
-    alpha: '0.001'
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [384, 344.0]
-    rotation: 0
-    state: enabled
 
 connections:
 - [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']
@@ -684,24 +628,19 @@ connections:
 - [analog_random_source_x_1, '0', digital_constellation_modulator_0, '0']
 - [blocks_add_xx_0, '0', low_pass_filter_0_0_0_0, '0']
 - [blocks_complex_to_real_0_1, '0', blocks_add_xx_0, '1']
-- [blocks_complex_to_real_0_1, '0', blocks_multiply_xx_0, '0']
-- [blocks_complex_to_real_0_1, '0', blocks_multiply_xx_0, '1']
+- [blocks_complex_to_real_0_1, '0', blocks_rms_xx_0, '0']
 - [blocks_complex_to_real_0_1, '0', low_pass_filter_0_0_0_0_1, '0']
-- [blocks_multiply_xx_0, '0', single_pole_iir_filter_xx_0_0, '0']
-- [blocks_multiply_xx_0_0, '0', single_pole_iir_filter_xx_0, '0']
-- [blocks_nlog10_ff_0_0, '0', blocks_sub_xx_0, '1']
-- [blocks_nlog10_ff_0_1, '0', blocks_sub_xx_0, '0']
-- [blocks_sub_xx_0, '0', qtgui_number_sink_0, '0']
+- [blocks_divide_xx_0, '0', blocks_nlog10_ff_0_1, '0']
+- [blocks_nlog10_ff_0_1, '0', qtgui_number_sink_0, '0']
+- [blocks_rms_xx_0, '0', blocks_divide_xx_0, '0']
+- [blocks_rms_xx_0_0, '0', blocks_divide_xx_0, '1']
 - [blocks_throttle_0, '0', low_pass_filter_0_0_0_0_0, '0']
 - [digital_constellation_modulator_0, '0', blocks_complex_to_real_0_1, '0']
 - [low_pass_filter_0_0_0_0, '0', qtgui_eye_sink_x_0, '0']
 - [low_pass_filter_0_0_0_0, '0', qtgui_time_sink_x_0, '1']
-- [low_pass_filter_0_0_0_0_0, '0', blocks_multiply_xx_0_0, '0']
-- [low_pass_filter_0_0_0_0_0, '0', blocks_multiply_xx_0_0, '1']
+- [low_pass_filter_0_0_0_0_0, '0', blocks_rms_xx_0_0, '0']
 - [low_pass_filter_0_0_0_0_1, '0', qtgui_time_sink_x_0, '0']
-- [single_pole_iir_filter_xx_0, '0', blocks_nlog10_ff_0_0, '0']
-- [single_pole_iir_filter_xx_0_0, '0', blocks_nlog10_ff_0_1, '0']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
+  grc_version: 3.10.6.0
