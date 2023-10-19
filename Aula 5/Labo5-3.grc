@@ -38,14 +38,14 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: Largura de banda do canal
+    label: Largura de banda do canal (kHz)
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
-    start: (samp_rate/sps)*0.25
-    step: '1'
-    stop: (samp_rate/sps)*2
-    value: (samp_rate/sps)
+    start: (samp_rate/sps)*0.25/1000
+    step: '0.1'
+    stop: (samp_rate/sps)*2/1000
+    value: (samp_rate/sps)/1000
     widget: counter_slider
   states:
     bus_sink: false
@@ -247,7 +247,7 @@ blocks:
     alias: ''
     beta: '1000'
     comment: ''
-    cutoff_freq: BW
+    cutoff_freq: BW*1000
     decim: '1'
     gain: '1'
     interp: '1'
@@ -255,7 +255,7 @@ blocks:
     minoutbuf: '0'
     samp_rate: samp_rate
     type: interp_fir_filter_ccf
-    width: BW*0.05
+    width: BW*0.05*1000
     win: window.WIN_RECTANGULAR
   states:
     bus_sink: false
@@ -271,7 +271,7 @@ blocks:
     alias: ''
     beta: '1000'
     comment: ''
-    cutoff_freq: BW
+    cutoff_freq: BW*1000
     decim: '1'
     gain: '1'
     interp: '1'
@@ -279,7 +279,7 @@ blocks:
     minoutbuf: '0'
     samp_rate: samp_rate
     type: interp_fir_filter_ccf
-    width: BW*0.05
+    width: BW*0.05*1000
     win: window.WIN_RECTANGULAR
   states:
     bus_sink: false
@@ -575,4 +575,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
+  grc_version: 3.10.6.0
