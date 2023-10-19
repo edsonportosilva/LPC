@@ -36,7 +36,7 @@ Repositório com material da disciplina de Laboratório de Princípios de Comuni
 * [Arquivo Labo4-2.grc](https://drive.google.com/file/d/1Q6pkiA0uFQkBmakt-OiPqEvqUNh2mkxu/view?usp=sharing)
 * [Arquivo Labo4-4.grc](https://drive.google.com/file/d/1Q56rAkgR0br_OCsuFah8q_b9Oaxrt5Ys/view?usp=sharing).
 
-## Experimento 5: Modulação digital
+## Experimento 5: Modulação digital.
 
 * [Guia do experimento](https://drive.google.com/file/d/1QuW43FluMUPG5zZew4DcPWmeAxti3MHk/view?usp=sharing)
 * [Arquivo Exp5.m](https://drive.google.com/file/d/1ROHHFzfPmysqjjFLOe2O0sZfGPxmVZ67/view?usp=sharing)
