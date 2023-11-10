@@ -25,7 +25,6 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: Geracao de sinal a partir de sua serie de Fourier
-    window_size: ''
   states:
     bus_sink: false
     bus_source: false
@@ -35,6 +34,90 @@ options:
     state: enabled
 
 blocks:
+- name: A1
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 'Tab@0: [0,0,1,2]'
+    label: Amplitude 1
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-1.5'
+    step: '0.01'
+    stop: '1.5'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 440.0]
+    rotation: 0
+    state: true
+- name: A2
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 'Tab@0: [1,0,1,2]'
+    label: Amplitude 2
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-1.5'
+    step: '0.01'
+    stop: '1.5'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [376, 440.0]
+    rotation: 0
+    state: true
+- name: A3
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 'Tab@0: [2,0,1,2]'
+    label: Amplitude 3
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-1.5'
+    step: '0.01'
+    stop: '1.5'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 440.0]
+    rotation: 0
+    state: true
+- name: f0
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 'Tab@1: [0,0,1,2]'
+    label: fundamental
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '50'
+    stop: '1500'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 300.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -44,7 +127,41 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [16, 160.0]
+    coordinate: [8, 117]
+    rotation: 0
+    state: enabled
+- name: Tab
+  id: qtgui_tab_widget
+  parameters:
+    alias: ''
+    comment: ''
+    gui_hint: 4,0,2,2
+    label0: Amplitudes
+    label1: Frequencia
+    label10: Tab 10
+    label11: Tab 11
+    label12: Tab 12
+    label13: Tab 13
+    label14: Tab 14
+    label15: Tab 15
+    label16: Tab 16
+    label17: Tab 17
+    label18: Tab 18
+    label19: Tab 19
+    label2: Tab 2
+    label3: Tab 3
+    label4: Tab 4
+    label5: Tab 5
+    label6: Tab 6
+    label7: Tab 7
+    label8: Tab 8
+    label9: Tab 9
+    num_tabs: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 188.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle_0
@@ -63,7 +180,45 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 64.0]
+    coordinate: [424, 20.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle_0_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 244.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle_0_1
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 140.0]
     rotation: 0
     state: enabled
 - name: fundamental
@@ -71,9 +226,9 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '1.0'
+    amp: A1
     comment: ''
-    freq: '100'
+    freq: f0
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -85,7 +240,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 24.0]
+    coordinate: [216, 8]
     rotation: 0
     state: enabled
 - name: graf_tempo_0
@@ -182,7 +337,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [832, 80.0]
+    coordinate: [728, 44.0]
     rotation: 0
     state: enabled
 - name: harmonica_1
@@ -190,9 +345,9 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '1.0'
+    amp: A2
     comment: ''
-    freq: '200'
+    freq: 3*f0
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -204,7 +359,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 168.0]
+    coordinate: [216, 132.0]
     rotation: 0
     state: enabled
 - name: harmonica_2
@@ -212,9 +367,9 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '1.0'
+    amp: A3
     comment: ''
-    freq: '300'
+    freq: 5*f0
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -226,7 +381,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [208, 312.0]
+    coordinate: [216, 252.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -307,7 +462,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [776, 216.0]
+    coordinate: [736, 248.0]
     rotation: 0
     state: enabled
 - name: somador_0
@@ -325,18 +480,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 144.0]
+    coordinate: [624, 128.0]
     rotation: 0
     state: enabled
 
 connections:
 - [blocks_throttle_0, '0', somador_0, '0']
+- [blocks_throttle_0_0, '0', somador_0, '2']
+- [blocks_throttle_0_1, '0', somador_0, '1']
 - [fundamental, '0', blocks_throttle_0, '0']
-- [harmonica_1, '0', somador_0, '1']
-- [harmonica_2, '0', somador_0, '2']
+- [harmonica_1, '0', blocks_throttle_0_1, '0']
+- [harmonica_2, '0', blocks_throttle_0_0, '0']
 - [somador_0, '0', graf_tempo_0, '0']
 - [somador_0, '0', qtgui_freq_sink_x_0, '0']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.4.0
