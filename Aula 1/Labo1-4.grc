@@ -1,6 +1,6 @@
 options:
   parameters:
-    author: Leocarlos B S Lima
+    author: Leocarlos Bezerra da Silva Lima
     catch_exceptions: 'True'
     category: Custom
     cmake_opt: ''
@@ -13,7 +13,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: Labo1_1
+    id: Labo1_3
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -24,7 +24,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Experimentando o GRC
+    title: Distorcao de sinais em canais de comunicacao
     window_size: ''
   states:
     bus_sink: false
@@ -35,56 +35,116 @@ options:
     state: enabled
 
 blocks:
-- name: f
+- name: a
   id: variable_qtgui_range
   parameters:
     comment: ''
     gui_hint: ''
-    label: "Frequ\xEAncia"
-    min_len: '100'
+    label: "Attenua\xE7\xE3o"
+    min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
-    start: samp_rate/16
-    step: '10'
-    stop: samp_rate/4
-    value: samp_rate/16
+    start: '0'
+    step: '0.1'
+    stop: '0.5'
+    value: '0.5'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 344.0]
+    coordinate: [120, 136.0]
+    rotation: 0
+    state: enabled
+- name: freq
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: "Frequ\xEAncia"
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: samp_rate/512
+    step: '100'
+    stop: samp_rate/2
+    value: samp_rate/256
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 136.0]
     rotation: 0
     state: enabled
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '8000'
+    value: '128000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 128.0]
+    coordinate: [160, 8.0]
     rotation: 0
     state: enabled
-- name: blocks_rms_xx_0
-  id: blocks_rms_xx
+- name: blocks_delay_0_0
+  id: blocks_delay
   parameters:
     affinity: ''
     alias: ''
-    alpha: '0.0001'
     comment: ''
+    delay: '2'
     maxoutbuf: '0'
     minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
     type: float
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 280.0]
+    coordinate: [704, 184.0]
     rotation: 0
-    state: true
+    state: enabled
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: a
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [496, 184.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '0.5'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [688, 128.0]
+    rotation: 0
+    state: enabled
 - name: blocks_throttle_0
   id: blocks_throttle
   parameters:
@@ -101,7 +161,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [192, 136.0]
+    coordinate: [496, 128.0]
     rotation: 0
     state: enabled
 - name: fundamental
@@ -109,9 +169,9 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '1.0'
+    amp: '1'
     comment: ''
-    freq: f
+    freq: freq
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -119,47 +179,49 @@ blocks:
     samp_rate: samp_rate
     showports: 'False'
     type: float
-    waveform: analog.GR_SIN_WAVE
+    waveform: analog.GR_COS_WAVE
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 208.0]
+    coordinate: [248, 8.0]
     rotation: 0
     state: enabled
-- name: power
-  id: qtgui_number_sink
+- name: graf_tempo
+  id: qtgui_time_sink_x
   parameters:
     affinity: ''
     alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
     autoscale: 'False'
-    avg: '0'
-    color1: ("black", "black")
-    color10: ("black", "black")
-    color2: ("black", "black")
-    color3: ("black", "black")
-    color4: ("black", "black")
-    color5: ("black", "black")
-    color6: ("black", "black")
-    color7: ("black", "black")
-    color8: ("black", "black")
-    color9: ("black", "black")
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
     comment: ''
-    factor1: '1'
-    factor10: '1'
-    factor2: '1'
-    factor3: '1'
-    factor4: '1'
-    factor5: '1'
-    factor6: '1'
-    factor7: '1'
-    factor8: '1'
-    factor9: '1'
-    graph_type: qtgui.NUM_GRAPH_NONE
-    gui_hint: ''
-    label1: ''
+    ctrlpanel: 'True'
+    entags: 'True'
+    grid: 'True'
+    gui_hint: 0, 0, 2, 2
+    label1: Entrada
     label10: ''
-    label2: ''
+    label2: Saida
     label3: ''
     label4: ''
     label5: ''
@@ -167,29 +229,61 @@ blocks:
     label7: ''
     label8: ''
     label9: ''
-    max: '1'
-    min: '-1'
-    name: "Pot\xEAncia (RMS)"
-    nconnections: '1'
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '""'
+    nconnections: '2'
+    size: '512'
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
     type: float
-    unit1: ''
-    unit10: ''
-    unit2: ''
-    unit3: ''
-    unit4: ''
-    unit5: ''
-    unit6: ''
-    unit7: ''
-    unit8: ''
-    unit9: ''
-    update_time: '0.10'
+    update_time: '0.1'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1.5'
+    ymin: '-1.5'
+    yunit: '""'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [440, 248.0]
+    coordinate: [1048, 8.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: qtgui_freq_sink_x_0
   id: qtgui_freq_sink_x
   parameters:
@@ -220,16 +314,16 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
+    ctrlpanel: 'True'
     fc: '0'
-    fftsize: '1024'
-    freqhalf: 'True'
-    grid: 'False'
-    gui_hint: ''
+    fftsize: '2048'
+    freqhalf: 'False'
+    grid: 'True'
+    gui_hint: 0,2,2,2
     label: Relative Gain
-    label1: ''
+    label1: "Sa\xEDda do canal"
     label10: ''
-    label2: ''
+    label2: Saida
     label3: ''
     label4: ''
     label5: ''
@@ -250,7 +344,7 @@ blocks:
     tr_tag: '""'
     type: float
     units: dB
-    update_time: '0.10'
+    update_time: '0.5'
     width1: '1'
     width10: '1'
     width2: '1'
@@ -261,120 +355,45 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    wintype: window.WIN_BLACKMAN_hARRIS
-    ymax: '10'
-    ymin: '-140'
+    wintype: window.WIN_HANN
+    ymax: '0'
+    ymin: '-60'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 16.0]
+    coordinate: [1040, 152.0]
     rotation: 0
     state: enabled
-- name: qtgui_time_sink_x_0
-  id: qtgui_time_sink_x
+- name: somador
+  id: blocks_add_xx
   parameters:
     affinity: ''
     alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'True'
-    axislabels: 'True'
-    color1: blue
-    color10: dark blue
-    color2: red
-    color3: green
-    color4: black
-    color5: cyan
-    color6: magenta
-    color7: yellow
-    color8: dark red
-    color9: dark green
     comment: ''
-    ctrlpanel: 'False'
-    entags: 'True'
-    grid: 'True'
-    gui_hint: ''
-    label1: ''
-    label10: ''
-    label2: ''
-    label3: ''
-    label4: ''
-    label5: ''
-    label6: ''
-    label7: ''
-    label8: ''
-    label9: ''
-    legend: 'True'
-    marker1: '-1'
-    marker10: '-1'
-    marker2: '-1'
-    marker3: '-1'
-    marker4: '-1'
-    marker5: '-1'
-    marker6: '-1'
-    marker7: '-1'
-    marker8: '-1'
-    marker9: '-1'
-    name: '""'
-    nconnections: '1'
-    size: '1024'
-    srate: samp_rate
-    stemplot: 'False'
-    style1: '1'
-    style10: '1'
-    style2: '1'
-    style3: '1'
-    style4: '1'
-    style5: '1'
-    style6: '1'
-    style7: '1'
-    style8: '1'
-    style9: '1'
-    tr_chan: '0'
-    tr_delay: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_slope: qtgui.TRIG_SLOPE_POS
-    tr_tag: '""'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
     type: float
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    ylabel: Amplitude
-    ymax: '1'
-    ymin: '-1'
-    yunit: '""'
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [432, 136.0]
+    coordinate: [880, 152.0]
     rotation: 0
     state: enabled
 
 connections:
-- [blocks_rms_xx_0, '0', power, '0']
-- [blocks_throttle_0, '0', blocks_rms_xx_0, '0']
-- [blocks_throttle_0, '0', qtgui_freq_sink_x_0, '0']
-- [blocks_throttle_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_delay_0_0, '0', somador, '1']
+- [blocks_multiply_const_vxx_0_0, '0', blocks_delay_0_0, '0']
+- [blocks_multiply_const_vxx_0_0_0, '0', somador, '0']
+- [blocks_throttle_0, '0', blocks_multiply_const_vxx_0_0_0, '0']
+- [fundamental, '0', blocks_multiply_const_vxx_0_0, '0']
 - [fundamental, '0', blocks_throttle_0, '0']
+- [fundamental, '0', graf_tempo, '0']
+- [somador, '0', graf_tempo, '1']
+- [somador, '0', qtgui_freq_sink_x_0, '0']
 
 metadata:
   file_format: 1

@@ -23,6 +23,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: FM de Faixa Larga
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -92,7 +93,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 296.0]
+    coordinate: [176, 296.0]
     rotation: 0
     state: enabled
 - name: Fp
@@ -113,7 +114,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [176, 472.0]
+    coordinate: [120, 472.0]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -159,6 +160,7 @@ blocks:
     offset: '0'
     phase: '0'
     samp_rate: samp_rate
+    showports: 'False'
     type: float
     waveform: analog.GR_COS_WAVE
   states:
@@ -599,3 +601,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.7.0
